@@ -8,6 +8,7 @@ from datetime import datetime # added
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
+    #production
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
@@ -42,6 +43,7 @@ class User(db.Model, UserMixin):
 class Product(db.Model):
     __tablename__ = "products"
 
+    #production
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 

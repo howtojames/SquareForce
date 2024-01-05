@@ -26,7 +26,6 @@ def seed_products():
     db.session.add(product3)
     db.session.add(product4)
     db.session.add(product5)
-    print("before comitting")
     db.session.commit()
 
 
