@@ -64,9 +64,9 @@ const productsReducer = (state = initialState, action) => {
       //console.log('newState', newState);
       return newState;
     }
-    case POST_A_PRODUCT: {
+    // case POST_A_PRODUCT: {
 
-    }
+    // }
     default:
       return state;
   }
