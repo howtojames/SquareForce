@@ -49,7 +49,7 @@ class Product(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=False)
-    price = db.Column(db.Integer, nullable=False) #change to decimal
+    price = db.Column(db.Integer, nullable=False)
     category = db.Column(db.String, nullable=False)
     #indicated one User to many Products
     sellerId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
