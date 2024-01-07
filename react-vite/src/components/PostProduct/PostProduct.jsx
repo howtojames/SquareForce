@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
+import './PostProduct.css';
 
 function AddProduct() {
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
+  const [condition, setCondition] = useState('');
   const [category, setCategory] = useState('');
 
 //   const [validationErrors, setValidationErrors] = useState({});
@@ -19,33 +21,31 @@ function AddProduct() {
     // Prevent the default form behavior so the page doesn't reload.
     e.preventDefault();
 
-    // setHasSubmitted(true);
+    setHasSubmitted(true);
     //hasSubmtited still false
     //console.log('hasSubmitted after setter', hasSubmitted);
 
 
     // Create a new object for the contact us information.
-    const contactUsInformation = {
+    const productData = {
       name,
-      email,
-      phone,
-      phoneType,
-      comments,
-      submittedOn: new Date()
+      price,
+      condition,
+      category
     };
 
     // Ideally, we'd persist this information to a database using a RESTful API.
     // For now, though, just log the contact us information to the console.
-    console.log(contactUsInformation);
+    console.log("productData", productData);
 
     // Reset the form state.
-    // setName('');
-    // setEmail('');
-    // setPhone('');
-    // setPhoneType('');
-    // setComments('');
-    // setValidationErrors({});
-    // setHasSubmitted(false);
+    setName('');
+    setPrice('');
+    setCondition('');
+    setCategory('');
+
+    //setValidationErrors({});
+    setHasSubmitted(false);
   }
 
   //true here
