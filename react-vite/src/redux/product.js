@@ -30,26 +30,26 @@ export const thunkGetAllProducts = () => async (dispatch) => {
     }
 };
 
-// export const thunkPostAProduct = (product) => async (dispatch) => {
-//   //we get back the {} with details of the newly created Product
-//   const res = await fetch(`/api/products/new`, {
-//     method: 'POST',
-//     headers: { 'Content-Type': 'application/json' },
-//     body: JSON.stringify(product)
-//   });
+export const thunkPostAProduct = (product) => async (dispatch) => {
+  //we get back the {} with details of the newly created Product
+  const res = await fetch(`/api/products/new`, { //correct
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(product)
+  });
 
-//   if(res.ok) {
-//     const productData = await res.json();
-//     console.log('ProductData', productData);
-//     dispatch(postAProduct(productData));
-//     return productData;
-//   } else  {
-//     console.log('inside thunkPostAProduct error message');
-//     const error = await res.json();
-//     console.log('error', error);
-//     return error;  //if not successful, return the error data back
-//   }
-// }
+  if(res.ok) {
+    const productData = await res.json();
+    console.log('productData in thunk', productData);
+    dispatch(postAProduct(productData));
+    return productData;
+  } else  {
+    console.log('thunkPostAProduct error message');
+    const error = await res.json();
+    console.log('error', error);
+    return error;
+  }
+}
 
 
 
@@ -64,9 +64,9 @@ const productsReducer = (state = initialState, action) => {
       //console.log('newState', newState);
       return newState;
     }
-    // case POST_A_PRODUCT: {
-
-    // }
+    case POST_A_PRODUCT: {
+      return { ...state, [action.productData.id]: action.productData }
+    }
     default:
       return state;
   }

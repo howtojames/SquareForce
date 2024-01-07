@@ -69,3 +69,6 @@ class Product(db.Model):
             'createdAt': self.createdAt,
             'updatedAt': self.updatedAt
         }
+
+
+#User.questions = db.relationship('Question', back_populates='owner')
