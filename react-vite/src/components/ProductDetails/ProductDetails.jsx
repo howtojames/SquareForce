@@ -35,6 +35,7 @@ function ProductDetails () {
             <div id='left-container'>
                 {/* images */}
                 <div>left-container</div>
+                <img src={productData.imageUrl} width="300px"/>
             </div>
             <div id='right-container'>
                 {/* details */}

@@ -48,6 +48,7 @@ def post_question():
             title = form.data["title"],
             condition = form.data["condition"],
             price = form.data["price"],
+            imageUrl = form.data["imageUrl"],
             description = form.data["description"],
             sellerId = current_user.id,
 
