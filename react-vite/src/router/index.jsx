@@ -3,7 +3,9 @@ import LoginFormPage from '../components/LoginFormPage';
 import SignupFormPage from '../components/SignupFormPage';
 import Layout from './Layout';
 import HomePage from '../components/HomePage/HomePage';
-import AddProduct from '../components/PostProduct/PostProduct';
+import PostProduct from '../components/PostProduct/PostProduct'
+import ProductDetails from '../components/ProductDetails/ProductDetails';
+
 
 export const router = createBrowserRouter([
   {
@@ -14,8 +16,12 @@ export const router = createBrowserRouter([
         element: <HomePage />,
       },
       {
-        path: "/product/new",
-        element: <AddProduct />,
+        path: "/products/:productId",
+        element: <ProductDetails />,
+      },
+      {
+        path: "/products/new",
+        element: <PostProduct />,
       },
       {
         path: "login",

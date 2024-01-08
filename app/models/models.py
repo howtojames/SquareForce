@@ -48,9 +48,11 @@ class Product(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String, nullable=False)
+    title = db.Column(db.String, nullable=False)
+    condition = db.Column(db.String, nullable=False)
     price = db.Column(db.Integer, nullable=False)
-    category = db.Column(db.String, nullable=False)
+    description = db.Column(db.String, nullable=False)
+    #category = db.Column(db.String, nullable=False)
     #indicated one User to many Products
     sellerId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
     createdAt = db.Column(db.TIMESTAMP, default=datetime.now())
@@ -62,9 +64,9 @@ class Product(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'name': self.name,
+            'title': self.title,
             'price': self.price,
-            'category': self.category,
+            'condition': self.condition,
             'sellerId': self.sellerId,
             'createdAt': self.createdAt,
             'updatedAt': self.updatedAt

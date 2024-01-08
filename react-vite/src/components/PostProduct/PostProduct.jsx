@@ -1,14 +1,20 @@
 import { useState, useEffect } from 'react';
-import './PostProduct.css';
+import { useDispatch } from 'react-redux';
 
-function AddProduct() {
-  const [name, setName] = useState('');
+import './PostProduct.css';
+import { thunkPostAProduct } from '../../redux/product';
+
+function PostProduct() {
+  const dispatch = useDispatch();
+
+  const [title, setTitle] = useState('');
   const [price, setPrice] = useState('');
   const [condition, setCondition] = useState('');
-  const [category, setCategory] = useState('');
+  const [description, setDescription] = useState('');
+  //const [category, setCategory] = useState('');
 
-//   const [validationErrors, setValidationErrors] = useState({});
-//   const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [validationErrors, setValidationErrors] = useState({});
+  const [hasSubmitted, setHasSubmitted] = useState(false);
 
 //   useEffect(() => {
 //     const errors = {};
@@ -17,85 +23,98 @@ function AddProduct() {
 //     setValidationErrors(errors);
 //   }, [name, email]);
 
-  const onSubmit = e => {
+
+  const onSubmit = async e => {
     // Prevent the default form behavior so the page doesn't reload.
     e.preventDefault();
 
-    setHasSubmitted(true);
+    //setHasSubmitted(true);
     //hasSubmtited still false
     //console.log('hasSubmitted after setter', hasSubmitted);
 
 
     // Create a new object for the contact us information.
     const productData = {
-      name,
+      title,
       price,
       condition,
-      category
+      description
+      //category,
     };
 
     // Ideally, we'd persist this information to a database using a RESTful API.
     // For now, though, just log the contact us information to the console.
     console.log("productData", productData);
 
+    const postProductRes = await dispatch(thunkPostAProduct(productData))
+    console.log('postProductRes', postProductRes)
+
     // Reset the form state.
-    setName('');
+    setTitle('');
     setPrice('');
     setCondition('');
-    setCategory('');
+    setDescription('');
+    //setCategory('');
 
     //setValidationErrors({});
-    setHasSubmitted(false);
+    //setHasSubmitted(false);
   }
 
   //true here
   //console.log('hasSubmitted', hasSubmitted);
   return (
     <div>
-      <h2>Add Item</h2>
+      <h2>List an Item</h2>
       <form onSubmit={onSubmit}>
         <div>
           <label>Title:</label>
-          <input
-            id='name'
-            type='text'
-            onChange={e => setName(e.target.value)}
-            value={name}
+          <input id='name-input' type='text'
+            onChange={e => setTitle(e.target.value)} value={title}
           />
           {/* <div className='error'>
             {hasSubmitted && validationErrors.name && `* ${validationErrors.name}`}
           </div> */}
         </div>
-       <div>
-        <label>Condition</label>
-        <input id='condition' type="text"/>
-       </div>
-        {/* <div>
-          <label>Phone:</label>
-          <input
-            id='phone'
-            type='text'
-            onChange={e => setPhone(e.target.value)}
-            value={phone}
+        <div>
+          <label>Price:</label>
+          <input id='price-input' type='text'
+            onChange={e => setPrice(e.target.value)} value={price}
           />
+        </div>
+       <div>
+          <label>Condition:</label>
           <select
-            name='phoneType'
-            onChange={e => setPhoneType(e.target.value)}
-            value={phoneType}
+            id='condition-select'
+            type='text'
+            onChange={e => setCondition(e.target.value)}
+            value={condition}
           >
             <option value='' disabled>
-              Select a phone type...
+              -
             </option>
-            <option>Home</option>
-            <option>Work</option>
-            <option>Mobile</option>
+            <option>New</option>
+            <option>Used - Like New</option>
+            <option>Used - Fair</option>
           </select>
+        </div>
+        <div>
+          <label>Description:</label>
+            <textarea id='description-input' type='text'
+              /* placeholder="Write a detailed description of your item" */
+              onChange={e => setDescription(e.target.value)} value={description}
+            />
+        </div>
+        {/* <div>
+          <label>Category:</label>
+          <input id='category-input' type='text'
+            onChange={e => setCategory(e.target.value)} value={category}
+          />
         </div> */}
 
-        <button>Submit</button>
+        <button>List it</button>
       </form>
     </div>
   );
 }
 
-export default AddProduct;
+export default PostProduct;

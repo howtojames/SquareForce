@@ -6,19 +6,24 @@ def seed_products():
     print("INSIDE SEED PRODUCTS")
     #demo user's products
     product1 = Product(
-        name = 'keyboard', price = 80, category='electronics', sellerId = 1
+        title = 'keyboard', condition="New", price = 80, sellerId = 1,
+        description = 'description'
     )
     product2 = Product(
-        name = 'laptop', price = 500, category='electronics', sellerId = 1
+        title = 'laptop', condition="New", price = 500, sellerId = 1,
+        description = 'description'
     )
     product3 = Product(
-        name = 'mouse', price = 50, category='electronics', sellerId = 1
+        title = 'mouse', condition="Used - Like New", price = 50, sellerId = 1,
+        description = 'description'
     )
     product4 = Product(
-        name = 'Samsung Galaxy S10', price = 139, category='electronics', sellerId = 1
+        title = 'Samsung Galaxy S10', condition="New", price = 139, sellerId = 1,
+        description = 'description'
     )
     product5 = Product(
-        name = 'Apple Watch Series 5', price = 149, category='electronics', sellerId = 1
+        title = 'Apple Watch Series 5', condition="New", price = 149, sellerId = 1,
+        description = 'description'
     )
 
     db.session.add(product1)

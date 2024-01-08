@@ -34,7 +34,6 @@ def get_single_product(id):
     return jsonify(product_data)
 
 
-
 @product_routes.route("/new", methods=["POST"])
 @login_required  #will throw 401 if not logged in
 def post_question():
@@ -42,10 +41,17 @@ def post_question():
     form = ProductForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
+    print("current_user.id ************", current_user.id)
+
     if form.validate_on_submit():
         new_product = Product (
-            name = form.data["name"],
-            category = form.data["category"]
+            title = form.data["title"],
+            condition = form.data["condition"],
+            price = form.data["price"],
+            description = form.data["description"],
+            sellerId = current_user.id,
+
+            #category = form.data["category"]
         )
         print("new_product", new_product)
         db.session.add(new_product)

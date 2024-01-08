@@ -1,5 +1,5 @@
 const LOAD_ALL_PRODUCTS = "spots/loadAllProducts";
-//const GET_PRODUCT_DETAILS = "spots/getProductDetails"
+const GET_PRODUCT_DETAILS = "spots/getProductDetails"
 const POST_A_PRODUCT = 'spots/postAProduct';
 
 const loadAllProducts = (allProducts) => {
@@ -8,7 +8,12 @@ const loadAllProducts = (allProducts) => {
       allProducts
     };
 };
-
+const getProductDetails = (product) => {
+  return {
+    type: GET_PRODUCT_DETAILS,
+    product
+  };
+};
 const postAProduct = (productData) => {
   return {
     type: POST_A_PRODUCT,
@@ -22,13 +27,25 @@ export const thunkGetAllProducts = () => async (dispatch) => {
     if(res.ok) {
       //{ Products: [ {}, {}, ... ]}
       const allSpots = await res.json();
-      console.log('allSpots after fetch', allSpots)
+      console.log('all Products after fetch', allSpots)
       dispatch(loadAllProducts(allSpots));
       return allSpots;
     } else  {
       console.log('/api/products error output');
     }
 };
+export const thunkGetProductDetails = (productId) => async (dispatch) => {
+  const res = await fetch(`/api/products/${productId}`);  //fetch
+
+  if(res.ok) {
+    const productDetails = await res.json();
+    console.log('product details in thunk', productDetails);
+    dispatch(getProductDetails(productDetails));
+    return productDetails;
+  } else  {
+    console.log('/api/product/:productId error here');
+  }
+}
 
 export const thunkPostAProduct = (product) => async (dispatch) => {
   //we get back the {} with details of the newly created Product
@@ -64,9 +81,14 @@ const productsReducer = (state = initialState, action) => {
       //console.log('newState', newState);
       return newState;
     }
+    case GET_PRODUCT_DETAILS: {
+      const newState = { ...state, [action.product.id]: action.product };
+      return newState;
+    }
     case POST_A_PRODUCT: {
       return { ...state, [action.productData.id]: action.productData }
     }
+
     default:
       return state;
   }

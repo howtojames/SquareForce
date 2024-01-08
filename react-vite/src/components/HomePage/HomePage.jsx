@@ -1,6 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import { thunkGetAllProducts } from '../../redux/product';
+import ProductTile from '../ProductTile/ProductTile';
+
 
 function HomePage() {
     const dispatch = useDispatch();
@@ -21,12 +24,9 @@ function HomePage() {
             <div>Daily Deals</div>
 
             {allProductsArr.map(product => (
-                <>
-                    <div id="product-container" key={product.id}>
-                        {product.name}
-                    </div>
-                    <div>${product.price}</div>
-                </>
+
+                 <ProductTile key={product.id} product={product} className='product-tile-class'/>
+
             ))}
         </>
     )
