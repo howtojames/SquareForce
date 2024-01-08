@@ -4,6 +4,7 @@ import "./Navigation.css";
 
 function Navigation() {
   return (
+    <>
     <ul>
       <li>
         <NavLink to="/">Home</NavLink>
@@ -12,7 +13,11 @@ function Navigation() {
       <li>
         <ProfileButton />
       </li>
+
+
     </ul>
+    <NavLink to="/products/new">Sell</NavLink>
+    </>
   );
 }
 
