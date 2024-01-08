@@ -23,11 +23,8 @@ function HomePage() {
         <>
             <h3>Home Page</h3>
             <div>Daily Deals</div>
-
             {allProductsArr.map(product => (
-
                  <ProductTile key={product.id} product={product} className='product-tile-class'/>
-
             ))}
         </>
     )

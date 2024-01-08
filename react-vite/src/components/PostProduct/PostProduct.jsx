@@ -1,15 +1,18 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import './PostProduct.css';
 import { thunkPostAProduct } from '../../redux/product';
 
 function PostProduct() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [title, setTitle] = useState('');
   const [price, setPrice] = useState('');
   const [condition, setCondition] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
   const [description, setDescription] = useState('');
   //const [category, setCategory] = useState('');
 
@@ -38,6 +41,7 @@ function PostProduct() {
       title,
       price,
       condition,
+      imageUrl,
       description
       //category,
     };
@@ -53,11 +57,13 @@ function PostProduct() {
     setTitle('');
     setPrice('');
     setCondition('');
+    setImageUrl('');
     setDescription('');
     //setCategory('');
 
     //setValidationErrors({});
     //setHasSubmitted(false);
+    navigate('/');
   }
 
   //true here
@@ -96,6 +102,13 @@ function PostProduct() {
             <option>Used - Like New</option>
             <option>Used - Fair</option>
           </select>
+        </div>
+        <div>
+          <label>Image Url:</label>
+            <input id='image-input' type='text'
+              /* placeholder="Write a detailed description of your item" */
+              onChange={e => setImageUrl(e.target.value)} value={imageUrl}
+            />
         </div>
         <div>
           <label>Description:</label>
