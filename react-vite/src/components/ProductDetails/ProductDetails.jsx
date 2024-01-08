@@ -31,6 +31,7 @@ function ProductDetails () {
 
     return (
         <main id='page-container'>
+            <div>Revise listing</div>
             <div id='left-container'>
                 {/* images */}
                 <div>left-container</div>

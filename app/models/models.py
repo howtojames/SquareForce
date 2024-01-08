@@ -66,7 +66,8 @@ class Product(db.Model):
             'id': self.id,
             'title': self.title,
             'price': self.price,
-            'condition': self.condition,
+            'condition': self.condition, #add description
+            'description': self.description,
             'sellerId': self.sellerId,
             'createdAt': self.createdAt,
             'updatedAt': self.updatedAt
