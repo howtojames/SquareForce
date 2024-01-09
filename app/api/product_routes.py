@@ -54,11 +54,11 @@ def post_question():
     upload = upload_file_to_s3(image)
     print(upload)
 
-    if "url" not in upload:
+    #if "url" not in upload:
     # if the dictionary doesn't have a url key
     # it means that there was an error when you tried to upload
     # so you send back that error message (and you printed it above)
-        return { "error": "url not in upload" }
+        #return { "error": "url not in upload" }
 
     if form.validate_on_submit():
         new_product = Product (
