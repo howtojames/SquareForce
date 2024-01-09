@@ -47,12 +47,13 @@ export const thunkGetProductDetails = (productId) => async (dispatch) => {
   }
 }
 
+
 export const thunkPostAProduct = (product) => async (dispatch) => {
   //we get back the {} with details of the newly created Product
-  const res = await fetch(`/api/products/new`, { //correct
+  const res = await fetch(`/api/products/new`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(product)
+    //headers: { 'Content-Type': 'application/json' }, //1:49:00
+    body: product
   });
 
   if(res.ok) {

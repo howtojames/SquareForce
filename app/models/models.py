@@ -51,7 +51,7 @@ class Product(db.Model):
     title = db.Column(db.String, nullable=False)
     condition = db.Column(db.String, nullable=False)
     price = db.Column(db.Integer, nullable=False)
-    imageUrl = db.Column(db.String, nullable=False)
+    image = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=False)
     #category = db.Column(db.String, nullable=False)
     #indicated one User to many Products
@@ -68,7 +68,7 @@ class Product(db.Model):
             'title': self.title,
             'price': self.price,
             'condition': self.condition, #add description
-            'imageUrl': self.imageUrl,
+            'image': self.image,
             'description': self.description,
             'sellerId': self.sellerId,
             'createdAt': self.createdAt,

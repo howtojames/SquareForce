@@ -11,7 +11,7 @@ function ProductTile({ product }){
         <>
             <Link key={product.id} to={`/products/${product.id}`} id='product-link'>
                 <div></div >
-                <img src={product.imageUrl} width="200px" id='image'/>
+                <img src={product.image} width="200px" id='image'/>
 
                 <div className='tile-bottom'>
                     <div className='tile-bottom-left'>

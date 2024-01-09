@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -12,7 +12,8 @@ function PostProduct() {
   const [title, setTitle] = useState('');
   const [price, setPrice] = useState('');
   const [condition, setCondition] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
+  //const [imageUrl, setImage] = useState('');
+  const [image, setImage] = useState('');
   const [description, setDescription] = useState('');
   //const [category, setCategory] = useState('');
 
@@ -37,27 +38,37 @@ function PostProduct() {
 
 
     // Create a new object for the contact us information.
-    const productData = {
-      title,
-      price,
-      condition,
-      imageUrl,
-      description
-      //category,
-    };
+    // const productData = {
+    //   title,
+    //   price,
+    //   condition,
+    //   imageUrl,
+    //   description
+    //   //category,
+    // };
+
+    //keys have to match variables in models
+    const formData = new FormData ();
+    formData.append("title", title)
+    formData.append("price", price)
+    formData.append("condition", condition)
+    formData.append("image", image)
+    formData.append("description", description)
+
+
 
     // Ideally, we'd persist this information to a database using a RESTful API.
     // For now, though, just log the contact us information to the console.
-    console.log("productData", productData);
+    //console.log("productData", productData);
 
-    const postProductRes = await dispatch(thunkPostAProduct(productData))
+    const postProductRes = await dispatch(thunkPostAProduct(formData))
     console.log('postProductRes', postProductRes)
 
     // Reset the form state.
     setTitle('');
     setPrice('');
     setCondition('');
-    setImageUrl('');
+    setImage('');
     setDescription('');
     //setCategory('');
 
@@ -71,7 +82,9 @@ function PostProduct() {
   return (
     <div>
       <h2>List an Item</h2>
-      <form onSubmit={onSubmit}>
+      {/* check aws s3 phase 3 again */}
+      {/* 1:38:00 ok */}
+      <form onSubmit={onSubmit} encType="multipart/form-data">
         <div>
           <label>Title:</label>
           <input id='name-input' type='text'
@@ -104,10 +117,11 @@ function PostProduct() {
           </select>
         </div>
         <div>
-          <label>Image Url:</label>
-            <input id='image-input' type='text'
-              /* placeholder="Write a detailed description of your item" */
-              onChange={e => setImageUrl(e.target.value)} value={imageUrl}
+            <label>Image:</label>
+            <input id='image-file-input'
+              type='file'
+              accept='image/*'
+              onChange={e => setImage(e.target.files[0])}
             />
         </div>
         <div>
