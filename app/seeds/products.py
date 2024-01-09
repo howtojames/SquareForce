@@ -7,27 +7,27 @@ def seed_products():
     #demo user's products
     product1 = Product(
         title = 'keyboard', condition="New", price = 80, sellerId = 1,
-        imageUrl = 'https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg',
+        image = 'https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg',
         description = 'description'
     )
     product2 = Product(
         title = 'laptop', condition="New", price = 500, sellerId = 1,
-        imageUrl = 'https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg',
+        image = 'https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg',
         description = 'description'
     )
     product3 = Product(
         title = 'mouse', condition="Used - Like New", price = 50, sellerId = 1,
-        imageUrl = 'https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg',
+        image = 'https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg',
         description = 'description'
     )
     product4 = Product(
         title = 'Samsung Galaxy S10', condition="New", price = 139, sellerId = 1,
-        imageUrl = 'https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg',
+        image = 'https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg',
         description = 'description'
     )
     product5 = Product(
         title = 'Apple Watch Series 5', condition="New", price = 149, sellerId = 1,
-        imageUrl = 'https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg',
+        image = 'https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg',
         description = 'description'
     )
 
