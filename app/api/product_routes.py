@@ -23,7 +23,7 @@ def get_all_products():
     products = []
     for product in products_list:
         product_data = product.to_dict()
-        print("product_data", product_data)
+        #print("product_data", product_data)
         products.append(product_data)
 
     #returns list of product objects
@@ -41,7 +41,7 @@ def get_single_product(id):
 
 @product_routes.route("/new", methods=["POST"])
 @login_required  #will throw 401 if not logged in
-def post_question():
+def post_product():
 
     form = ProductForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -65,7 +65,6 @@ def post_question():
             title = form.data["title"],
             condition = form.data["condition"],
             price = form.data["price"],
-            #imageUrl = form.data["imageUrl"],
             image = upload['url'],   #"url" in upload
             description = form.data["description"],
             sellerId = current_user.id,
@@ -76,6 +75,45 @@ def post_question():
         db.session.add(new_product)
         db.session.commit()
         return new_product.to_dict()
+    else:
+        print("Bad Data")
+        return "Bad Data"
+
+
+@product_routes.route("/update/<int:id>", methods=["PUT"])
+@login_required
+def update_product(id):
+    product = Product.query.get(id)
+    print("product *************", product.to_dict())
+
+    #error handling
+    if not product: return "Product does not exist"
+
+    form = ProductForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    #aws s3
+    image = form.data["image"]
+    image.filename = get_unique_filename(image.filename)
+    upload = upload_file_to_s3(image)
+    print("upload", upload)
+
+    if "url" not in upload:
+    # if the dictionary doesn't have a url key
+    # it means that there was an error when you tried to upload
+    # so you send back that error message (and you printed it above)
+        return { "error": "url not in upload" }
+
+    if form.validate_on_submit():
+        product.title = form.data["title"]
+        product.condition = form.data["condition"]
+        product.price = form.data["price"]
+        product.image = upload['url']   #"url" in upload
+        product.description = form.data["description"]
+        product.sellerId = current_user.id
+
+        db.session.commit()
+        return product.to_dict()
     else:
         print("Bad Data")
         return "Bad Data"

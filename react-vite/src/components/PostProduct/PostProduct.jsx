@@ -56,6 +56,11 @@ function PostProduct() {
     formData.append("description", description)
 
 
+    for (const entry of formData.entries()) {
+      console.log("formData", entry);
+    }
+
+
 
     // Ideally, we'd persist this information to a database using a RESTful API.
     // For now, though, just log the contact us information to the console.

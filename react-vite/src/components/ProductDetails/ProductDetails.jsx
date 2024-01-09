@@ -1,8 +1,9 @@
-import { useParams } from 'react-router-dom';
+import { useParams, NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import './ProductDetails.css';
 import { thunkGetProductDetails } from '../../redux/product';
+import UpdateProduct from '../UpdateProduct/UpdateProduct';
 
 function ProductDetails () {
     let { productId } = useParams();
@@ -31,7 +32,9 @@ function ProductDetails () {
 
     return (
         <main id='page-container'>
-            <div>Revise listing</div>
+            <NavLink to={`/products/update/${productId}`}>
+                Revise listing
+            </NavLink>
             <div id='left-container'>
                 {/* images */}
                 <div>left-container</div>
@@ -43,6 +46,8 @@ function ProductDetails () {
                 <div>{productData.title}</div>
                 <div>{productData.condition}</div>
                 <div>{productData.price}</div>
+                <div>{productData.description}</div>
+
             </div>
         </main>
     )
