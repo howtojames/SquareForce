@@ -1,6 +1,7 @@
-const LOAD_ALL_PRODUCTS = "spots/loadAllProducts";
-const GET_PRODUCT_DETAILS = "spots/getProductDetails"
-const POST_A_PRODUCT = 'spots/postAProduct';
+const LOAD_ALL_PRODUCTS = "products/loadAllProducts";
+const GET_PRODUCT_DETAILS = "products/getProductDetails"
+const POST_A_PRODUCT = 'products/postAProduct';
+const UPDATE_A_PRODUCT = 'products/updateAProduct';
 
 const loadAllProducts = (allProducts) => {
     return {
@@ -20,16 +21,23 @@ const postAProduct = (productData) => {
     productData
   };
 };
+const updateAProduct = (productData) => {
+  return {
+    type: UPDATE_A_PRODUCT,
+    productData
+  };
+};
+
 
 export const thunkGetAllProducts = () => async (dispatch) => {
     const res = await fetch("/api/products");
 
     if(res.ok) {
       //{ Products: [ {}, {}, ... ]}
-      const allSpots = await res.json();
-      console.log('all Products after fetch', allSpots)
-      dispatch(loadAllProducts(allSpots));
-      return allSpots;
+      const allProducts = await res.json();
+      console.log('all Products after fetch', allProducts)
+      dispatch(loadAllProducts(allProducts));
+      return allProducts;
     } else  {
       console.log('/api/products error output');
     }
@@ -58,11 +66,30 @@ export const thunkPostAProduct = (product) => async (dispatch) => {
 
   if(res.ok) {
     const productData = await res.json();
-    console.log('productData in thunk', productData);
+    console.log('productData in thunkPostAproduct', productData);
     dispatch(postAProduct(productData));
     return productData;
   } else  {
     console.log('thunkPostAProduct error message');
+    const error = await res.json();
+    console.log('error', error);
+    return error;
+  }
+}
+export const thunkUpdateAProduct = (productId, product) => async (dispatch) => {
+  //Method: PUT
+  const res = await fetch(`/api/products/update/${productId}`, {
+    method: 'PUT',
+    //headers: { 'Content-Type': 'application/json' },
+    body: product
+  });
+
+  if(res.ok) {
+    const productData = await res.json();
+    console.log('updateAProduct thunk productData res', productData);
+    dispatch(updateAProduct(productData));
+    return productData;
+  } else {
     const error = await res.json();
     console.log('error', error);
     return error;
@@ -87,6 +114,9 @@ const productsReducer = (state = initialState, action) => {
       return newState;
     }
     case POST_A_PRODUCT: {
+      return { ...state, [action.productData.id]: action.productData }
+    }
+    case UPDATE_A_PRODUCT: {
       return { ...state, [action.productData.id]: action.productData }
     }
 

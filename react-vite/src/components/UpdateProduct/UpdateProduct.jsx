@@ -1,19 +1,24 @@
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import './UpdateProduct.css';
-import { thunkGetProductDetails } from '../../redux/product';
+import { thunkGetProductDetails, thunkUpdateAProduct } from '../../redux/product';
+
 
 
 function UpdateProduct() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  let { productId } = useParams();
+  productId = parseInt(productId)
+  console.log("productId", productId)
+
   const [title, setTitle] = useState('');
-  const [price, setPrice] = useState('');
+  const [price, setPrice] = useState(0);
   const [condition, setCondition] = useState('');
-  //const [imageUrl, setImage] = useState('');
+
   const [image, setImage] = useState('');
   const [description, setDescription] = useState('');
   //const [category, setCategory] = useState('');
@@ -21,19 +26,27 @@ function UpdateProduct() {
   const [validationErrors, setValidationErrors] = useState({});
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
-//   useEffect(() => {
-//     const errors = {};
-//     if (!name.length) errors['name']='Please enter your Name';
-//     if (!email.includes('@')) errors['email']='Please provide a valid Email';
-//     setValidationErrors(errors);
-//   }, [name, email]);
+
 
     useEffect(() => {
-        dispatch(thunkGetProductDetails());
-    }, [dispatch, id]);
+        dispatch(thunkGetProductDetails(productId));
+    }, [dispatch, productId]);
 
-    const productDataObj = useSelector(state => state.product[id]);  //access using computed value
-    console.log('productData', productData);
+    const productStateObj = useSelector(state => state.product);  //access using computed value
+    console.log('productStateObj', productStateObj);
+    const productStateArr = Object.values(productStateObj)
+    const productObj = productStateArr[productId - 1];
+
+    useEffect(() => {
+        if(productObj) {
+            console.log("productObj in useEffect", productObj)
+            setTitle(productObj.title);
+            setPrice(productObj.price);
+            setCondition(productObj.condition);
+            //dont know how to set image here, can't just use string
+            setDescription(productObj.description);
+        }
+    }, [productStateObj]);
 
 
   const onSubmit = async e => {
@@ -44,17 +57,6 @@ function UpdateProduct() {
     //hasSubmtited still false
     //console.log('hasSubmitted after setter', hasSubmitted);
 
-
-    // Create a new object for the contact us information.
-    // const productData = {
-    //   title,
-    //   price,
-    //   condition,
-    //   imageUrl,
-    //   description
-    //   //category,
-    // };
-
     //keys have to match variables in models
     const formData = new FormData ();
     formData.append("title", title)
@@ -63,13 +65,18 @@ function UpdateProduct() {
     formData.append("image", image)
     formData.append("description", description)
 
+    for (const entry of formData.entries()) {
+        console.log("formData", entry);
+      }
+
 
     // Ideally, we'd persist this information to a database using a RESTful API.
     // For now, though, just log the contact us information to the console.
     //console.log("productData", productData);
 
-    const postProductRes = await dispatch(thunkPostAProduct(formData))
-    console.log('postProductRes', postProductRes)
+    //thunk takes in two arguments
+    const updateProductRes = await dispatch(thunkUpdateAProduct(productId, formData))
+    console.log('updateProductRes', updateProductRes)
 
     // Reset the form state.
     setTitle('');
@@ -77,7 +84,7 @@ function UpdateProduct() {
     setCondition('');
     setImage('');
     setDescription('');
-    //setCategory('');
+
 
     //setValidationErrors({});
     //setHasSubmitted(false);
@@ -88,7 +95,7 @@ function UpdateProduct() {
   //console.log('hasSubmitted', hasSubmitted);
   return (
     <div>
-      <h2>List an Item</h2>
+      <h2>Revise Listing</h2>
       {/* check aws s3 phase 3 again */}
       {/* 1:38:00 ok */}
       <form onSubmit={onSubmit} encType="multipart/form-data">
@@ -110,10 +117,8 @@ function UpdateProduct() {
        <div>
           <label>Condition:</label>
           <select
-            id='condition-select'
-            type='text'
-            onChange={e => setCondition(e.target.value)}
-            value={condition}
+            id='condition-select' type='text'
+            onChange={e => setCondition(e.target.value)} value={condition}
           >
             <option value='' disabled>
               -
@@ -134,16 +139,9 @@ function UpdateProduct() {
         <div>
           <label>Description:</label>
             <textarea id='description-input' type='text'
-              /* placeholder="Write a detailed description of your item" */
               onChange={e => setDescription(e.target.value)} value={description}
             />
         </div>
-        {/* <div>
-          <label>Category:</label>
-          <input id='category-input' type='text'
-            onChange={e => setCategory(e.target.value)} value={category}
-          />
-        </div> */}
 
         <button>List it</button>
       </form>
