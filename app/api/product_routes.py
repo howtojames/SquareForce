@@ -52,7 +52,7 @@ def post_question():
     image = form.data["image"]
     image.filename = get_unique_filename(image.filename)
     upload = upload_file_to_s3(image)
-    print(upload)
+    print("upload", upload)
 
     #if "url" not in upload:
     # if the dictionary doesn't have a url key
