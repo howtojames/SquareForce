@@ -1,3 +1,27 @@
 .profile-dropdown {
   position: absolute;
 }
+
+
+#upper-navigation {
+  display: flex;
+  justify-content: space-between;
+}
+
+#upper-left {
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+}
+#upper-left div{
+  margin: 0 10px;
+}
+
+#upper-right {
+  display: flex;
+  flex-direction: row;
+  margin-right: 50px;
+}
+#upper-right div {
+  margin: 0 10px;
+}

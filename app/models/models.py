@@ -76,4 +76,14 @@ class Product(db.Model):
         }
 
 
-#User.questions = db.relationship('Question', back_populates='owner')
+# class CartProduct(db.Model):
+#     __tablename__ = "cart_products"
+
+#     #production
+#     if environment == "production":
+#         __table_args__ = {'schema': SCHEMA}
+
+
+#     quantity = db.Column(db.Integer, nullable=False)
+#     #productId
+#     #userId

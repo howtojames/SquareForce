@@ -6,6 +6,7 @@ import HomePage from '../components/HomePage/HomePage';
 import PostProduct from '../components/PostProduct/PostProduct'
 import ProductDetails from '../components/ProductDetails/ProductDetails';
 import UpdateProduct from '../components/UpdateProduct/UpdateProduct';
+import SellingView from '../components/SellingView/SellingView'
 
 
 export const router = createBrowserRouter([
@@ -27,6 +28,10 @@ export const router = createBrowserRouter([
       {
         path: "/products/new",
         element: <PostProduct />,
+      },
+      {
+        path: "/products/selling",
+        element: <SellingView />
       },
       {
         path: "login",

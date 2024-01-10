@@ -1,4 +1,5 @@
 const LOAD_ALL_PRODUCTS = "products/loadAllProducts";
+const GET_CURRENT_USER_PRODUCTS = "products/getCurrentUserProducts";
 const GET_PRODUCT_DETAILS = "products/getProductDetails"
 const POST_A_PRODUCT = 'products/postAProduct';
 const UPDATE_A_PRODUCT = 'products/updateAProduct';
@@ -9,6 +10,13 @@ const loadAllProducts = (allProducts) => {
       allProducts
     };
 };
+//selling
+const getCurrentUserProducts = (currentUserProducts) => {
+  return {
+    type: GET_CURRENT_USER_PRODUCTS,
+    currentUserProducts
+  }
+}
 const getProductDetails = (product) => {
   return {
     type: GET_PRODUCT_DETAILS,
@@ -42,6 +50,20 @@ export const thunkGetAllProducts = () => async (dispatch) => {
       console.log('/api/products error output');
     }
 };
+export const thunkGetCurrentUserProducts = () => async (dispatch) => {
+  const res = await fetch(`/api/products/current`);
+
+  if(res.ok) {
+    const productData = await res.json();
+    console.log('productData in thunkGetCurrentUserProducts', productData);
+    dispatch(getCurrentUserProducts(productData));
+    return productData;
+  } else  {
+    const error = await res.json();
+    console.log('error', error);
+    return error;
+  }
+}
 export const thunkGetProductDetails = (productId) => async (dispatch) => {
   const res = await fetch(`/api/products/${productId}`);  //fetch
 
@@ -96,6 +118,24 @@ export const thunkUpdateAProduct = (productId, product) => async (dispatch) => {
   }
 }
 
+export const thunkDeleteAProduct = (productId) => async (dispatch) => {
+  //Method: PUT
+  const res = await fetch(`/api/products/${productId}`, {
+    method: 'DELETE'
+  });
+
+  if(res.ok) {
+    const productData = await res.json();
+    console.log('deleteAProduct thunk productData res', productData);
+    dispatch(updateAProduct(productData));
+    return productData;
+  } else {
+    const error = await res.json();
+    console.log('error', error);
+    return error;
+  }
+}
+
 
 
 const initialState = {};
@@ -109,6 +149,11 @@ const productsReducer = (state = initialState, action) => {
       //console.log('newState', newState);
       return newState;
     }
+    case GET_CURRENT_USER_PRODUCTS: {
+      const newState = {};  //so on first render we clear out the state first
+      action.currentUserProducts.products.forEach((product) => newState[product.id] = product);
+      return newState;
+    }
     case GET_PRODUCT_DETAILS: {
       const newState = { ...state, [action.product.id]: action.product };
       return newState;
@@ -119,7 +164,7 @@ const productsReducer = (state = initialState, action) => {
     case UPDATE_A_PRODUCT: {
       return { ...state, [action.productData.id]: action.productData }
     }
-
+    //no need for DELETE
     default:
       return state;
   }

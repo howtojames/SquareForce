@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import current_user
 from ..models import db
-from ..models.models import Product
+from ..models.models import Product, User
 from ..forms.product_form import ProductForm
 from flask_login import login_required, current_user
 from datetime import datetime
@@ -37,6 +37,19 @@ def get_single_product(id):
     product_data = product.to_dict()
 
     return jsonify(product_data)
+
+#gets current user's products
+@product_routes.route('/current')
+def get_current_user_products():
+    userId = current_user.id
+
+    user = User.query.get(userId)
+    products =  Product.query.filter_by(sellerId=userId).all()
+
+    user_data = user.to_dict()
+    product_data = [product.to_dict() for product in products]
+    print( product_data, user_data)
+    return jsonify(products = product_data)
 
 
 @product_routes.route("/new", methods=["POST"])
@@ -84,7 +97,7 @@ def post_product():
 @login_required
 def update_product(id):
     product = Product.query.get(id)
-    print("product *************", product.to_dict())
+    print("product", product.to_dict())
 
     #error handling
     if not product: return "Product does not exist"
@@ -117,3 +130,18 @@ def update_product(id):
     else:
         print("Bad Data")
         return "Bad Data"
+
+
+@product_routes.route('<int:id>', methods=['DELETE'])
+def remove_product(id):
+    product = Product.query.get(id)
+    #remove associated items
+
+    if product:
+        db.session.delete(product)
+        db.session.commit()
+        return jsonify({'message': 'Product removed successfully'})
+    else:
+        print("Product does not exist")
+
+    return jsonify({'message': 'Product not found'})

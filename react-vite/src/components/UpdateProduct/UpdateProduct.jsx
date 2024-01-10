@@ -88,7 +88,7 @@ function UpdateProduct() {
 
     //setValidationErrors({});
     //setHasSubmitted(false);
-    navigate('/');
+    navigate('/products/selling');
   }
 
   //true here

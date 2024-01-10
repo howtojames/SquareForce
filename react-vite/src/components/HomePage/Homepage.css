@@ -1,0 +1,20 @@
+#product-tile{
+    margin: 15px;
+    height: 300px;
+    width: 300px;
+}
+
+
+#product-title {
+    text-decoration: none;
+    color: black;
+}
+#product-title:hover {
+    text-decoration: underline;
+}
+
+#all-products-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
