@@ -59,8 +59,10 @@ class Product(db.Model):
     createdAt = db.Column(db.TIMESTAMP, default=datetime.now())
     updatedAt = db.Column(db.TIMESTAMP, default=datetime.now())
 
-    #relationship
+    #relationship with User
     user = db.relationship("User", back_populates="products")
+    #relationship with CartProducts
+    cart_products = db.relationship("CartProduct", back_populates="products")
 
     def to_dict(self):
         return {
@@ -76,14 +78,32 @@ class Product(db.Model):
         }
 
 
-# class CartProduct(db.Model):
-#     __tablename__ = "cart_products"
+class CartProduct(db.Model):
+    __tablename__ = "cart_products"
 
-#     #production
-#     if environment == "production":
-#         __table_args__ = {'schema': SCHEMA}
+    #production
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
 
+    id = db.Column(db.Integer, primary_key=True)
+    quantity = db.Column(db.Integer, nullable=False)
+    #indicate one Product to many CartProduct
+    productId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("products.id")))
+    #indicate one User to many CartProduct
+    buyerId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
+    createdAt = db.Column(db.TIMESTAMP, default=datetime.now())
+    updatedAt = db.Column(db.TIMESTAMP, default=datetime.now())
 
-#     quantity = db.Column(db.Integer, nullable=False)
-#     #productId
-#     #userId
+    #relationship with Product
+    products = db.relationship("Product", back_populates="cart_products")
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'product': self.products.to_dict(),
+            'quantity': self.quantity,
+            'productId': self.productId,
+            'buyerId': self.buyerId,
+            'createdAt': self.createdAt,
+            'updatedAt': self.updatedAt
+        }

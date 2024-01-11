@@ -1,17 +1,21 @@
 import { Link, NavLink } from 'react-router-dom';
-import './SellingTile.css';
+import './ShoppingCartTile.css';
 import { useDispatch } from 'react-redux';
-import { thunkDeleteAProduct, thunkGetCurrentUserProducts } from '../../redux/product';
+import { thunkDeleteACartProduct, thunkGetCurrentUserCartProducts } from '../../redux/cartproduct.js';
 import { useState, useEffect, useRef } from 'react';
 import OpenModalMenuItem from '../Navigation/OpenModalMenuItem.jsx';
 import DeleteProductModal from '../DeleteProductModal/DeleteProductModal.jsx';
 
-function SellingTile({ product }){
+function ShoppingCartTile({ cartProduct }){
+    const dispatch = useDispatch();
+
+    const [quantity, setQuantity] = useState(cartProduct.quantity);
+
     const [showMenu, setShowMenu] = useState(false);
     const ulRef = useRef();
 
-    console.log('sellingTile product.id', product.id)
-    const productId = product.id
+    console.log('cartProduct.product.id', cartProduct.product.id)
+    const productId = cartProduct.product.id
 
 
     useEffect(() => {
@@ -30,39 +34,46 @@ function SellingTile({ product }){
 
     const closeMenu = () => setShowMenu(false);
 
+    const onDelete = async (e) => {
+        e.preventDefault();
+
+        await dispatch(thunkDeleteACartProduct(cartProduct.id));
+        await dispatch(thunkGetCurrentUserCartProducts());
+    }
+
+
+
     return (
         <div id="sell-tile-container">
             <div id="tile-left">
-                <Link to={`/products/${productId}`} id='product-image-link'>
-                    <img src={product.image} width="150px" id='image'/>
-                </Link>
+                <img src={cartProduct.product.image} width="150px" id='image'/>
             </div>
 
 
             <div id='tile-middle'>
                 <div className='tile-middle-top'>
                     <Link to={`/products/${productId}`} id='product-image-title'>
-                        <div>{product.title}</div>
+                        <div>{cartProduct.product.title}</div>
                     </Link>
                 </div>
                 <div className='tile-middle-middle'>
-                    <div>${product.price}</div>
+                    <div>${cartProduct.product.price}</div>
                 </div>
+
             </div>
+            <div className='tile-middle-2'>
+                    <label>Quantity</label>
+                    <input type='number'
+                    onChange={e => setQuantity(e.target.value)} value={quantity} />
+                </div>
 
             <div id='tile-right'>
-                <NavLink to={`/products/update/${product.id}`}>Revise listing</NavLink>
-                <div id="delete-product-button">  {/* pass in props for spot.id */}
-                    <OpenModalMenuItem
-                    id="delete-modal"
-                    itemText="Delete"
-                    onItemClick={closeMenu}
-                    modalComponent={<DeleteProductModal productId={product.id}/>}
-                    />
+                <div id="delete-product-button">
+                    <button onClick={onDelete}>Remove</button>
                 </div>
             </div>
         </div>
     )
 }
 
-export default SellingTile;
+export default ShoppingCartTile;

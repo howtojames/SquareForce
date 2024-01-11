@@ -126,13 +126,10 @@ export const thunkDeleteAProduct = (productId) => async (dispatch) => {
 
   if(res.ok) {
     const productData = await res.json();
-    console.log('deleteAProduct thunk productData res', productData);
-    dispatch(updateAProduct(productData));
     return productData;
   } else {
     const error = await res.json();
-    console.log('error', error);
-    return error;
+    console.log("error message", error)
   }
 }
 

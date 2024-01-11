@@ -21,12 +21,14 @@ function HomePage() {
 
     return (
         <>
-            <h3>Home Page</h3>
-            <div>Daily Deals</div>
-            <div id="all-products-container">
-            {allProductsArr.map(product => (
-                 <ProductTile key={product.id} product={product}/>
-            ))}
+            <div id="daily-deals">Daily Deals</div>
+            <div id="page-container">
+
+                <div id="all-products-container">
+                    {allProductsArr.map(product => (
+                        <ProductTile key={product.id} product={product}/>
+                    ))}
+                </div>
             </div>
         </>
     )

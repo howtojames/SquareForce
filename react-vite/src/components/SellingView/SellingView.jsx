@@ -18,12 +18,14 @@ function SellingView(){
     const productStateArr = Object.values(productState);
 
     return (
-        <>
-            <div>Selling</div>
-            {productStateArr.map((product) => (
-                <SellingTile key={product.id} product={product} />
-            ))}
-        </>
+        <div id="selling-view-container">
+            <div id='selling'>Selling</div>
+            <div>
+                {productStateArr.map((product) => (
+                    <SellingTile key={product.id} product={product} />
+                ))}
+            </div>
+        </div>
     )
 }
 

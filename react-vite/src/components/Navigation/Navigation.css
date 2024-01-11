@@ -10,11 +10,21 @@
 
 #upper-left {
   display: flex;
+  flex-direction: row;
   align-items: center;
   margin-left: 30px;
 }
 #upper-left div{
   margin: 0 10px;
+}
+#square-force{
+  text-decoration: none;
+  color: black;
+  font-size: 32px;
+
+}
+#logo-container {
+  margin-left: 50px;
 }
 
 #upper-right {
@@ -24,4 +34,12 @@
 }
 #upper-right div {
   margin: 0 10px;
+}
+.upper-right-tabs {
+  text-decoration: none;
+  color: black;
+}
+.upper-right-tabs:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
