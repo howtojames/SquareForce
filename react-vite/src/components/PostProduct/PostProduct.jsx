@@ -85,14 +85,14 @@ function PostProduct() {
   //true here
   //console.log('hasSubmitted', hasSubmitted);
   return (
-    <div>
+    <div id="post-product-container">
       <h2>List an Item</h2>
       {/* check aws s3 phase 3 again */}
       {/* 1:38:00 ok */}
       <form onSubmit={onSubmit} encType="multipart/form-data">
         <div>
           <label>Title:</label>
-          <input id='name-input' type='text'
+          <input id='name-input' type='text' placeholder='Enter product title'
             onChange={e => setTitle(e.target.value)} value={title}
           />
           {/* <div className='error'>
@@ -101,7 +101,7 @@ function PostProduct() {
         </div>
         <div>
           <label>Price:</label>
-          <input id='price-input' type='text'
+          <input id='price-input' type='text' placeholder='Please enter an integer'
             onChange={e => setPrice(e.target.value)} value={price}
           />
         </div>
@@ -132,7 +132,7 @@ function PostProduct() {
         <div>
           <label>Description:</label>
             <textarea id='description-input' type='text'
-              /* placeholder="Write a detailed description of your item" */
+
               onChange={e => setDescription(e.target.value)} value={description}
             />
         </div>

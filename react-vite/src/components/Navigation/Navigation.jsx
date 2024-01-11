@@ -20,15 +20,15 @@ function Navigation() {
       <div id="upper-navigation">
 
         <div id="upper-left">
-          <div><NavLink to="/">Home</NavLink></div>
-          <div><ProfileButton /></div>
+          <div id="logo-container"><NavLink to="/" id="square-force">SquareForce</NavLink></div>
+          <div id="profile-button"><ProfileButton /></div>
         </div>
 
         {loggedIn && (
           <div id="upper-right">
-          <div><NavLink to="/products/new">Sell</NavLink></div>
-          <div><NavLink to="/products/selling">Selling</NavLink></div>
-          <div><NavLink>Shopping Cart</NavLink></div>
+          <div><NavLink to="/products/new" className="upper-right-tabs">Sell</NavLink></div>
+          <div><NavLink to="/products/selling" className="upper-right-tabs">Selling</NavLink></div>
+          <div><NavLink to="/shopping-cart" className="upper-right-tabs">Shopping Cart</NavLink></div>
         </div>
         )}
 

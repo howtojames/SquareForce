@@ -1,14 +1,18 @@
-import { useParams, NavLink } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './ProductDetails.css';
 import { thunkGetAllProducts, thunkGetProductDetails } from '../../redux/product';
+import { thunkPostACartProduct, thunkDeleteACartProduct } from '../../redux/cartproduct';
 import UpdateProduct from '../UpdateProduct/UpdateProduct';
 
 function ProductDetails () {
     let { productId } = useParams();
     productId = parseInt(productId);
     console.log('productId', productId);
+
+    const navigate = useNavigate();
+    const [quantity, setQuantity] = useState(1);
 
     //user check
     const sessionUser = useSelector(state => state.session.user);
@@ -37,28 +41,39 @@ function ProductDetails () {
 
     if (!productObj || !productArr || !productData ) return null;
 
+
+    const onAdd = async (e) => {
+        e.preventDefault();
+
+        //CartProduct Form only has one attribute
+        const cartProductData = {
+            quantity: quantity
+        }
+        await dispatch(thunkPostACartProduct(productId, cartProductData));
+        navigate('/shopping-cart');
+    }
+
+    //console.log("quantity", quantity)
     return (
         <main id='page-container'>
-            {/* {loggedIn && (
-                <NavLink to={`/products/update/${productId}`}>
-                    Revise listing
-                </NavLink>
-            )} */}
-
-
             <div id='left-container'>
-                {/* images */}
-
                 <img src={productData.image} width="300px"/>
             </div>
             <div id='right-container'>
                 {/* details */}
 
-                <div>{productData.title}</div>
-                <div>{productData.condition}</div>
-                <div>{productData.price}</div>
+                <div id="title">{productData.title}</div>
+                <div>Condition: {productData.condition}</div>
+                <div>${productData.price}</div>
                 <div>{productData.description}</div>
 
+                <div>
+                    <label>Quantity</label>
+                    <input type='number'
+                    onChange={e => setQuantity(e.target.value)}
+                    value={quantity} />
+                </div>
+                <button onClick={onAdd}>Add to cart</button>
             </div>
         </main>
     )

@@ -7,6 +7,7 @@ import PostProduct from '../components/PostProduct/PostProduct'
 import ProductDetails from '../components/ProductDetails/ProductDetails';
 import UpdateProduct from '../components/UpdateProduct/UpdateProduct';
 import SellingView from '../components/SellingView/SellingView'
+import ShoppingCartView from '../components/ShoppingCartView/ShoppingCartView';
 
 
 export const router = createBrowserRouter([
@@ -32,6 +33,10 @@ export const router = createBrowserRouter([
       {
         path: "/products/selling",
         element: <SellingView />
+      },
+      {
+        path: "/shopping-cart",
+        element: <ShoppingCartView />
       },
       {
         path: "login",

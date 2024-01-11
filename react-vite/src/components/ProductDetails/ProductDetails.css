@@ -1,0 +1,16 @@
+#page-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#left-container {
+    margin-right: 50px;
+}
+
+
+
+#title {
+    font-size: 32px;
+}
