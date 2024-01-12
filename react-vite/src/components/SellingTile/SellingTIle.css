@@ -7,7 +7,8 @@
 }
 
 
-#tile-middle {
+#revise-listing-button{
+    color: black;
 
 }
 
@@ -15,4 +16,14 @@
 #tile-right{
     position: absolute;
     right: 0;
+}
+
+
+#delete-product-button {
+    list-style: none;
+    text-decoration: underline;
+}
+#delete-product-button:hover {
+
+    cursor: pointer;
 }

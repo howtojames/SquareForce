@@ -35,7 +35,8 @@ function UpdateProduct() {
     const productStateObj = useSelector(state => state.product);  //access using computed value
     console.log('productStateObj', productStateObj);
     const productStateArr = Object.values(productStateObj)
-    const productObj = productStateArr[productId - 1];
+    const productObj = productStateArr.find(product => product.id ===productId)
+    console.log("productObj", productObj)
 
     useEffect(() => {
         if(productObj) {

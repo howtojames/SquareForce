@@ -58,12 +58,60 @@ def seed_products():
         description = 'description'
     )
 
-    #seller1
-    # product11 = Product(
-    #     title = 'Microsoft Surface Pro 8 ', condition="New", price = 594, sellerId = 1,
-    #     image = 'https://i.ebayimg.com/images/g/rmkAAOSwxZFlb14-/s-l960.jpg',
-    #     description = 'Expect more from your computer Surface Pro 8 combines the power of a laptop with the flexibility of a tablet, and every angle in between, with the iconic Kickstand and larger 13” touchscreen'
-    # )
+    #seller1, sellerId 4
+    product11 = Product(
+        title = 'Sony ZV-1 Camera', condition="New", price = 526, sellerId = 4,
+        image = 'https://i.ebayimg.com/images/g/TScAAOSwxbFlFWCe/s-l1600.jpg',
+        description = 'Featuring a side flip-out 3.0" touchscreen and a directional 3-capsule microphone that are perfect for front-facing recording, the ZV-1 also caters to this crowd with the Product Showcase Setting'
+    )
+    product12 = Product(
+        title = 'Xbox Series X', condition="New", price = 539, sellerId = 4,
+        image = 'https://i.ebayimg.com/images/g/17cAAOSwuFdlepvi/s-l960.jpg',
+        description = 'Xbox Series X 1TB SSD Console Introducing the all new Xbox Series X Introducing Xbox Series X, the fastest, most powerful Xbox ever.'
+     )
+    product13 = Product(
+        title = 'Harman Kardon Aura Studio 3 ', condition="New", price = 149, sellerId = 4,
+        image = 'https://i.ebayimg.com/images/g/9l0AAOSwMWNlbkZt/s-l960.png',
+        description = 'Elevate your home with the timeless, iconic design of the Harman Kardon Aura Studio 3 for 360 degrees of beautiful sound.'
+     )
+    product14 = Product(
+        title = 'AKG N5005', condition="New", price = 199, sellerId = 4,
+        image = 'https://i.ebayimg.com/images/g/pdMAAOSwDeVlaYLv/s-l960.png',
+        description = 'Meticulously crafted from premium gloss black ceramic, the AKG N5005 is the epitome of pure and detailed studio sound reproduction, without distortion or distraction.'
+     )
+    product15 = Product(
+        title = 'Harman Kardon Onyx Studio 7', condition="New", price = 89, sellerId = 4,
+        image = 'https://i.ebayimg.com/images/g/u34AAOSw7bxkoV3p/s-l1600.jpg',
+        description = 'Immerse yourself in the rhythm of life with unrivalled acoustic precision. Elegantly crafted, the Harman Kardon Onyx Studio 7 offers dual tweeters for beautiful stereo performance and a sleek anodized aluminum handle for ease of portability.'
+    )
+
+    product16 = Product(
+        title = 'PlayStation 5', condition="New", price = 489, sellerId = 4,
+        image = 'https://i.ebayimg.com/images/g/jpsAAOSwVZVlb17M/s-l960.jpg',
+        description = 'PlayStation 5 Console. Marvels Spider-Man 2 Bundle includes: · PlayStation 5 console · DualSense wireless controller · Base · HDMI cable · AC power cord · USB cable · Printed materials · ASTROs PLAYROOM (Pre-installed game. PS5 console may need to be updated to the latest system software version. Internet connection required.)'
+    )
+    product17 = Product(
+        title = 'NEW Nintendo Switch OLED', condition="New", price = 324, sellerId = 4,
+        image = 'https://i.ebayimg.com/images/g/CugAAOSwcF1lixYw/s-l1600.jpg',
+        description = 'NEW Nintendo Switch OLED 64GB White + 2in1 Wheel of Fortune & Jeopardy Game'
+    )
+    product18 = Product(
+        title = 'NEW Nintendo Switch OLED Mario Limited Edition', condition="New", price = 316, sellerId = 4,
+        image = 'https://i.ebayimg.com/images/g/g2oAAOSwaW5lVlfc/s-l1600.jpg',
+        description = 'Nintendo Switch OLED Mario Limited Edition Mario + Rabbids Sparks of Hope Bundle'
+    )
+    product19 = Product(
+        title = 'Marvel\'s Spider-Man: Miles Morales Ultimate Edition', condition="New", price = 54, sellerId = 4,
+        image = 'https://i.ebayimg.com/images/g/lwkAAOSwuz9lns5h/s-l1600.jpg',
+        description = 'The rise of Miles Morales Miles Morales discovers explosive powers that set him apart from his mentor, Peter Parker.'
+    )
+    product20 = Product(
+        title = 'SteelSeries Arctis Nova Pro', condition="New", price = 268, sellerId = 4,
+        image = 'https://i.ebayimg.com/images/g/VtcAAOSwD2FknCR6/s-l1600.jpg',
+        description = 'The Arctis Nova Pro Wireless for Xbox raises the bar for audio headsets with the Nova Pro Acoustic System, immersive 360° Spatial Audio, Sonar Software, Active Noise Cancellation, and a dual-battery system.'
+    )
+
+
 
     db.session.add(product1)
     db.session.add(product2)
@@ -77,6 +125,18 @@ def seed_products():
     db.session.add(product8)
     db.session.add(product9)
     db.session.add(product10)
+
+    #seller1
+    db.session.add(product11)
+    db.session.add(product12)
+    db.session.add(product13)
+    db.session.add(product14)
+    db.session.add(product15)
+    db.session.add(product16)
+    db.session.add(product17)
+    db.session.add(product18)
+    db.session.add(product19)
+    db.session.add(product20)
 
     db.session.commit()
 
