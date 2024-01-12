@@ -3,13 +3,24 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import './ProductDetails.css';
 import { thunkGetAllProducts, thunkGetProductDetails } from '../../redux/product';
-import { thunkPostACartProduct, thunkDeleteACartProduct } from '../../redux/cartproduct';
+import { thunkPostACartProduct, thunkDeleteACartProduct, thunkGetCurrentUserCartProducts } from '../../redux/cartproduct';
 import UpdateProduct from '../UpdateProduct/UpdateProduct';
 
 function ProductDetails () {
+    const dispatch = useDispatch();
+
+
+
+
     let { productId } = useParams();
     productId = parseInt(productId);
     console.log('productId', productId);
+
+    useEffect(() => {
+        dispatch(thunkGetAllProducts());
+        dispatch(thunkGetProductDetails(productId));
+        dispatch(thunkGetCurrentUserCartProducts());
+    }, [dispatch, productId]);
 
     const navigate = useNavigate();
     const [quantity, setQuantity] = useState(1);
@@ -24,11 +35,20 @@ function ProductDetails () {
         loggedIn = false;
     }
 
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(thunkGetAllProducts());
-        dispatch(thunkGetProductDetails(productId));
-    }, [dispatch, productId]);
+
+    const cartProductState = useSelector(state => state.cartProduct);
+    console.log("cartProductState", cartProductState)
+    const cartProductsArr = Object.values(cartProductState)
+    console.log("cartProductsArr", cartProductsArr)
+
+    let productInCart = false;
+    const item = cartProductsArr.find(cartProduct => cartProduct.product.id === productId)
+    if(item)
+        productInCart = true;
+    else
+        productInCart = false;
+
+
 
 
     const productObj = useSelector(state => state.product);
@@ -42,6 +62,7 @@ function ProductDetails () {
     if (!productObj || !productArr || !productData ) return null;
 
 
+
     const onAdd = async (e) => {
         e.preventDefault();
 
@@ -52,6 +73,14 @@ function ProductDetails () {
         await dispatch(thunkPostACartProduct(productId, cartProductData));
         navigate('/shopping-cart');
     }
+
+
+    const onViewInCart = async (e) => {
+        e.preventDefault();
+
+        navigate('/shopping-cart');
+    }
+
 
     //console.log("quantity", quantity)
     return (
@@ -73,7 +102,14 @@ function ProductDetails () {
                     onChange={e => setQuantity(e.target.value)}
                     value={quantity} />
                 </div>
-                <button onClick={onAdd}>Add to cart</button>
+
+                {/* looks ok */}
+                {productInCart === true ? (
+                    <button onClick={onViewInCart}>View in Cart</button>
+                ) : (
+                    <button onClick={onAdd}>Add to cart</button>
+                )}
+
             </div>
         </main>
     )

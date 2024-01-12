@@ -11,7 +11,7 @@ function SellingView(){
 
     useEffect(() => {
         dispatch(thunkGetCurrentUserProducts())
-    }, []);
+    }, [dispatch]);
 
     const productState = useSelector(state => state.product)
     console.log('productState', productState);

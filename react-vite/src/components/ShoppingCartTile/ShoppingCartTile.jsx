@@ -1,10 +1,9 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import './ShoppingCartTile.css';
 import { useDispatch } from 'react-redux';
 import { thunkDeleteACartProduct, thunkGetCurrentUserCartProducts } from '../../redux/cartproduct.js';
 import { useState, useEffect, useRef } from 'react';
-import OpenModalMenuItem from '../Navigation/OpenModalMenuItem.jsx';
-import DeleteProductModal from '../DeleteProductModal/DeleteProductModal.jsx';
+
 
 function ShoppingCartTile({ cartProduct }){
     const dispatch = useDispatch();
@@ -32,7 +31,7 @@ function ShoppingCartTile({ cartProduct }){
         return () => document.removeEventListener("click", closeMenu);
     }, [showMenu]);
 
-    const closeMenu = () => setShowMenu(false);
+    // const closeMenu = () => setShowMenu(false);
 
     const onDelete = async (e) => {
         e.preventDefault();
@@ -41,35 +40,33 @@ function ShoppingCartTile({ cartProduct }){
         await dispatch(thunkGetCurrentUserCartProducts());
     }
 
-
-
     return (
-        <div id="sell-tile-container">
+        <div id="cart-tile-container">
             <div id="tile-left">
                 <img src={cartProduct.product.image} width="150px" id='image'/>
             </div>
 
 
-            <div id='tile-middle'>
+            <div id='cart-tile-description'>
                 <div className='tile-middle-top'>
-                    <Link to={`/products/${productId}`} id='product-image-title'>
+                    <Link to={`/products/${productId}`} id='cart-product-title'>
                         <div>{cartProduct.product.title}</div>
                     </Link>
                 </div>
                 <div className='tile-middle-middle'>
                     <div>${cartProduct.product.price}</div>
                 </div>
-
             </div>
-            <div className='tile-middle-2'>
-                    <label>Quantity</label>
-                    <input type='number'
+
+
+            <div id='cart-tile-right'>
+                <div>
+                    <label id="cart-quantity">Quantity</label>
+                    <input id="cart-quantity-input" type='number'
                     onChange={e => setQuantity(e.target.value)} value={quantity} />
                 </div>
-
-            <div id='tile-right'>
                 <div id="delete-product-button">
-                    <button onClick={onDelete}>Remove</button>
+                    <button id="cart-remove-button" onClick={onDelete}>Remove</button>
                 </div>
             </div>
         </div>

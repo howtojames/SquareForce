@@ -39,7 +39,7 @@ function SellingTile({ product }){
             </div>
 
 
-            <div id='tile-middle'>
+            <div id='sell-tile-middle'>
                 <div className='tile-middle-top'>
                     <Link to={`/products/${productId}`} id='product-image-title'>
                         <div>{product.title}</div>
@@ -51,7 +51,7 @@ function SellingTile({ product }){
             </div>
 
             <div id='tile-right'>
-                <NavLink to={`/products/update/${product.id}`}>Revise listing</NavLink>
+                <NavLink id="revise-listing-button" to={`/products/update/${product.id}`}>Revise listing</NavLink>
                 <div id="delete-product-button">  {/* pass in props for spot.id */}
                     <OpenModalMenuItem
                     id="delete-modal"
