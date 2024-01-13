@@ -33,10 +33,14 @@
 #cart-quantity {
     margin-right: 5px;
 }
-
 #cart-quantity-input {
     width: 30px;
 }
+#invalid-quantity {
+    color: red;
+    font-size: 15px;
+}
+
 #cart-remove-button {
     border: none;
     background-color: white;

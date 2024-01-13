@@ -50,6 +50,29 @@ def post_cart_product(id):
         return jsonify("Cart Product already exists")
 
 
+@cart_product_routes.route("/update/<int:id>", methods=["PUT"])
+@login_required
+def update_cart_product(id):
+    cart_product = CartProduct.query.get(id)
+    print("cart_product", cart_product.to_dict())
+
+    #error handling
+    if not cart_product: return "CartProduct does not exist"
+
+    form = CartProductForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        #only updating quantity
+        cart_product.quantity = form.data["quantity"]
+
+        db.session.commit()
+        return cart_product.to_dict()
+    else:
+        print("Bad Data")
+        return "Bad Data"
+
+
 
 
 @cart_product_routes.route('<int:id>', methods=['DELETE'])

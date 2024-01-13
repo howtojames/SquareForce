@@ -1,14 +1,14 @@
 import { Link} from 'react-router-dom';
 import './ShoppingCartTile.css';
 import { useDispatch } from 'react-redux';
-import { thunkDeleteACartProduct, thunkGetCurrentUserCartProducts } from '../../redux/cartproduct.js';
+import { thunkDeleteACartProduct, thunkGetCurrentUserCartProducts, thunkUpdateACartProduct } from '../../redux/cartproduct.js';
 import { useState, useEffect, useRef } from 'react';
 
 
 function ShoppingCartTile({ cartProduct }){
     const dispatch = useDispatch();
-
     const [quantity, setQuantity] = useState(cartProduct.quantity);
+    const [validationErrors, setValidationErrors] = useState({});
 
     const [showMenu, setShowMenu] = useState(false);
     const ulRef = useRef();
@@ -33,12 +33,34 @@ function ShoppingCartTile({ cartProduct }){
 
     // const closeMenu = () => setShowMenu(false);
 
+    useEffect(() => {
+        const cartProductData = {
+            quantity
+        }
+        dispatch(thunkUpdateACartProduct(cartProduct.id, cartProductData));
+    }, [dispatch, quantity, cartProduct.id]) //cartProduct.id changes when we edit for a different tile
+
+    //when quantity state is changed, send a thunk to change the cartproduct
+    useEffect(() => {
+        const errors = {};
+        if (quantity <= 0) {
+            errors['quantity'] = 'Invalid Quantity';
+            console.log("Invalid Quantity")
+        }
+        setValidationErrors(errors);
+    }, [dispatch, quantity]);
+
+
     const onDelete = async (e) => {
         e.preventDefault();
 
         await dispatch(thunkDeleteACartProduct(cartProduct.id));
         await dispatch(thunkGetCurrentUserCartProducts());
     }
+
+
+
+
 
     return (
         <div id="cart-tile-container">
@@ -62,8 +84,11 @@ function ShoppingCartTile({ cartProduct }){
             <div id='cart-tile-right'>
                 <div>
                     <label id="cart-quantity">Quantity</label>
-                    <input id="cart-quantity-input" type='number'
-                    onChange={e => setQuantity(e.target.value)} value={quantity} />
+                    <input id="cart-quantity-input" type='number' min="0"
+                    onChange={(e) => setQuantity(e.target.value)} value={quantity} />
+                    <div id='invalid-quantity'>
+                        {validationErrors.quantity && `${validationErrors.quantity}`}
+                    </div>
                 </div>
                 <div id="delete-product-button">
                     <button id="cart-remove-button" onClick={onDelete}>Remove</button>
