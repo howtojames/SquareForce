@@ -1,5 +1,6 @@
 const GET_CURRENT_USER_CART_PRODUCTS = "cartProducts/getCurrentUserCartProducts";
 const POST_A_CART_PRODUCT = 'cartproducts/postACartProduct';
+const UPDATE_A_CART_PRODUCT = 'cartproducts/updateACartProduct'
 
 const getCurrentUserCartProducts = (currentUserCartProducts) => {
     return {
@@ -13,6 +14,12 @@ const postACartProduct = (cartProductData) => {
     cartProductData
   };
 };
+const updateACartProduct = (cartProductData) => {
+  return {
+    type: UPDATE_A_CART_PRODUCT,
+    cartProductData
+  };
+}
 
 export const thunkGetCurrentUserCartProducts = () => async (dispatch) => {
     const res = await fetch(`/api/cart_products/current`);
@@ -47,8 +54,29 @@ export const thunkPostACartProduct = (cartProductId, cartProduct) => async (disp
   }
 }
 
+export const thunkUpdateACartProduct = (cartProductId, cartProduct) => async (dispatch) => {
+  const res = await fetch(`/api/cart_products/update/${cartProductId}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(cartProduct)
+  });
+
+  if(res.ok) {
+    const cartProductData = await res.json();
+    console.log('cartProductData in thunkUpdateACartProduct', cartProductData);
+    dispatch(updateACartProduct(cartProductData));
+    return cartProductData;
+  } else  {
+    const error = await res.json();
+    console.log('thunkPostAProduct error message', error);
+    return error;
+  }
+}
+
+
+
+
 export const thunkDeleteACartProduct = (cartProductId) => async (dispatch) => {
-  //Method: PUT
   const res = await fetch(`/api/cart_products/${cartProductId}`, {
     method: 'DELETE'
   });
@@ -75,9 +103,9 @@ const cartProductsReducer = (state = initialState, action) => {
     case POST_A_CART_PRODUCT: {
       return { ...state, [action.cartProductData.product.id]: action.cartProductData }
     }
-    // case UPDATE_A_PRODUCT: {
-    //   return { ...state, [action.productData.id]: action.productData }
-    // }
+    case UPDATE_A_CART_PRODUCT: {
+      return { ...state, [action.cartProductData.id]: action.cartProductData }
+    }
     //no need for DELETE
     default:
       return state;
