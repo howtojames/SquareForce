@@ -89,24 +89,39 @@ function PostProduct() {
       <h2>List an Item</h2>
       {/* check aws s3 phase 3 again */}
       {/* 1:38:00 ok */}
-      <form onSubmit={onSubmit} encType="multipart/form-data">
+      <form onSubmit={onSubmit} encType="multipart/form-data" id='post-product-form'>
         <div>
-          <label>Title:</label>
-          <input id='name-input' type='text' placeholder='Enter product title'
+          <div className="post-product-section-label">Title</div>
+          <div className="post-product-section-description">Use words people would search for when looking for your item.</div>
+          <input id='name-input' type='text'
             onChange={e => setTitle(e.target.value)} value={title}
           />
+          <div> </div>
+          <div className="post-product-grey-border"></div>
           {/* <div className='error'>
             {hasSubmitted && validationErrors.name && `* ${validationErrors.name}`}
           </div> */}
         </div>
         <div>
-          <label>Price:</label>
-          <input id='price-input' type='text' placeholder='Please enter an integer'
-            onChange={e => setPrice(e.target.value)} value={price}
-          />
+          <div className="post-product-section-label">Pricing</div>
+          <div id="buy-grey-container">
+            <div>
+              <div id="buy">Buy It Now</div>
+              <div className="post-product-section-description">Buyers can purchase immediately at this price.</div>
+            </div>
+            <div id="dollar">$</div>
+            <input id='price-input' type='text'
+              onChange={e => setPrice(e.target.value)} value={price}
+            />
+          </div>
+           <div className="post-product-grey-border"></div>
         </div>
        <div>
-          <label>Condition:</label>
+          <div className="post-product-section-label">Condition</div>
+          <div>
+            <div id="required">Required</div>
+            <div className="post-product-section-description">Buyers need these details to find your item</div>
+          </div>
           <select
             id='condition-select'
             type='text'
@@ -120,21 +135,24 @@ function PostProduct() {
             <option>Used - Like New</option>
             <option>Used - Fair</option>
           </select>
+          <div className="post-product-grey-border"></div>
         </div>
         <div>
-            <label>Image:</label>
+            <div className="post-product-section-label">Add a Photo:</div>
             <input id='image-file-input'
               type='file'
               accept='image/*'
               onChange={e => setImage(e.target.files[0])}
             />
+             <div className="post-product-grey-border"></div>
         </div>
         <div>
-          <label>Description:</label>
+          <div className="post-product-section-label">Description:</div>
             <textarea id='description-input' type='text'
 
               onChange={e => setDescription(e.target.value)} value={description}
             />
+
         </div>
         {/* <div>
           <label>Category:</label>

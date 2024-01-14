@@ -5,17 +5,17 @@ from datetime import datetime
 def seed_cart_products():
     print("INSIDE SEED CART PRODUCTS")
 
-    #seller1
-    cart_product1 = CartProduct(
-        quantity = 1, productId = 9, buyerId = 4
-    )
-
     #james
-    cart_product2 = CartProduct(
+    cart_product1 = CartProduct(
         quantity = 1, productId = 10, buyerId = 5
     )
-    cart_product3 = CartProduct(
+    cart_product2 = CartProduct(
         quantity = 1, productId = 9, buyerId = 5
+    )
+
+    #demo
+    cart_product3 = CartProduct(
+        quantity = 1, productId = 9, buyerId = 1
     )
 
     db.session.add(cart_product1)

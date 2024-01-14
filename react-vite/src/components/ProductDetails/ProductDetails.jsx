@@ -3,13 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import './ProductDetails.css';
 import { thunkGetAllProducts, thunkGetProductDetails } from '../../redux/product';
-import { thunkPostACartProduct, thunkDeleteACartProduct, thunkGetCurrentUserCartProducts } from '../../redux/cartproduct';
-import UpdateProduct from '../UpdateProduct/UpdateProduct';
+import { thunkPostACartProduct, thunkGetCurrentUserCartProducts } from '../../redux/cartproduct';
+
 
 function ProductDetails () {
     const dispatch = useDispatch();
-
-
 
 
     let { productId } = useParams();
@@ -26,20 +24,21 @@ function ProductDetails () {
     const [quantity, setQuantity] = useState(1);
 
     //user check
-    const sessionUser = useSelector(state => state.session.user);
+    //const sessionUser = useSelector(state => state.session.user);
 
-    let loggedIn = false;
-    if(sessionUser && Object.values(sessionUser).length > 0){
-        loggedIn = true;
-    } else {
-        loggedIn = false;
-    }
+    // let loggedIn = false;
+    // if(sessionUser && Object.values(sessionUser).length > 0){
+    //     loggedIn = true;
+    // } else {
+    //     loggedIn = false;
+    // }
 
 
     const cartProductState = useSelector(state => state.cartProduct);
     console.log("cartProductState", cartProductState)
     const cartProductsArr = Object.values(cartProductState)
     console.log("cartProductsArr", cartProductsArr)
+
 
     let productInCart = false;
     const item = cartProductsArr.find(cartProduct => cartProduct.product.id === productId)
@@ -70,6 +69,8 @@ function ProductDetails () {
         const cartProductData = {
             quantity: quantity
         }
+        //we pass in productId to query for the Product
+        //to store in CartProduct in the database
         await dispatch(thunkPostACartProduct(productId, cartProductData));
         navigate('/shopping-cart');
     }

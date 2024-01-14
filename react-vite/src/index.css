@@ -1,1 +1,10 @@
 /* TODO: Add sitewide styles */
+@font-face {
+    font-family: market-sans;
+    src: url('../public/MarketSans-Regular.ttf');
+}
+
+* {
+    font-family: market-sans;
+    /* font-family: sans-serif, serif; */
+}

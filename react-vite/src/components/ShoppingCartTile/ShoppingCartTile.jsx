@@ -2,37 +2,38 @@ import { Link} from 'react-router-dom';
 import './ShoppingCartTile.css';
 import { useDispatch } from 'react-redux';
 import { thunkDeleteACartProduct, thunkGetCurrentUserCartProducts, thunkUpdateACartProduct } from '../../redux/cartproduct.js';
-import { useState, useEffect, useRef } from 'react';
-
+import { useState, useEffect } from 'react';
+//import { useRef } from 'react';
 
 function ShoppingCartTile({ cartProduct }){
     const dispatch = useDispatch();
     const [quantity, setQuantity] = useState(cartProduct.quantity);
     const [validationErrors, setValidationErrors] = useState({});
 
-    const [showMenu, setShowMenu] = useState(false);
-    const ulRef = useRef();
+    // const [showMenu, setShowMenu] = useState(false);
+    // const ulRef = useRef();
 
     console.log('cartProduct.product.id', cartProduct.product.id)
     const productId = cartProduct.product.id
 
 
-    useEffect(() => {
-        if (!showMenu) return;
-        //if showMenu is true, we have a closeMenu
-        const closeMenu = (e) => {
-            if (!ulRef.current.contains(e.target)) {
-            setShowMenu(false);
-            }
-        };
+    // useEffect(() => {
+    //     if (!showMenu) return;
+    //     //if showMenu is true, we have a closeMenu
+    //     const closeMenu = (e) => {
+    //         if (!ulRef.current.contains(e.target)) {
+    //         setShowMenu(false);
+    //         }
+    //     };
 
-        document.addEventListener('click', closeMenu);
+    //     document.addEventListener('click', closeMenu);
 
-        return () => document.removeEventListener("click", closeMenu);
-    }, [showMenu]);
+    //     return () => document.removeEventListener("click", closeMenu);
+    // }, [showMenu]);
 
     // const closeMenu = () => setShowMenu(false);
 
+    //update quantity state, and also in the backend
     useEffect(() => {
         const cartProductData = {
             quantity
@@ -54,6 +55,7 @@ function ShoppingCartTile({ cartProduct }){
     const onDelete = async (e) => {
         e.preventDefault();
 
+        //we use pass in cartProduct.id to find the cartProduct we want to delete
         await dispatch(thunkDeleteACartProduct(cartProduct.id));
         await dispatch(thunkGetCurrentUserCartProducts());
     }
