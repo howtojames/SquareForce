@@ -1,11 +1,9 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
-
 import './ShoppingCartView.css';
 import { thunkGetCurrentUserCartProducts } from "../../redux/cartproduct";
 import ShoppingCartTile from "../ShoppingCartTile/ShoppingCartTile";
-
 
 
 function ShoppingCartView(){
@@ -24,7 +22,8 @@ function ShoppingCartView(){
         <div id="shopping-cart-view-container">
             <div id="shopping-cart-text">Shopping Cart</div>
             {cartProductStateArr.map((cartProduct) => (
-                <ShoppingCartTile key={cartProduct.product.id} cartProduct={cartProduct} />
+                //we pass in a cartProduct as prop
+                <ShoppingCartTile key={cartProduct.id} cartProduct={cartProduct} />
             ))}
         </div>
     )

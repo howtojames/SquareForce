@@ -1,6 +1,7 @@
 const GET_CURRENT_USER_CART_PRODUCTS = "cartProducts/getCurrentUserCartProducts";
 const POST_A_CART_PRODUCT = 'cartproducts/postACartProduct';
-const UPDATE_A_CART_PRODUCT = 'cartproducts/updateACartProduct'
+const UPDATE_A_CART_PRODUCT = 'cartproducts/updateACartProduct';
+const DELETE_A_CART_PRODUCT = 'cartProducts/deleteACartProduct';
 
 const getCurrentUserCartProducts = (currentUserCartProducts) => {
     return {
@@ -20,6 +21,12 @@ const updateACartProduct = (cartProductData) => {
     cartProductData
   };
 }
+const deleteACartProduct = (cartProductId) => {
+  return {
+    type: DELETE_A_CART_PRODUCT,
+    cartProductId
+  };
+}
 
 export const thunkGetCurrentUserCartProducts = () => async (dispatch) => {
     const res = await fetch(`/api/cart_products/current`);
@@ -35,8 +42,10 @@ export const thunkGetCurrentUserCartProducts = () => async (dispatch) => {
       return error;
     }
 }
-export const thunkPostACartProduct = (cartProductId, cartProduct) => async (dispatch) => {
-  const res = await fetch(`/api/cart_products/${cartProductId}`, {
+//we use productId here, to create a cartProduct with the assotiated Product
+//cartProduct here contains { quantity: ... }
+export const thunkPostACartProduct = (productId, cartProduct) => async (dispatch) => {
+  const res = await fetch(`/api/cart_products/${productId}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(cartProduct)
@@ -54,6 +63,8 @@ export const thunkPostACartProduct = (cartProductId, cartProduct) => async (disp
   }
 }
 
+//we use cartProductId here to query for the cartProduct we want to edit
+//cartProduct here contains { quantity: ... }
 export const thunkUpdateACartProduct = (cartProductId, cartProduct) => async (dispatch) => {
   const res = await fetch(`/api/cart_products/update/${cartProductId}`, {
     method: 'PUT',
@@ -73,9 +84,7 @@ export const thunkUpdateACartProduct = (cartProductId, cartProduct) => async (di
   }
 }
 
-
-
-
+//we use cartProductId here to query for the cartProduct we want to delete
 export const thunkDeleteACartProduct = (cartProductId) => async (dispatch) => {
   const res = await fetch(`/api/cart_products/${cartProductId}`, {
     method: 'DELETE'
@@ -83,10 +92,11 @@ export const thunkDeleteACartProduct = (cartProductId) => async (dispatch) => {
 
   if(res.ok) {
     const cartProductData = await res.json();
+    dispatch(deleteACartProduct(cartProductId))
     return cartProductData;
   } else {
     const error = await res.json();
-    console.log("error message", error)
+    console.log("thunkDeleteACartProduct error message", error)
   }
 }
 
@@ -96,17 +106,22 @@ const initialState = {};
 const cartProductsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_CURRENT_USER_CART_PRODUCTS: {
-      const newState = {};  //so on first render we clear out the state first
-      action.currentUserCartProducts.forEach((product) => newState[product.id] = product);
+      const newState = { ...state };
+      action.currentUserCartProducts.forEach((cartProduct) => newState[cartProduct.id] = cartProduct);
       return newState;
     }
     case POST_A_CART_PRODUCT: {
-      return { ...state, [action.cartProductData.product.id]: action.cartProductData }
+      return { ...state, [action.cartProductData.id]: action.cartProductData }
     }
     case UPDATE_A_CART_PRODUCT: {
       return { ...state, [action.cartProductData.id]: action.cartProductData }
     }
-    //no need for DELETE
+    case DELETE_A_CART_PRODUCT: {
+      const newState = { ...state };
+      //syntax to delete an key:value pair from an newState object
+      delete newState[action.cartProductId]
+      return newState;
+    }
     default:
       return state;
   }

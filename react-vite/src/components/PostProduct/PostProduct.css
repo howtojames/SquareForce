@@ -1,22 +1,88 @@
 #post-product-container{
+    width: 850px;
+    margin: 0 auto;
+    border: 1px solid black;
+}
+
+/* classes */
+
+
+.post-product-section-label {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.post-product-section-description {
+    color: grey;
+    margin-bottom: 15px;
+}
+.post-product-grey-border {
+    margin: 30px 0;
+    border-bottom: 1px solid lightgrey;
+}
+
+
+#post-product-form {
+    width: 100%;
+    border: 1px solid black;
+}
+
+
+
+
+
+#name-input {
+    border: 0.5px solid black;
+    border-radius: 5px;
+    background-color: #ececec;
+    height: 38px;
+    width: 100%;
+    width: 98%;
+
+}
+#name-input:focus {
+    border-radius: 5px;
+    background-color: white;
+}
+
+/* #post-product-form input {
+    width: 98%;
+} */
+#dollar {
+    margin-left: 40px;
+    margin-right: 5px;
+}
+#price-input {
+    border: 0.5px solid black;
+    border-radius: 5px;
+    background-color: #ececec;
+    height: 38px;
+    width: 49%;
+}
+
+#buy-grey-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
 }
-form {
-    width: 300px;
-}
-
-form *  {
-    width: 100%;
-}
-
-
-
-form div {
+#buy {
     margin-bottom: 10px;
 }
 
-form input {
-
+#post-product-pricing {
+    display: flex;
 }
+
+#required {
+    margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+
+/* need to use media queries at some point */
+/* to be reponseive to a smaller screen */
