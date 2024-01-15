@@ -2,23 +2,19 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
+
 import './UpdateProduct.css';
 import { thunkGetProductDetails, thunkUpdateAProduct } from '../../redux/product';
 
-
-
-function UpdateProduct() {
+function PostProduct() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   let { productId } = useParams();
-  productId = parseInt(productId)
-  console.log("productId", productId)
+  productId = parseInt(productId);
 
   const [title, setTitle] = useState('');
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState('');
   const [condition, setCondition] = useState('');
-
   const [image, setImage] = useState('');
   const [description, setDescription] = useState('');
   //const [category, setCategory] = useState('');
@@ -26,37 +22,52 @@ function UpdateProduct() {
   const [validationErrors, setValidationErrors] = useState({});
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
+  //get product details
+  useEffect(() => {
+    dispatch(thunkGetProductDetails(productId));
+  }, [dispatch, productId]);
 
 
-    useEffect(() => {
-        dispatch(thunkGetProductDetails(productId));
-    }, [dispatch, productId]);
+  const productStateObj = useSelector(state => state.product);  //access using computed value
+  console.log('productStateObj', productStateObj);
+  const productStateArr = Object.values(productStateObj)
+  const productObj = productStateArr.find(product => product.id ===productId)
+  console.log("productObj", productObj)
 
-    const productStateObj = useSelector(state => state.product);  //access using computed value
-    console.log('productStateObj', productStateObj);
-    const productStateArr = Object.values(productStateObj)
-    const productObj = productStateArr.find(product => product.id ===productId)
-    console.log("productObj", productObj)
+  //error handling
+  useEffect(() => {
+      if(productObj) {
+          console.log("productObj in useEffect", productObj)
+          setTitle(productObj.title);
+          setPrice(productObj.price);
+          setCondition(productObj.condition);
+          //dont know how to set image here, can't just use string
+          setDescription(productObj.description);
+      }
+  }, [productObj]);
 
-    useEffect(() => {
-        if(productObj) {
-            console.log("productObj in useEffect", productObj)
-            setTitle(productObj.title);
-            setPrice(productObj.price);
-            setCondition(productObj.condition);
-            //dont know how to set image here, can't just use string
-            setDescription(productObj.description);
-        }
-    }, [productStateObj]);
+
+  useEffect(() => {
+    const errors = {};
+    if (!title.length) errors['title']='You must enter a title for your item.';
+    if (price <= 0) errors['price']='Invalid price.'
+    //empty string is falsey in js
+    if (!condition) errors['condition']='You must select a condition for your item.'
+    if (!image) errors['image']='You must re-upload a image for your item.'
+    if (!description.length) errors['description']='You must enter a description for your item.';
+
+    //if (!email.includes('@')) errors['email']='Please provide a valid Email';
+    setValidationErrors(errors);
+  }, [title, price, condition, description, image]);
+
+
+
 
 
   const onSubmit = async e => {
     // Prevent the default form behavior so the page doesn't reload.
     e.preventDefault();
-
-    //setHasSubmitted(true);
-    //hasSubmtited still false
-    //console.log('hasSubmitted after setter', hasSubmitted);
+    setHasSubmitted(true);
 
     //keys have to match variables in models
     const formData = new FormData ();
@@ -66,18 +77,14 @@ function UpdateProduct() {
     formData.append("image", image)
     formData.append("description", description)
 
+
     for (const entry of formData.entries()) {
-        console.log("formData", entry);
-      }
-
-
-    // Ideally, we'd persist this information to a database using a RESTful API.
-    // For now, though, just log the contact us information to the console.
-    //console.log("productData", productData);
+      console.log("formData", entry);
+    }
 
     //thunk takes in two arguments
-    const updateProductRes = await dispatch(thunkUpdateAProduct(productId, formData))
-    console.log('updateProductRes', updateProductRes)
+   const updateProductRes = await dispatch(thunkUpdateAProduct(productId, formData))
+   console.log('updateProductRes', updateProductRes)
 
     // Reset the form state.
     setTitle('');
@@ -85,69 +92,104 @@ function UpdateProduct() {
     setCondition('');
     setImage('');
     setDescription('');
+    //setCategory('');
 
-
-    //setValidationErrors({});
-    //setHasSubmitted(false);
+    setValidationErrors({});
+    setHasSubmitted(false);
+    //after posting a product, navigate to the selling page
     navigate('/products/selling');
   }
 
-  //true here
-  //console.log('hasSubmitted', hasSubmitted);
+
+  console.log('!image', !image);
   return (
-    <div>
+    <div id="post-product-container">
       <h2>Revise Listing</h2>
       {/* check aws s3 phase 3 again */}
       {/* 1:38:00 ok */}
-      <form onSubmit={onSubmit} encType="multipart/form-data">
+      <form onSubmit={onSubmit} encType="multipart/form-data" id='post-product-form'>
         <div>
-          <label>Title:</label>
+          <div className="post-product-section-label">Title</div>
+          <div className="post-product-section-description" id='title-description'>Use words people would search for when looking for your item.</div>
           <input id='name-input' type='text'
             onChange={e => setTitle(e.target.value)} value={title}
           />
-          {/* <div className='error'>
-            {hasSubmitted && validationErrors.name && `* ${validationErrors.name}`}
-          </div> */}
+          <div className='post-product-error' id="title-error">{hasSubmitted && validationErrors.title && `${validationErrors.title}`}</div>
+          <div className="post-product-grey-border"></div>
+
         </div>
         <div>
-          <label>Price:</label>
-          <input id='price-input' type='text'
-            onChange={e => setPrice(e.target.value)} value={price}
-          />
+          <div className="post-product-section-label">Pricing</div>
+          <div id="buy-grey-container">
+            <div>
+              <div id="buy-it-now">Buy It Now</div>
+              <div className="post-product-section-description">Buyers can purchase immediately at this price.</div>
+            </div>
+            <div id='fake-input'>
+              <div id="dollar">$</div>
+              <input id='price-input' inputMode='numeric'
+                placeholder='Please enter an integer'
+                onChange={e => setPrice(e.target.value)} value={price}
+              />
+            </div>
+          </div>
+            {/* need error to appear before submission */}
+            <div className='post-product-error' id="price-error">{hasSubmitted && validationErrors.price && `${validationErrors.price}`}</div>
+           <div className="post-product-grey-border"></div>
         </div>
+
        <div>
-          <label>Condition:</label>
-          <select
-            id='condition-select' type='text'
-            onChange={e => setCondition(e.target.value)} value={condition}
-          >
-            <option value='' disabled>
-              -
-            </option>
-            <option>New</option>
-            <option>Used - Like New</option>
-            <option>Used - Fair</option>
-          </select>
+          <div className="post-product-section-label">Condition</div>
+          <div id="condition-flex-container">
+            <div>
+              <div id="required">Required</div>
+              <div className="post-product-section-description">Buyers need these details to find your item</div>
+            </div>
+            <div id="select-container">
+              <select
+                id='select-condition'
+                type='text'
+                onChange={e => setCondition(e.target.value)}
+                value={condition}
+              >
+                <option value='' disabled>
+                  -
+                </option>
+                <option value='New'>New</option>
+                <option value='Used - Like New'>Used - Like New</option>
+                <option value='Used - Fair'>Used - Fair</option>
+              </select>
+              <div className='post-product-error' id="condition-error">{hasSubmitted && validationErrors.condition && `${validationErrors.condition}`}</div>
+            </div>
+          </div>
+          <div className="post-product-grey-border"></div>
         </div>
         <div>
-            <label>Image:</label>
+            <div className="post-product-section-label">Add a Photo</div>
+            <div className="post-product-section-description" id="image-description">Improve your buyer's confidence by uploading an image</div>
             <input id='image-file-input'
               type='file'
               accept='image/*'
               onChange={e => setImage(e.target.files[0])}
             />
+            <div className='post-product-error'>{validationErrors.image && `${validationErrors.image}`}</div>
+             <div className="post-product-grey-border"></div>
         </div>
         <div>
-          <label>Description:</label>
+          <div className="post-product-section-label">Description:</div>
+            <div className="post-product-section-description" id="detail-description">Write a detailed description of your item</div>
             <textarea id='description-input' type='text'
               onChange={e => setDescription(e.target.value)} value={description}
             />
+             <div className='post-product-error'>{hasSubmitted && validationErrors.description && `${validationErrors.description}`}</div>
         </div>
 
-        <button>List it</button>
+        {/* when length is 0 diabled=false, so we can list it */}
+        {/* no need for disabled, disabled={Object.values(validationErrors).length} */}
+        <button  id="list-it">Update listing</button>
       </form>
     </div>
   );
 }
 
-export default UpdateProduct;
+export default PostProduct;

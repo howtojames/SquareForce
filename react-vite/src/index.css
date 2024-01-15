@@ -1,7 +1,8 @@
 /* TODO: Add sitewide styles */
 @font-face {
     font-family: market-sans;
-    src: url('../public/MarketSans-Regular.ttf');
+    /* files in public directory are served at '/' */
+    src: url('/MarketSans-Regular.ttf');
 }
 
 * {
