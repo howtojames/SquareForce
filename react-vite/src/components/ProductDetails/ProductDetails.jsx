@@ -122,9 +122,9 @@ function ProductDetails () {
                 {/* looks ok */}
                 {loggedIn && (
                     productInCart === true ? (
-                        <button onClick={onViewInCart}>View in Cart</button>
+                        <button onClick={onViewInCart} className="product-details-button">View in Cart</button>
                     ) : (
-                        <button onClick={onAdd}>Add to cart</button>
+                        <button onClick={onAdd} className="product-details-button">Add to cart</button>
                     )
                 )}
 
