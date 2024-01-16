@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
 import { thunkGetAllProducts } from '../../redux/product';
 import ProductTile from '../ProductTile/ProductTile';
 import './HomePage.css';

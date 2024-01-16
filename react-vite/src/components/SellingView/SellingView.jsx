@@ -17,13 +17,23 @@ function SellingView(){
     console.log('productState', productState);
     const productStateArr = Object.values(productState);
 
+
+
     return (
         <div id="selling-view-container">
             <div id='selling'>Selling</div>
             <div>
-                {productStateArr.map((product) => (
-                    <SellingTile key={product.id} product={product} />
-                ))}
+                {productStateArr.length === 0 ? (
+                    <div id="empty-seller-page">
+                        <div>You don't have any active items.</div>
+                        <NavLink to="/products/new" id="start-a-listing">Start a listing</NavLink>
+                    </div>
+                ) : (
+                    productStateArr.map((product) => (
+                        <SellingTile key={product.id} product={product} />
+                    ))
+                )}
+
             </div>
         </div>
     )

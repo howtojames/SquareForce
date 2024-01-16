@@ -64,7 +64,7 @@ function PostProduct() {
 
     setValidationErrors({});
     setHasSubmitted(false);
-    //after posting a product, navigate to the selling page
+    //after posting a product, navigate to the seller's page
     navigate('/products/selling');
   }
 

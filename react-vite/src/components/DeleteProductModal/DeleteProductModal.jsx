@@ -20,13 +20,15 @@ function DeleteProductModal({ productId }) {
   };
 
   return (
-    <div className='delete-spot-modal-container'>
-      <h3>End listing</h3>
-      <p>Are you sure you want to end this listing?</p>
+    <div id='delete-product-modal-container'>
+      <h1 id="end-listing">End listing</h1>
+      <p id="delete-product-message">Are you sure you want to end this listing?</p>
       <form onSubmit={handleSubmit}>
-      <button onClick={closeModal} id='no'>Cancel</button>
-        <button onClick={handleSubmit} id='yes'>End listing</button>
-
+      <div id="delete-product-border"></div>
+      <div id="buttons-container">
+        <button id='delete-cancel' onClick={closeModal}>Cancel</button>
+        <button id='delete-end-listing' onClick={handleSubmit}>End listing</button>
+      </div>
       </form>
     </div>
   );

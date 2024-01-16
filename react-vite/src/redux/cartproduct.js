@@ -2,6 +2,7 @@ const GET_CURRENT_USER_CART_PRODUCTS = "cartProducts/getCurrentUserCartProducts"
 const POST_A_CART_PRODUCT = 'cartproducts/postACartProduct';
 const UPDATE_A_CART_PRODUCT = 'cartproducts/updateACartProduct';
 const DELETE_A_CART_PRODUCT = 'cartProducts/deleteACartProduct';
+//const DELETE_ALL_CART_PRODUCTS = 'cartProducts/deleteAllCartProducts';
 
 const getCurrentUserCartProducts = (currentUserCartProducts) => {
     return {
@@ -27,6 +28,12 @@ const deleteACartProduct = (cartProductId) => {
     cartProductId
   };
 }
+// const deleteACartProduct = (cartProductId) => {
+//   return {
+//     type: DELETE_A_CART_PRODUCT,
+//     cartProductId
+//   };
+// }
 
 export const thunkGetCurrentUserCartProducts = () => async (dispatch) => {
     const res = await fetch(`/api/cart_products/current`);
