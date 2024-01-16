@@ -1,45 +1,147 @@
-.profile-dropdown {
-  position: absolute;
+/* override default values */
+body {
+  margin: 0;
+  padding: 0;
 }
 
-
-#upper-navigation {
-  display: flex;
-  justify-content: space-between;
+/* better to seaprate css */
+#navigation-container {
 }
 
-#upper-left {
+#top-navigation {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  margin-left: 30px;
+
+  /* good number to keep space around */
+  width: 95%;
+  height: 29px;
+
 }
-#upper-left div{
+#profile-button {
+  position: relative;
+  left: 5%;
+}
+#top-right {
+  display: flex;
+  position: relative;
+  right: 0px;
+  font-size: 13px;
+
+}
+#top-right div {
   margin: 0 10px;
 }
-#square-force{
+
+#top-border {
+  /* to make it extend across the entire page */
+  width: 100%;
+  border-bottom: 1px solid #ececec;
+}
+
+
+#mid-navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  margin-top: 17.5px;
+  margin-bottom: 17.5px;
+
+  /* good number to keep space around */
+  width: 80%;
+
+}
+
+
+
+#square-force {
   text-decoration: none;
   color: black;
   font-size: 32px;
-
 }
 #logo-container {
-  margin-left: 50px;
+  position: relative;
+  left: 6%;
 }
 
-#upper-right {
-  display: flex;
-  flex-direction: row;
-  margin-right: 50px;
-}
-#upper-right div {
-  margin: 0 10px;
-}
-.upper-right-tabs {
+
+
+.top-right-tabs {
   text-decoration: none;
   color: black;
 }
-.upper-right-tabs:hover {
+.top-right-tabs:hover {
   cursor: pointer;
   text-decoration: underline;
+}
+
+
+#top-border, #bottom-border {
+  border-bottom: 1px solid #ececec;
+}
+
+
+
+
+/* profile button*/
+#dropdown-button {
+  background-color: white;
+  border: none;
+  padding: 0 0;
+}
+#dropdown-button:hover {
+  cursor: pointer;
+}
+
+
+
+#profile-dropdown {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ececec;
+  z-index: 1;
+  /* so that text will not go to the next line */
+  white-space: nowrap;
+  font-size: 15px;
+  padding: 5px;
+}
+
+#logout-button {
+  border: none;
+  background-color: white;
+  color: #3864ec;
+  text-decoration: underline;
+}
+#logout-button:hover {
+  cursor: pointer;
+
+}
+
+
+#login-modal-button,
+#signup-modal-button {
+  list-style: none;
+  color: #3864ec;
+  text-decoration: underline;
+}
+#login-modal-button:hover,
+#signup-modal-button:hover {
+  cursor: pointer;
+}
+
+.hi-sign-in{
+  font-size: 12px;
+
+}
+#sign-in {
+  color: blue;
+  text-decoration: underline;
+  /* no need for hover, its already a button */
+}
+
+.fa-angle-down {
+  position: relative;
+  top: 2.5px;
+  left: 2px;
 }

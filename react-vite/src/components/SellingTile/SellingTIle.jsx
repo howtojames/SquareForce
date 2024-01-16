@@ -1,7 +1,5 @@
 import { Link, NavLink } from 'react-router-dom';
 import './SellingTile.css';
-import { useDispatch } from 'react-redux';
-import { thunkDeleteAProduct, thunkGetCurrentUserProducts } from '../../redux/product';
 import { useState, useEffect, useRef } from 'react';
 import OpenModalMenuItem from '../Navigation/OpenModalMenuItem.jsx';
 import DeleteProductModal from '../DeleteProductModal/DeleteProductModal.jsx';
@@ -42,7 +40,7 @@ function SellingTile({ product }){
             <div id='sell-tile-middle'>
                 <div className='tile-middle-top'>
                     <Link to={`/products/${productId}`} id='product-image-title'>
-                        <div>{product.title}</div>
+                        <div id="sell-tile-title">{product.title}</div>
                     </Link>
                 </div>
                 <div className='tile-middle-middle'>

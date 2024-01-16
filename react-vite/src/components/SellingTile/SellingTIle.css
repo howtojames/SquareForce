@@ -4,8 +4,34 @@
     position: relative;
     width: 500px;
 
+    border: 1px solid #ececec;
 }
 
+#sell-tile-middle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+#product-image-title {
+    text-decoration: none;
+    color: black;
+}
+#product-image-title:hover {
+    text-decoration: underline;
+}
+
+
+
+#tile-right{
+    margin-top: 50px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
 
 #revise-listing-button{
     color: black;

@@ -1,0 +1,27 @@
+#product-tile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+#product-tile:hover {
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+}
+
+
+#product-image {
+    max-height: 200px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+
+#product-tile-title {
+    font-size: 15px;
+}
+#product-tile-price {
+    font-size: 15px;
+}

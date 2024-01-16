@@ -8,11 +8,16 @@ import { thunkPostACartProduct, thunkGetCurrentUserCartProducts } from '../../re
 
 function ProductDetails () {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
 
     let { productId } = useParams();
     productId = parseInt(productId);
     console.log('productId', productId);
+
+
+    const [quantity, setQuantity] = useState(1);
+    const [validationErrors, setValidationErrors] = useState({});
 
     useEffect(() => {
         dispatch(thunkGetAllProducts());
@@ -20,18 +25,23 @@ function ProductDetails () {
         dispatch(thunkGetCurrentUserCartProducts());
     }, [dispatch, productId]);
 
-    const navigate = useNavigate();
-    const [quantity, setQuantity] = useState(1);
+    useEffect(() => {
+        const errors = {};
+        if(quantity < 1) errors.quantity = "Invalid value"
+        setValidationErrors(errors);
+    }, [quantity])
+
+
 
     //user check
-    //const sessionUser = useSelector(state => state.session.user);
+    const sessionUser = useSelector(state => state.session.user);
 
-    // let loggedIn = false;
-    // if(sessionUser && Object.values(sessionUser).length > 0){
-    //     loggedIn = true;
-    // } else {
-    //     loggedIn = false;
-    // }
+    let loggedIn = false;
+    if(sessionUser && Object.values(sessionUser).length > 0){
+        loggedIn = true;
+    } else {
+        loggedIn = false;
+    }
 
 
     const cartProductState = useSelector(state => state.cartProduct);
@@ -97,18 +107,25 @@ function ProductDetails () {
                 <div>${productData.price}</div>
                 <div>{productData.description}</div>
 
-                <div>
-                    <label>Quantity</label>
-                    <input type='number'
-                    onChange={e => setQuantity(e.target.value)}
-                    value={quantity} />
-                </div>
+                {loggedIn && (
+                    <div>
+                        <label id="quantity-label">Quantity</label>
+                        <input id="quantity-input" min="1"
+                        type='number'
+                        onChange={e => setQuantity(e.target.value)}
+                        value={quantity} />
+                         <span className='post-product-error' id="detail-quantity-error">{validationErrors.quantity && `${validationErrors.quantity}`}</span>
+                    </div>
+                )}
+
 
                 {/* looks ok */}
-                {productInCart === true ? (
-                    <button onClick={onViewInCart}>View in Cart</button>
-                ) : (
-                    <button onClick={onAdd}>Add to cart</button>
+                {loggedIn && (
+                    productInCart === true ? (
+                        <button onClick={onViewInCart}>View in Cart</button>
+                    ) : (
+                        <button onClick={onAdd}>Add to cart</button>
+                    )
                 )}
 
             </div>

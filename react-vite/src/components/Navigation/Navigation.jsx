@@ -6,40 +6,46 @@ import "./Navigation.css";
 function Navigation() {
   //grabs the sessionUser after first render
   const sessionUser = useSelector(state => state.session.user);
-  //this runs on first render
-  let loggedIn = false;  //not logged in by default
+
+  let loggedIn = false;
   if(sessionUser && Object.values(sessionUser).length > 0){
     loggedIn = true;
   } else {
     loggedIn = false;
-  } //after this loggedIn is determined and put to use in the render
+  }
 
 
   return (
-    <>
-      <div id="upper-navigation">
+    <div id='navigation-container'>
 
-        <div id="upper-left">
-          <div id="logo-container"><NavLink to="/" id="square-force">SquareForce</NavLink></div>
-          <div id="profile-button"><ProfileButton /></div>
-        </div>
+      <div id="top-navigation">
+        <div id="profile-button"><ProfileButton /></div>
 
         {loggedIn && (
-          <div id="upper-right">
-          <div><NavLink to="/products/new" className="upper-right-tabs">Sell</NavLink></div>
-          <div><NavLink to="/products/selling" className="upper-right-tabs">Selling</NavLink></div>
-          <div><NavLink to="/shopping-cart" className="upper-right-tabs">Shopping Cart</NavLink></div>
-        </div>
+          <div id="top-right">
+            <div><NavLink to="/products/new" className="top-right-tabs">Sell</NavLink></div>
+            <div><NavLink to="/products/selling" className="top-right-tabs">Selling</NavLink></div>
+            <div><NavLink to="/shopping-cart" className="top-right-tabs">Shopping Cart</NavLink></div>
+          </div>
         )}
-
-
       </div>
+
+      <div id="top-border"></div>
 
       <div id="mid-navigation">
 
+          <div id="logo-container">
+            <NavLink to="/" id="square-force">
+              SquareForce
+            </NavLink>
+          </div>
       </div>
+      <div id="bottom-border"></div>
 
-    </>
+    </div>
+
+
+
   );
 }
 

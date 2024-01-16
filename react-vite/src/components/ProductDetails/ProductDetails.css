@@ -14,3 +14,12 @@
 #title {
     font-size: 32px;
 }
+#quantity-input{
+    width: 35px;
+}
+#quantity-label{
+    margin-right: 5px;
+}
+#detail-quantity-error {
+    margin-left: 5px;
+}

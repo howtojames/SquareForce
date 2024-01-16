@@ -5,8 +5,23 @@
 }
 
 #selling {
+    font-weight: bold;
     font-size: 20px;
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 
+}
+
+
+#empty-seller-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#empty-seller-page > div {
+    margin-bottom: 30px;
+}
+#start-a-listing  {
+    font-size: 15px;
 }

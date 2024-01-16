@@ -1,0 +1,51 @@
+#delete-product-modal-container {
+    height: 150px;
+    width: 500px;
+
+    padding: 10px;
+}
+
+#end-listing {
+    margin: 5px 0;
+}
+
+#delete-product-border {
+    border-bottom: 1px solid #ececec;
+    margin-bottom: 10px;
+}
+
+#delete-product-message {
+    color: grey;
+}
+
+#buttons-container {
+    margin-top: 10px;
+    display: flex;
+    justify-content: right;
+}
+
+#delete-end-listing{
+    margin: 0 10px;
+    display: block;
+    background-color: #3864ec;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+}
+#delete-cancel {
+    margin: 0 10px;
+    display: block;
+    background-color: white;
+    color: #3864ec;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 25px;
+    border: 1px solid #3864ec;
+    cursor: pointer;
+}
