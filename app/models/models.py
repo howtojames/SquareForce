@@ -107,3 +107,13 @@ class CartProduct(db.Model):
             'createdAt': self.createdAt,
             'updatedAt': self.updatedAt
         }
+
+
+# class WatchList(db.Model):
+#     __tablename__ = "watch_list"
+
+#     #production
+#     if environment == "production":
+#         __table_args__ = {'schema': SCHEMA}
+
+#     id = db.Column(db.Integer, primary_key=True)
