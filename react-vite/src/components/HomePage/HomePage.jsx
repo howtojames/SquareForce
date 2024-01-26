@@ -20,15 +20,28 @@ function HomePage() {
 
     return (
         <>
-            <div id="daily-deals">Daily Deals</div>
-            <div id="page-container">
-
-                <div id="all-products-container">
-                    {allProductsArr.map(product => (
-                        <ProductTile key={product.id} product={product}/>
-                    ))}
+            <div>
+                <div id="slideshow-container">
+                    <img id="ad-image" src="../../../public/images/ad-1.png" alt="Ad Image 1" />
                 </div>
+               {/*  <div className="slide fade">
+                    <img src="image2.jpg" alt="Ad Image 2" />
+                </div> */}
             </div>
+
+            <div id="products-title">Products</div>
+            <main id="main-container">
+
+                <div id="page-container">
+                    <div id="all-products-container">
+
+
+                        {allProductsArr.map(product => (
+                            <ProductTile key={product.id} product={product}/>
+                        ))}
+                    </div>
+                </div>
+            </main>
         </>
     )
 }

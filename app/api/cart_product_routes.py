@@ -34,7 +34,6 @@ def post_cart_product(id):
     #what do we want to do after?
     #answer:
     cart_product = CartProduct.query.filter_by(buyerId = current_user.id, productId = id).first()
-    print("cart_product**********", cart_product)
 
     #if this cart_product does not exist, we make a new cart_product
     if not cart_product:

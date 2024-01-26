@@ -17,7 +17,6 @@ body {
   /* good number to keep space around */
   width: 95%;
   height: 29px;
-
 }
 #profile-button {
   position: relative;
@@ -50,6 +49,8 @@ body {
 
   /* good number to keep space around */
   width: 80%;
+
+
 
 }
 
@@ -144,4 +145,21 @@ body {
   position: relative;
   top: 2.5px;
   left: 2px;
+}
+
+
+#logo-container span {
+  letter-spacing: -1.85px;
+}
+#logo-red{
+  color: #e83434;
+}
+#logo-blue{
+  color: #0864d4;
+}
+#logo-yellow{
+  color: #f8ac04;
+}
+#logo-green{
+  color: #88b414;
 }

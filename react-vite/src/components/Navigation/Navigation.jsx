@@ -18,6 +18,7 @@ function Navigation() {
   return (
     <div id='navigation-container'>
 
+      {/* wigth 95% applied */}
       <div id="top-navigation">
         <div id="profile-button"><ProfileButton /></div>
 
@@ -25,7 +26,9 @@ function Navigation() {
           <div id="top-right">
             <div><NavLink to="/products/new" className="top-right-tabs">Sell</NavLink></div>
             <div><NavLink to="/products/selling" className="top-right-tabs">Selling</NavLink></div>
-            <div><NavLink to="/shopping-cart" className="top-right-tabs">Shopping Cart</NavLink></div>
+            <div><NavLink to="/shopping-cart" className="top-right-tabs">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </NavLink></div>
           </div>
         )}
       </div>
@@ -36,7 +39,17 @@ function Navigation() {
 
           <div id="logo-container">
             <NavLink to="/" id="square-force">
-              SquareForce
+              <span id='logo-red'>S</span>
+              <span id='logo-blue'>q</span>
+              <span id='logo-yellow'>u</span>
+              <span id='logo-green'>a</span>
+              <span id='logo-blue'>r</span>
+              <span id='logo-yellow'>e</span>
+              <span id='logo-red'>f</span>
+              <span id='logo-green'>o</span>
+              <span id='logo-yellow'>r</span>
+              <span id='logo-blue'>c</span>
+              <span id='logo-green'>e</span>
             </NavLink>
           </div>
       </div>

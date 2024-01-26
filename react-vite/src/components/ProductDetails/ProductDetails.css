@@ -3,7 +3,12 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+
+    /* border: 1px solid black; */
 }
+/* #page-container * {
+    border: 1px solid black;
+} */
 
 #left-container {
     margin-right: 50px;
