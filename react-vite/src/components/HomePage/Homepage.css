@@ -3,25 +3,22 @@
 
 }
 
-#daily-deals {
+
+#slideshow-container {
+    position: relative;
+    margin: auto;
+}
+
+#ad-image {
+    width: 100%;
+}
+
+
+
+#products-title {
     font-size: 20px;
     margin-top: 50px;
-    margin-left: 50px;
-}
-
-#product-tile{
-    margin: 15px;
-    height: 300px;
-    width: 300px;
-}
-
-
-#product-title {
-    text-decoration: none;
-    color: black;
-}
-#product-title:hover {
-    text-decoration: underline;
+    margin-left: 5%;
 }
 
 #all-products-container {
@@ -29,4 +26,17 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+
+    /* border: 1px solid black; */
+}
+
+
+#main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+
+
+    width: 100%;
 }
