@@ -22,7 +22,10 @@ function HomePage() {
         <>
             <div>
                 <div id="slideshow-container">
-                    <img id="ad-image" src="../../../public/images/ad-1.png" alt="Ad Image 1" />
+                    {/* testing for dist directory*/}
+                    {/* ../../../public/images/ad-1.png */}
+                    {/* out one and into images directory */}
+                    <img id="ad-image" src="../images/ad-1.png" alt="Ad Image 1" />
                 </div>
                {/*  <div className="slide fade">
                     <img src="image2.jpg" alt="Ad Image 2" />
