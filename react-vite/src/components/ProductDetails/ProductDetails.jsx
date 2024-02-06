@@ -95,14 +95,18 @@ function ProductDetails () {
 
     //console.log("quantity", quantity)
     return (
-        <main id='page-container'>
-            <div id='left-container'>
-                <img src={productData.image} width="300px"/>
-            </div>
-            <div id='right-container'>
-                {/* details */}
+        <div id='details-page-container'>
 
-                <div id="title">{productData.title}</div>
+            <div id='left-container'>
+                <div id="details-image-container">
+                    <img id="details-product-img" src={productData.image} width="300px"/>
+                </div>
+            </div>
+
+            <div id='right-container'>
+                {/* details here*/}
+
+                <div id="details-title">{productData.title}</div>
                 <div>Condition: {productData.condition}</div>
                 <div>${productData.price}</div>
                 <div>{productData.description}</div>
@@ -129,7 +133,7 @@ function ProductDetails () {
                 )}
 
             </div>
-        </main>
+        </div>
     )
 }
 

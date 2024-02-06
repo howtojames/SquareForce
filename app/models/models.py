@@ -108,6 +108,16 @@ class CartProduct(db.Model):
             'updatedAt': self.updatedAt
         }
 
+class Reviews(db.Model):
+    __tablename__ = "reviews"
+
+    if environment == "production":
+         __table_args__ = {'schema': SCHEMA}
+
+    id = db.Column(db.Integer, primary_key=True)
+
+
+
 
 # class WatchList(db.Model):
 #     __tablename__ = "watch_list"
