@@ -1,22 +1,46 @@
-#page-container {
+#details-page-container {
+    padding-top: 30px;
+    width: 90%;
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
 
-    /* border: 1px solid black; */
+    /* better */
+    justify-content: space-between;
+    margin: 0 5%;
+
+    border: 1px solid black;
 }
 /* #page-container * {
     border: 1px solid black;
 } */
 
 #left-container {
-    margin-right: 50px;
+    margin-right: 10px;
+
+}
+#details-image-container {
+    /* here width and height needs to be the same */
+    width: 500px;
+    height: 500px;
+
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    border: 1px solid white;
+}
+#details-product-img{
+    width: 100%;
+    height: 100%;
+    /* sets element's fit to its outside containers */
+    object-fit: contain;
 }
 
 
+#right-container {
+    width: 500px;
+}
 
-#title {
+
+#details-title {
     font-size: 32px;
 }
 #quantity-input{
