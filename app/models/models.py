@@ -20,6 +20,9 @@ class User(db.Model, UserMixin):
     #relationship
     products = db.relationship("Product", back_populates="user")  #error here when db upgrade
 
+    #relationship with Reviews
+    reviews = db.relationship("Review", back_populates="user")
+
     @property
     def password(self):
         return self.hashed_password
@@ -63,6 +66,9 @@ class Product(db.Model):
     user = db.relationship("User", back_populates="products")
     #relationship with CartProducts
     cart_products = db.relationship("CartProduct", back_populates="products")
+
+    #relationship with Review
+    reviews = db.relationship("Review", back_populates="products")
 
     def to_dict(self):
         return {
@@ -108,13 +114,39 @@ class CartProduct(db.Model):
             'updatedAt': self.updatedAt
         }
 
-class Reviews(db.Model):
+class Review(db.Model):
     __tablename__ = "reviews"
 
     if environment == "production":
          __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
+    review = db.Column(db.Integer, nullable=False)
+    stars = db.Column(db.Integer, nullable=False)
+    #indicate one Product to many Reviews
+    productId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("products.id")))
+    #indicate one User to many CartProduct
+    buyerId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
+    createdAt = db.Column(db.TIMESTAMP, default=datetime.now())
+    updatedAt = db.Column(db.TIMESTAMP, default=datetime.now())
+
+    #relationship with User
+    user = db.relationship("User", back_populates="reviews")
+    #relationship with Product
+    products = db.relationship("Product", back_populates="reviews")
+
+    #we wan to get the user associated to that review
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'user': self.user.to_dict(),
+            'review': self.review,
+            'stars': self.stars,
+            'productId': self.productId,
+            'buyerId': self.buyerId,
+            'createdAt': self.createdAt,
+            'updatedAt': self.updatedAt
+        }
 
 
 

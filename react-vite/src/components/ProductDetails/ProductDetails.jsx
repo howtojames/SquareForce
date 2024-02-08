@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import './ProductDetails.css';
 import { thunkGetAllProducts, thunkGetProductDetails } from '../../redux/product';
 import { thunkPostACartProduct, thunkGetCurrentUserCartProducts } from '../../redux/cartproduct';
-
+import ReviewsView from '../ReviewsView/ReviewsView';
 
 function ProductDetails () {
     const dispatch = useDispatch();
@@ -95,45 +95,50 @@ function ProductDetails () {
 
     //console.log("quantity", quantity)
     return (
-        <div id='details-page-container'>
+        <>
+            <div id='details-page-container'>
 
-            <div id='left-container'>
-                <div id="details-image-container">
-                    <img id="details-product-img" src={productData.image} width="300px"/>
-                </div>
-            </div>
-
-            <div id='right-container'>
-                {/* details here*/}
-
-                <div id="details-title">{productData.title}</div>
-                <div>Condition: {productData.condition}</div>
-                <div>${productData.price}</div>
-                <div>{productData.description}</div>
-
-                {loggedIn && (
-                    <div>
-                        <label id="quantity-label">Quantity</label>
-                        <input id="quantity-input" min="1"
-                        type='number'
-                        onChange={e => setQuantity(e.target.value)}
-                        value={quantity} />
-                         <span className='post-product-error' id="detail-quantity-error">{validationErrors.quantity && `${validationErrors.quantity}`}</span>
+                <div id='left-container'>
+                    <div id="details-image-container">
+                        <img id="details-product-img" src={productData.image} width="300px"/>
                     </div>
-                )}
+                </div>
+
+                <div id='right-container'>
+                    {/* details here*/}
+
+                    <div id="details-title">{productData.title}</div>
+                    <div>Condition: {productData.condition}</div>
+                    <div>${productData.price}</div>
+                    <div>{productData.description}</div>
+
+                    {loggedIn && (
+                        <div>
+                            <label id="quantity-label">Quantity</label>
+                            <input id="quantity-input" min="1"
+                            type='number'
+                            onChange={e => setQuantity(e.target.value)}
+                            value={quantity} />
+                            <span className='post-product-error' id="detail-quantity-error">{validationErrors.quantity && `${validationErrors.quantity}`}</span>
+                        </div>
+                    )}
 
 
-                {/* looks ok */}
-                {loggedIn && (
-                    productInCart === true ? (
-                        <button onClick={onViewInCart} className="product-details-button">View in Cart</button>
-                    ) : (
-                        <button onClick={onAdd} className="product-details-button">Add to cart</button>
-                    )
-                )}
+                    {/* looks ok */}
+                    {loggedIn && (
+                        productInCart === true ? (
+                            <button onClick={onViewInCart} className="product-details-button">View in Cart</button>
+                        ) : (
+                            <button onClick={onAdd} className="product-details-button">Add to cart</button>
+                        )
+                    )}
+                </div>
+
 
             </div>
-        </div>
+
+            <ReviewsView productId={productId} />
+        </>
     )
 }
 
