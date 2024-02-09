@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 3968c792cbed
+Revision ID: 21686bbc4a46
 Revises:
-Create Date: 2024-02-08 19:56:54.629381
+Create Date: 2024-02-08 20:29:09.711061
 
 """
 from alembic import op
@@ -66,7 +66,7 @@ def upgrade():
 
     op.create_table('reviews',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('review', sa.String(), nullable=False),
+    sa.Column('review', sa.String(length=255), nullable=False),
     sa.Column('stars', sa.Integer(), nullable=False),
     sa.Column('productId', sa.Integer(), nullable=True),
     sa.Column('buyerId', sa.Integer(), nullable=True),
