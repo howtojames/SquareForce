@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { thunkGetAllProducts } from '../../redux/product';
 import ProductTile from '../ProductTile/ProductTile';
+import Footer from '../Footer/Footer';
 import './HomePage.css';
 
 
@@ -45,6 +46,9 @@ function HomePage() {
                     </div>
                 </div>
             </main>
+            <footer>
+                <Footer />
+            </footer>
         </>
     )
 }
