@@ -1,131 +1,119 @@
-# Flask React Project
+# Codera
 
-This is the starter for the Flask React project.
+### Link to live site:
+https://james-squareforce.onrender.com
+
+
+### Index
+[Feature List](https://github.com/howtojames/SquareForce/wiki/Feature-List) |
+[Database Scheme](https://github.com/howtojames/SquareForce/wiki/Database-Schema-and-Backend-Routes) |
+[User Stories] (https://github.com/howtojames/SquareForce/wiki/User-Stories)
+
+
+### Technologies Used
+Javascript, React, Redux, Python, Flask, SQLALchemy, PostgreSQL, Render, HTML, CSS
+
+
+### Summary:
+Welcome to SquareForce, your premier destination for buying and selling goods online! At SquareForce, we pride ourselves on providing a seamless and secure platform for users to buy, sell, and discover a wide array of products. Whether you're hunting for laptops, computer, or even game consoles, SquareForce has you covered.
+
+
+## ScreenShots:
+### Splash Page
+![splash](react-vite/public/readme-images/splash.png)
+
+### Landing Page
+![landing](react-vite/public/readme-images/landing.png)
+
+### Question Details Page
+![question-details](react-vite/public/readme-images/question-details.png)
+
+### Edit a Question
+![edit-question](react-vite/public/readme-images/edit-question.png)
+
+### Edit a Comment
+![edit-comment](react-vite/public/readme-images/edit-comment.png)
+
+### Saved Questions
+![saved-questions](react-vite/public/readme-images/saved-questions.png)
+
 
 ## Getting started
+1. To clone the project:
+```
+git clone git@github.com:Nick-Root/Codera.git
+```
+2. Create an .env file in the Codera folder. Copy `.env.example` file into the `.env file.`
 
-1. Clone this repository (only this branch).
+3. To install dependencies and seed the database, `cd` into the `Codera` folder:
+```
+pipenv install
+pipenv install -r requirements.txt
+```
 
-2. Install dependencies.
+4. To seed the database:
+```
+pipenv run flask db init
+pipenv run flask db migrate
+pipenv run flask db upgrade
+pipenv run flask seed all
+```
 
-   ```bash
-   pipenv install -r requirements.txt
-   ```
+5. To start the backend, run:
+```
+pipenv run flask run
+```
 
-3. Create a __.env__ file based on the example with proper settings for your
-   development environment.
+6. Split into a different terminal, and `cd` into the `react-vite` folder. Run `npm run dev` to start the frontend.
+```
+npm install
+npm run dev
+```
 
-4. Make sure the SQLite3 database connection URL is in the __.env__ file.
+7. In your browser, navigate to [`localhost:5173`].
 
-5. This starter organizes all tables inside the `flask_schema` schema, defined
-   by the `SCHEMA` environment variable.  Replace the value for
-   `SCHEMA` with a unique name, **making sure you use the snake_case
-   convention.**
 
-6. Get into your pipenv, migrate your database, seed your database, and run your
-   Flask app:
+## Features
+### Questions
+   -Users should be able to view all questions asked.
 
-   ```bash
-   pipenv shell
-   ```
+   -Users should be able to create a new question.
 
-   ```bash
-   flask db upgrade
-   ```
+   -Users should be able to update questions they created.
 
-   ```bash
-   flask seed all
-   ```
+   -Users should be able to delete questions they created.
 
-   ```bash
-   flask run
-   ```
+Routes: `/`, `/questions`, `/questions/:id`, `/questions/current`
 
-7. The React frontend has no styling applied. Copy the __.css__ files from your
-   Authenticate Me project into the corresponding locations in the
-   __react-vite__ folder to give your project a unique look.
+### Comments
+   -Users should be able to view all comments on a question.
 
-8. To run the React frontend in development, `cd` into the __react-vite__
-   directory and run `npm i` to install dependencies. Next, run `npm run build`
-   to create the `dist` folder. The starter has modified the `npm run build`
-   command to include the `--watch` flag. This flag will rebuild the __dist__
-   folder whenever you change your code, keeping the production version up to
-   date.
+   -Users should be able to create new comments on a question.
 
-## Deployment through Render.com
+   -Users should be able to update their comments.
 
-First, recall that Vite is a development dependency, so it will not be used in
-production. This means that you must already have the __dist__ folder located in
-the root of your __react-vite__ folder when you push to GitHub. This __dist__
-folder contains your React code and all necessary dependencies minified and
-bundled into a smaller footprint, ready to be served from your Python API.
+   -Users should be able to delete their comments.
 
-Begin deployment by running `npm run build` in your __react-vite__ folder and
-pushing any changes to GitHub.
+Routes: `/questions/:id`, `/comments/current`
 
-Refer to your Render.com deployment articles for more detailed instructions
-about getting started with [Render.com], creating a production database, and
-deployment debugging tips.
+### Save for Later
+   -Users should be able to view all of their saved questions.
 
-From the Render [Dashboard], click on the "New +" button in the navigation bar,
-and click on "Web Service" to create the application that will be deployed.
+   -Users should be able to save a question for later.
 
-Select that you want to "Build and deploy from a Git repository" and click
-"Next". On the next page, find the name of the application repo you want to
-deploy and click the "Connect" button to the right of the name.
+   -Users should be able to remove a question from their saved questions.
 
-Now you need to fill out the form to configure your app. Most of the setup will
-be handled by the __Dockerfile__, but you do need to fill in a few fields.
+Routes: `/`, `/saved`
 
-Start by giving your application a name.
+###  Topics/Tags
+   -Users should be able to view all topics/tags on a question.
 
-Make sure the Region is set to the location closest to you, the Branch is set to
-"main", and Runtime is set to "Docker". You can leave the Root Directory field
-blank. (By default, Render will run commands from the root directory.)
+   -Users should be able to add a topic/tag to their question(s).
 
-Select "Free" as your Instance Type.
+   -Users should be able to change or remove topics from their questions.
 
-### Add environment variables
+Routes: `/`, `/topics/:id`
 
-In the development environment, you have been securing your environment
-variables in a __.env__ file, which has been removed from source control (i.e.,
-the file is gitignored). In this step, you will need to input the keys and
-values for the environment variables you need for production into the Render
-GUI.
 
-Add the following keys and values in the Render GUI form:
-
-- SECRET_KEY (click "Generate" to generate a secure secret for production)
-- FLASK_ENV production
-- FLASK_APP app
-- SCHEMA (your unique schema name, in snake_case)
-
-In a new tab, navigate to your dashboard and click on your Postgres database
-instance.
-
-Add the following keys and values:
-
-- DATABASE_URL (copy value from the **External Database URL** field)
-
-**Note:** Add any other keys and values that may be present in your local
-__.env__ file. As you work to further develop your project, you may need to add
-more environment variables to your local __.env__ file. Make sure you add these
-environment variables to the Render GUI as well for the next deployment.
-
-### Deploy
-
-Now you are finally ready to deploy! Click "Create Web Service" to deploy your
-project. The deployment process will likely take about 10-15 minutes if
-everything works as expected. You can monitor the logs to see your Dockerfile
-commands being executed and any errors that occur.
-
-When deployment is complete, open your deployed site and check to see that you
-have successfully deployed your Flask application to Render! You can find the
-URL for your site just below the name of the Web Service at the top of the page.
-
-**Note:** By default, Render will set Auto-Deploy for your project to true. This
-setting will cause Render to re-deploy your application every time you push to
-main, always keeping it up to date.
-
-[Render.com]: https://render.com/
-[Dashboard]: https://dashboard.render.com/
+## Connect
+* James Ruan [Github](https://github.com/howtojames) [LinkedIn](https://www.linkedin.com/in/james-ruan-03b95b104/)https://www.linkedin.com/in/james-ruan-03b95b104/)
