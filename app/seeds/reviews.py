@@ -7,36 +7,36 @@ def seed_reviews():
     #product1
     review1 = Review (
         buyerId = 1, productId = 1, stars = 5,
-        review = "I have been using the Microsoft Surface Pro 8 for a few weeks now, and I am thoroughly impressed."
+        review = 'I have been using the Microsoft Surface Pro 8 for a few weeks now, and I am thoroughly impressed.'
     )
     review2 = Review (
         buyerId = 2, productId = 1, stars = 4,
-        review = "The Microsoft Surface Pro 8 is a sleek and versatile device that exceeds expectations."
+        review = 'The Microsoft Surface Pro 8 is a sleek and versatile device that exceeds expectations.'
     )
     review3 = Review (
         buyerId = 3, productId = 1, stars = 5,
-        review = "As a frequent traveler, the Microsoft Surface Pro 8 has become an indispensable tool for me."
+        review = 'As a frequent traveler, the Microsoft Surface Pro 8 has become an indispensable tool for me.'
     )
     #product2
     review4 = Review (
         buyerId = 1, productId = 2, stars = 5,
-        review = "The Acer Aspire 3 is a solid budget laptop that gets the job done."
+        review = 'The Acer Aspire 3 is a solid budget laptop that gets the job done.'
     )
     review5 = Review (
         buyerId = 2, productId = 2, stars = 4,
-        review = "I have been using the Acer Aspire 3 for a few months now, and I am quite satisfied with its performance."
+        review = 'I have been using the Acer Aspire 3 for a few months now, and I am quite satisfied with its performance.'
     )
 
     #product3
     review6 = Review (
         buyerId = 1, productId = 3, stars = 5,
-        review = "The Lenovo Legion 5 is an absolute powerhouse of a gaming laptop."
+        review = 'The Lenovo Legion 5 is an absolute powerhouse of a gaming laptop.'
     )
 
     #vision pro, productId 10
     review7 = Review (
         buyerId = 3, productId = 10, stars = 5,
-        review = "The Apple Vision Pro sets a new benchmark for augmented reality experiences with its sleek design and advanced features."
+        review = 'The Apple Vision Pro sets a new benchmark for augmented reality experiences with its sleek design and advanced features.'
     )
 
     db.session.add(review1)
