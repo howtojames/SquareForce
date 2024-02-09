@@ -8,6 +8,7 @@ import ProductDetails from '../components/ProductDetails/ProductDetails';
 import UpdateProduct from '../components/UpdateProduct/UpdateProduct';
 import SellingView from '../components/SellingView/SellingView'
 import ShoppingCartView from '../components/ShoppingCartView/ShoppingCartView';
+import WatchListView from '../components/WatchListView/WatchListView';
 
 
 export const router = createBrowserRouter([
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
       {
         path: "/products/selling",
         element: <SellingView />
+      },
+      {
+        path: "/watchlist",
+        element: <WatchListView />
       },
       {
         path: "/shopping-cart",

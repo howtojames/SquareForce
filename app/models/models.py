@@ -23,6 +23,11 @@ class User(db.Model, UserMixin):
     #relationship with Reviews
     reviews = db.relationship("Review", back_populates="user")
 
+    #relationship with Watchlist
+    watchlist = db.relationship("WatchList", back_populates="user")
+
+
+
     @property
     def password(self):
         return self.hashed_password
@@ -71,6 +76,9 @@ class Product(db.Model):
 
     #relationship with Review
     reviews = db.relationship("Review", back_populates="products")
+
+    #relationship with WatchList
+    watchlist = db.relationship("WatchList", back_populates="products")
 
 
 
@@ -156,11 +164,35 @@ class Review(db.Model):
 
 
 
-# class WatchList(db.Model):
-#     __tablename__ = "watch_list"
+class WatchList(db.Model):
+    __tablename__ = "watchlist"
 
-#     #production
-#     if environment == "production":
-#         __table_args__ = {'schema': SCHEMA}
+    #production
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
 
-#     id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
+    #indicate one Product to many WatchList items
+    productId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("products.id")))
+    #indicate one User to many WatchList items
+    userId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
+    createdAt = db.Column(db.TIMESTAMP, default=datetime.now())
+    updatedAt = db.Column(db.TIMESTAMP, default=datetime.now())
+
+
+    #relationship with User
+    user = db.relationship("User", back_populates="watchlist")
+    #relationship with Product
+    products = db.relationship("Product", back_populates="watchlist")
+
+
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'product': self.products.to_dict(),
+            'productId': self.productId,
+            'userId': self.userId,
+            'createdAt': self.createdAt,
+            'updatedAt': self.updatedAt
+        }

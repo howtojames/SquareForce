@@ -30,9 +30,9 @@ function SellingTile({ product }){
 
     return (
         <div id="sell-tile-container">
-            <div id="tile-left">
+            <div id="sell-tile-left">
                 <Link to={`/products/${productId}`} id='product-image-link'>
-                    <img src={product.image} width="150px" id='image'/>
+                    <img id="selling-image" src={product.image} />
                 </Link>
             </div>
 
