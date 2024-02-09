@@ -18,23 +18,20 @@ Welcome to SquareForce, your premier destination for buying and selling goods on
 
 
 ## ScreenShots:
-### Splash Page
-![splash](react-vite/public/readme-images/splash.png)
-
 ### Landing Page
-![landing](react-vite/public/readme-images/landing.png)
+![landing](react-vite/public/readme-images/landing-page.png)
 
-### Question Details Page
-![question-details](react-vite/public/readme-images/question-details.png)
+### List an Item
+![question-details](react-vite/public/readme-images/list-an-item.png)
 
-### Edit a Question
-![edit-question](react-vite/public/readme-images/edit-question.png)
+### Watchlist
+![edit-question](react-vite/public/readme-images/watchlist.png)
 
-### Edit a Comment
-![edit-comment](react-vite/public/readme-images/edit-comment.png)
+### Product Details
+![edit-comment](react-vite/public/readme-images/product-details.png)
 
-### Saved Questions
-![saved-questions](react-vite/public/readme-images/saved-questions.png)
+### Shopping Cart
+![saved-questions](react-vite/public/readme-images/shopping-cart.png)
 
 
 ## Getting started
