@@ -25,6 +25,7 @@ function Navigation() {
         {loggedIn && (
           <div id="top-right">
             <div><NavLink to="/products/new" className="top-right-tabs">Sell</NavLink></div>
+            <div><NavLink to="/watchlist" className="top-right-tabs">Watchlist</NavLink></div>
             <div><NavLink to="/products/selling" className="top-right-tabs">Selling</NavLink></div>
             <div><NavLink to="/shopping-cart" className="top-right-tabs">
               <i class="fa-solid fa-cart-shopping"></i>

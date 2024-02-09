@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import './ProductDetails.css';
 import { thunkGetAllProducts, thunkGetProductDetails } from '../../redux/product';
 import { thunkPostACartProduct, thunkGetCurrentUserCartProducts } from '../../redux/cartproduct';
+import { thunkGetCurrentUserWatchlist, thunkPostAWatchlistProduct } from '../../redux/watchlist';
 import ReviewsView from '../ReviewsView/ReviewsView';
 
 function ProductDetails () {
@@ -23,6 +24,7 @@ function ProductDetails () {
         dispatch(thunkGetAllProducts());
         dispatch(thunkGetProductDetails(productId));
         dispatch(thunkGetCurrentUserCartProducts());
+        dispatch(thunkGetCurrentUserWatchlist());
     }, [dispatch, productId]);
 
     useEffect(() => {
@@ -43,7 +45,7 @@ function ProductDetails () {
         loggedIn = false;
     }
 
-
+    //logic to determine productInCart
     const cartProductState = useSelector(state => state.cartProduct);
     console.log("cartProductState", cartProductState)
     const cartProductsArr = Object.values(cartProductState)
@@ -51,12 +53,26 @@ function ProductDetails () {
 
 
     let productInCart = false;
-    const item = cartProductsArr.find(cartProduct => cartProduct.product.id === productId)
+    const item = cartProductsArr.find(watchlist => watchlist.product.id === productId)
     if(item)
         productInCart = true;
     else
         productInCart = false;
 
+
+    //logic to determine productInWatchlist
+    const watchlistState = useSelector(state => state.watchlist);
+    console.log("watchlistState", watchlistState)
+    const watchlistArr = Object.values(watchlistState)
+    console.log("watchlistArr", watchlistArr)
+
+
+    let productInWatchlist = false;
+    const itemInWatchlist = watchlistArr.find(cartProduct => cartProduct.product.id === productId)
+    if(itemInWatchlist)
+        productInWatchlist = true;
+    else
+        productInWatchlist = false;
 
 
 
@@ -72,7 +88,7 @@ function ProductDetails () {
 
 
 
-    const onAdd = async (e) => {
+    const onAddToShoppingCart = async (e) => {
         e.preventDefault();
 
         //CartProduct Form only has one attribute
@@ -84,12 +100,24 @@ function ProductDetails () {
         await dispatch(thunkPostACartProduct(productId, cartProductData));
         navigate('/shopping-cart');
     }
-
-
     const onViewInCart = async (e) => {
         e.preventDefault();
 
         navigate('/shopping-cart');
+    }
+
+
+    const onAddToWatchlist = async (e) => {
+        e.preventDefault();
+
+        //thunk only takes in productId, not body
+        await dispatch(thunkPostAWatchlistProduct(productId));
+        navigate('/watchlist');
+    }
+    const onViewInWatchlist = async (e) => {
+        e.preventDefault();
+
+        navigate('/watchlist');
     }
 
 
@@ -110,7 +138,7 @@ function ProductDetails () {
                     <div id="details-title">{productData.title}</div>
                     <div>Condition: {productData.condition}</div>
                     <div>${productData.price}</div>
-                    <div>{productData.description}</div>
+                    <div id="details-description">{productData.description}</div>
 
                     {loggedIn && (
                         <div>
@@ -127,11 +155,19 @@ function ProductDetails () {
                     {/* looks ok */}
                     {loggedIn && (
                         productInCart === true ? (
-                            <button onClick={onViewInCart} className="product-details-button">View in Cart</button>
+                            <button onClick={onViewInCart} className="view-in-cart">View in Cart</button>
                         ) : (
-                            <button onClick={onAdd} className="product-details-button">Add to cart</button>
+                            <button onClick={onAddToShoppingCart} className="add-to-cart">Add to cart</button>
                         )
                     )}
+                    {loggedIn && (
+                        productInWatchlist === true ? (
+                            <button onClick={onViewInWatchlist} className="watching">Watching</button>
+                        ) : (
+                            <button onClick={onAddToWatchlist} className="add-to-watchlist">Add to Watchlist</button>
+                        )
+                    )}
+
                 </div>
 
 
