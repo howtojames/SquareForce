@@ -7,7 +7,7 @@ def seed_reviews():
     #product1
     review1 = Review (
         buyerId = 1, productId = 1, stars = 5,
-        review = "I've been using the Microsoft Surface Pro 8 for a few weeks now, and I'm thoroughly impressed. The Intel Core i7 processor coupled with 16GB of RAM ensures seamless multitasking, whether I'm working on documents or editing photos. The 13-inch PixelSense™ display is incredibly sharp and vibrant, making movies and videos a joy to watch. The battery life is excellent, easily lasting me through a full day of work. The versatility of this device, with its ability to switch between laptop and tablet mode, is a game-changer. Overall, I highly recommend the Surface Pro 8 for anyone in need of a powerful and portable device."
+        review = "I\'ve  been using the Microsoft Surface Pro 8 for a few weeks now, and I am thoroughly impressed. The Intel Core i7 processor coupled with 16GB of RAM ensures seamless multitasking, whether I\'m working on documents or editing photos. The 13-inch PixelSense™ display is incredibly sharp and vibrant, making movies and videos a joy to watch. The battery life is excellent, easily lasting me through a full day of work. The versatility of this device, with its ability to switch between laptop and tablet mode, is a game-changer. Overall, I highly recommend the Surface Pro 8 for anyone in need of a powerful and portable device."
     )
     review2 = Review (
         buyerId = 2, productId = 1, stars = 4,
@@ -15,7 +15,7 @@ def seed_reviews():
     )
     review3 = Review (
         buyerId = 3, productId = 1, stars = 5,
-        review = "As a frequent traveler, the Microsoft Surface Pro 8 has become an indispensable tool for me. Its lightweight design and compact form factor make it easy to slip into my bag, yet it packs enough power to handle all my work tasks on the go. The Intel Core i3 processor and 4GB of RAM may not be the most powerful configuration, but they're sufficient for my needs, and the 128GB SSD offers ample storage for essential files. The 13-inch PixelSense™ display is vibrant and responsive, perfect for both work and entertainment. Overall, the Surface Pro 8 is the perfect travel companion for professionals who need performance without sacrificing portability."
+        review = "As a frequent traveler, the Microsoft Surface Pro 8 has become an indispensable tool for me. Its lightweight design and compact form factor make it easy to slip into my bag, yet it packs enough power to handle all my work tasks on the go. The Intel Core i3 processor and 4GB of RAM may not be the most powerful configuration, but they\'re sufficient for my needs, and the 128GB SSD offers ample storage for essential files. The 13-inch PixelSense™ display is vibrant and responsive, perfect for both work and entertainment. Overall, the Surface Pro 8 is the perfect travel companion for professionals who need performance without sacrificing portability."
     )
     #product2
     review4 = Review (
@@ -24,7 +24,7 @@ def seed_reviews():
     )
     review5 = Review (
         buyerId = 2, productId = 2, stars = 4,
-        review = "I've been using the Acer Aspire 3 for a few months now, and I'm quite satisfied with its performance. The Intel Core i3 processor and 4GB of RAM may not be the most powerful, but they handle basic tasks like web browsing, email, and word processing without any issues. The 15.6-inch display is adequate for everyday use, though the colors can appear slightly washed out. I appreciate the lightweight design and the inclusion of multiple ports for connectivity. Battery life is average, lasting around 4-5 hours on a single charge. Overall, the Acer Aspire 3 is a decent budget laptop for those with simple computing needs."
+        review = "I have been using the Acer Aspire 3 for a few months now, and I\'m quite satisfied with its performance. The Intel Core i3 processor and 4GB of RAM may not be the most powerful, but they handle basic tasks like web browsing, email, and word processing without any issues. The 15.6-inch display is adequate for everyday use, though the colors can appear slightly washed out. I appreciate the lightweight design and the inclusion of multiple ports for connectivity. Battery life is average, lasting around 4-5 hours on a single charge. Overall, the Acer Aspire 3 is a decent budget laptop for those with simple computing needs."
     )
 
     #product3
@@ -36,7 +36,7 @@ def seed_reviews():
     #vision pro, productId 10
     review7 = Review (
         buyerId = 3, productId = 10, stars = 5,
-        review = "The Apple Vision Pro sets a new benchmark for augmented reality experiences with its sleek design and advanced features. This AR headset offers a comfortable fit and precise tracking, allowing users to seamlessly integrate digital content into their surroundings. The high-resolution displays provide crisp visuals, immersing users in virtual experiences with stunning clarity. With its built-in sensors and cameras, the Vision Pro enables precise interaction with virtual objects, opening up new possibilities for gaming, productivity, and more. While the ecosystem is still evolving, the Apple Vision Pro is a testament to Apple's commitment to pushing the boundaries of innovation in AR technology."
+        review = "The Apple Vision Pro sets a new benchmark for augmented reality experiences with its sleek design and advanced features. This AR headset offers a comfortable fit and precise tracking, allowing users to seamlessly integrate digital content into their surroundings. The high-resolution displays provide crisp visuals, immersing users in virtual experiences with stunning clarity. With its built-in sensors and cameras, the Vision Pro enables precise interaction with virtual objects, opening up new possibilities for gaming, productivity, and more. While the ecosystem is still evolving, the Apple Vision Pro is a testament to Apple\'s commitment to pushing the boundaries of innovation in AR technology."
     )
 
     db.session.add(review1)
