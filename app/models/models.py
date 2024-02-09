@@ -35,6 +35,8 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password, password)
 
     def to_dict(self):
+        #review is a InstrumentedList
+        #reviews_dict = [review.to_dict() for review in self.reviews]
         return {
             'id': self.id,
             'username': self.username,
@@ -70,7 +72,10 @@ class Product(db.Model):
     #relationship with Review
     reviews = db.relationship("Review", back_populates="products")
 
+
+
     def to_dict(self):
+        #self.reviews is a InstrumentedList, cannot call to_dict() directly
         return {
             'id': self.id,
             'title': self.title,
