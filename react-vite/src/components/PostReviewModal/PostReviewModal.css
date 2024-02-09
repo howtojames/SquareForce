@@ -1,6 +1,6 @@
 .post-review-modal-container{
-    border: 3px solid black;
-    width: 330px;
+    border: 2px solid #ececec;
+    width: 430px;
     /* border-radius: 10px;
     overflow: hidden; */
     padding: 10px;
@@ -16,12 +16,17 @@ h3 {
     margin: 5px 0;
 }
 
-textarea {
-    border: 2px solid black;
+#review-textarea {
+    border: 2px solid gray;
     margin-bottom: 10px;
+    height: 100px;
+    width: 390px;
 }
 
-
+.star-ratings-container {
+    display: flex;
+    justify-content: center;
+}
 
 .rating-input {
     display: flex;
@@ -38,19 +43,18 @@ textarea {
 
 
 .submit-review-button {
-    background-color: #ff5c5c;
+    background-color: #3864ec;
     color: white;
-    width: 100%;
+    width: 68%;
     height: 40px;
 
     margin-top: 10px;
+    margin-left: 63px;
+
+    border-radius: 50px;
+    border: none;
 }
 
-.submit-review-button[disabled] {
-    background-color: white;
-    color: gray;
-    cursor: default;
-}
 
 .stars-text{
     margin-left: 3px;

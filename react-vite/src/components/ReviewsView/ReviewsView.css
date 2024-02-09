@@ -32,8 +32,7 @@
     margin-bottom: 20px;
 }
 #review-button {
-    height: 42px;
-    padding: 0 25px;
+    padding: 10px 25px;
     border-radius: 30px;
     font-size: 13px;
     border: 1px solid #3864ec;
@@ -61,4 +60,37 @@
 #by-username {
     margin-top: 5px;
     color: #787474;
+}
+
+
+#no-reviews{
+    display: flex;
+    justify-content: center;
+}
+
+#be-the-first {
+    margin-left: 2px;
+    display: flex;
+    flex-direction: row;
+
+}
+
+/* be the first to */
+#write-a-review {
+    margin-left: 3px;
+    text-decoration: underline;
+    color: #3864ec;
+}
+#write-a-review:hover {
+    cursor: pointer;
+}
+
+
+#delete-review-button {
+    margin-top: 10px;
+    list-style: none;
+    text-decoration: underline;
+}
+#delete-review-button:hover {
+    cursor: pointer;
 }

@@ -137,7 +137,7 @@ function ProductDetails () {
 
             </div>
 
-            <ReviewsView productId={productId} />
+            <ReviewsView productId={productId} productData={productData}/>
         </>
     )
 }

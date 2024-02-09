@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './PostReviewModal.css';
 
 
-const StarsRatingInput = ({ rating, disabled, onChange }) => {
+const StarsRatingInput = ({ rating, disabled, onChange, forDisplay }) => {
   const [activeRating, setActiveRating] = useState(rating);
 
   // useEffect(() => {
@@ -54,7 +54,9 @@ const StarsRatingInput = ({ rating, disabled, onChange }) => {
             onClick={() => { if (!disabled) onChange(5)} }
         >
         </i>
-        <div className="stars-text">Stars</div>
+        {forDisplay ? (<></>) : (
+            <div className="stars-text">Stars</div>
+        )}
         </div>
     </>
   );

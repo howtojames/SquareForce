@@ -4,16 +4,14 @@ import { useDispatch } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import './PostReviewModal.css';
 
+import { thunkPostAReview } from '../../redux/reviews';
+
+
 import StarsRatingInput from './StarsRatingInput';
 import { useState } from 'react';
 
-/* import { thunkGetReviewsBySpotId, thunkPostAReview, thunkGetReviewsCurrentUser} from '../../store/reviews';  //from reviews.js
-import { thunkGetSpotDetails } from '../../store/spots'; */
-//test
-//import { thunkGetSpotDetails } from '../../store/spots';
-
 //need to pass in reviewId
-function PostReviewModal({ spotId }) {
+function PostReviewModal({ productId }) {
   const dispatch = useDispatch();
   const { closeModal } = useModal();
   //setting rating
@@ -28,13 +26,13 @@ function PostReviewModal({ spotId }) {
       e.preventDefault();
 
       //create the data
-      const post = {
+      const reviewData = {
           review: review,
           stars: rating    //keep it for setRating
       }
-
+      console.log("reviewData", reviewData);
       //const reviewObj =
-      await dispatch(thunkPostAReview(post, spotId))
+      await dispatch(thunkPostAReview(productId, reviewData))
       .catch(async (res) => {  //page does not reload with this .catch
         const data = await res.json();
         console.log('data', data);
@@ -46,13 +44,11 @@ function PostReviewModal({ spotId }) {
       //If a server error occurs, show it below the title. (But that shouldn't happen under normal circumstances).
 
       //order matters!!!!!
-      await dispatch(thunkGetReviewsCurrentUser());
-      await dispatch(thunkGetReviewsBySpotId(spotId));
-      await dispatch(thunkGetSpotDetails(spotId));
+      // await dispatch(thunkGetReviewsCurrentUser());
+      // await dispatch(thunkGetReviewsBySpotId(spotId));
+      // await dispatch(thunkGetSpotDetails(spotId));
 
       closeModal();
-
-
 
       console.log('errors state', errors);
   };  //end of handleSubmit
@@ -64,14 +60,14 @@ function PostReviewModal({ spotId }) {
 
   return (
     <div className='post-review-modal-container'>
-      <h3>How was your stay?</h3>
+      <h3>Rate and Review</h3>
       {/* If a server error occurs, show it below the title. (But that shouldn't happen under normal circumstances). */}
       <div className="post-review-errors-container">
         {errors.review && <div className="post-review-errors">{errors.review}</div>}
         {errors.stars && <div className="post-review-errors">{errors.stars}</div>}
       </div>
       <form onSubmit={handleSubmit}>
-        <textarea placeholder="Leave your review here..."
+        <textarea id="review-textarea" placeholder="Describe the pros, cons, and other highlights."
         onChange={(e)=> setReview(e.target.value)} value={review}></textarea>
         <div className='star-ratings-container'>
           <StarsRatingInput
@@ -82,7 +78,7 @@ function PostReviewModal({ spotId }) {
         </div>
 
         <button onClick={handleSubmit} className='submit-review-button'
-        disabled={review.length < 10 || rating < 1}>Submit Your Review</button> {/* review.length > 10 for testing */}
+        >Submit Your Review</button> {/* review.length > 10 for testing */}
       </form>
     </div>
   );

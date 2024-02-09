@@ -1,4 +1,5 @@
 const GET_PRODUCT_REVIEWS = "reviews/getProductReviews";
+const GET_CURRENT_USER_REVIEWS = 'reviews/getCurrentUserReviews';
 const POST_A_REVIEW = 'reviews/postAReview';
 const DELETE_A_REVIEW = 'reviews/deleteAReview';
 
@@ -9,6 +10,13 @@ const getProductReviews = (productReviews) => {
       productReviews
     }
 }
+const getCurrentUserReviews = (reviews) => {
+  return {
+    type: GET_CURRENT_USER_REVIEWS,
+    reviews
+  }
+};
+
 const postAReview = (review) => {
   return {
     type: POST_A_REVIEW,
@@ -38,10 +46,24 @@ export const thunkGetProductReviews  = (productId) => async (dispatch) => {
       return error;
     }
 }
+export const thunkGetCurrentUserReviews = () => async (dispatch) => {
+  // URL: /api/reviews/current
+  const res = await fetch(`/api/reviews/current`);  //fetch
+
+  if(res.ok) {
+    //{ Reviews: [ {}, {}, ...] }, food
+    const reviews = await res.json();
+    console.log('currentUserReviews in thunk', reviews);
+    dispatch(getCurrentUserReviews(reviews));
+    return reviews;
+  } else  {
+    console.log('/api/reviews/current error output');
+  }
+};
 //we use productId here, to create a Review with the assotiated Product
 //Review here contains { quantity: ... }
 export const thunkPostAReview = (productId, review) => async (dispatch) => {
-  const res = await fetch(`/api/review/${productId}`, {
+  const res = await fetch(`/api/reviews/${productId}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(review)
@@ -62,7 +84,7 @@ export const thunkPostAReview = (productId, review) => async (dispatch) => {
 
 //we use ReviewId here to query for the Review we want to delete
 export const thunkDeleteAReview = (reviewId) => async (dispatch) => {
-  const res = await fetch(`/api/cart_products/${reviewId}`, {
+  const res = await fetch(`/api/reviews/${reviewId}`, {
     method: 'DELETE'
   });
 

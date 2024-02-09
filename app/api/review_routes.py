@@ -24,6 +24,23 @@ def get_product_reviews(id):
     return jsonify(product_reviews_data)
 
 
+@review_routes.route('/current')
+def get_user_reviews():
+    """ Gets all reviews of the current user """
+
+    user_reviews =  Review.query.filter_by(current_user.id).all()
+
+    #if user reviews is empty, we return a empty array
+    if not user_reviews:
+        return jsonify([])
+
+    user_reviews_data = [user_reviews.to_dict() for user_reviews in user_reviews]
+    print("user_reviews_data", user_reviews_data)
+    return jsonify(user_reviews_data)
+
+
+
+
 #post a review on a product
 @review_routes.route('/<int:id>', methods=["POST"])
 @login_required  #will throw 401 if not logged in
@@ -48,6 +65,7 @@ def post_product_review(id):
         db.session.commit()
         return new_product_review.to_dict()
     else:
+        print("User already has a Review")
         return jsonify(error="User already has a Review")
 
 
