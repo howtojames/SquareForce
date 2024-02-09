@@ -3,7 +3,7 @@ from sqlalchemy.sql import text
 from datetime import datetime
 
 def seed_reviews():
-
+    print("INSIDE SEED REVIEWS")
     #product1
     review1 = Review (
         buyerId = 1, productId = 1, stars = 5,
