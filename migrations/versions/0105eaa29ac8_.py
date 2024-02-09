@@ -15,7 +15,7 @@ SCHEMA = os.environ.get("SCHEMA")
 
 
 # revision identifiers, used by Alembic.
-revision = '0105eaa29ac8'
+revision = '25fcf4a6bba1'
 down_revision = None
 branch_labels = None
 depends_on = None
