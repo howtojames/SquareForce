@@ -8,7 +8,7 @@ function SellingTile({ product }){
     const [showMenu, setShowMenu] = useState(false);
     const ulRef = useRef();
 
-    console.log('sellingTile product.id', product.id)
+    //console.log('sellingTile product.id', product.id)
     const productId = product.id
 
 

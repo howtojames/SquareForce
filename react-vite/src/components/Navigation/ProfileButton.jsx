@@ -54,7 +54,7 @@ function ProfileButton() {
   const closeMenu = () => setShowMenu(false);
   //end
 
-  console.log("sessionUser", sessionUser)
+  //console.log("sessionUser", sessionUser)
 
   return (
     <>

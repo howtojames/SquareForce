@@ -13,7 +13,7 @@ function HomePage() {
     }, [dispatch])
 
     const allProductsObj = useSelector(state => state.product)
-    console.log("allProductsObj", allProductsObj)
+    //console.log("allProductsObj", allProductsObj)
     if (!allProductsObj) return null;
     const allProductsArr = Object.values(allProductsObj)
     //console.log("allProductsArr", allProductsArr)

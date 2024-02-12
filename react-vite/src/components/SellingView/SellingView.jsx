@@ -14,7 +14,7 @@ function SellingView(){
     }, [dispatch]);
 
     const productState = useSelector(state => state.product)
-    console.log('productState', productState);
+    //console.log('productState', productState);
     const productStateArr = Object.values(productState);
 
 

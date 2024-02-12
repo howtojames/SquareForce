@@ -14,7 +14,7 @@ function ProductDetails () {
 
     let { productId } = useParams();
     productId = parseInt(productId);
-    console.log('productId', productId);
+    //console.log('productId', productId);
 
 
     const [quantity, setQuantity] = useState(1);
@@ -47,9 +47,9 @@ function ProductDetails () {
 
     //logic to determine productInCart
     const cartProductState = useSelector(state => state.cartProduct);
-    console.log("cartProductState", cartProductState)
+    //console.log("cartProductState", cartProductState)
     const cartProductsArr = Object.values(cartProductState)
-    console.log("cartProductsArr", cartProductsArr)
+    //console.log("cartProductsArr", cartProductsArr)
 
 
     let productInCart = false;
@@ -77,12 +77,12 @@ function ProductDetails () {
 
 
     const productObj = useSelector(state => state.product);
-    console.log('productObj', productObj)
+    //console.log('productObj', productObj)
     const productArr = Object.values(productObj);
-    console.log("productArr", productArr);
+    //console.log("productArr", productArr);
 
     const productData = productArr.find(product => product.id === productId)
-    console.log('productData', productData)
+    //console.log('productData', productData)
 
     if (!productObj || !productArr || !productData ) return null;
 

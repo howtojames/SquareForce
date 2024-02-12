@@ -29,15 +29,15 @@ function PostProduct() {
 
 
   const productStateObj = useSelector(state => state.product);  //access using computed value
-  console.log('productStateObj', productStateObj);
+  //console.log('productStateObj', productStateObj);
   const productStateArr = Object.values(productStateObj)
   const productObj = productStateArr.find(product => product.id ===productId)
-  console.log("productObj", productObj)
+  //console.log("productObj", productObj)
 
   //error handling
   useEffect(() => {
       if(productObj) {
-          console.log("productObj in useEffect", productObj)
+          //console.log("productObj in useEffect", productObj)
           setTitle(productObj.title);
           setPrice(productObj.price);
           setCondition(productObj.condition);
@@ -84,7 +84,7 @@ function PostProduct() {
 
     //thunk takes in two arguments
    const updateProductRes = await dispatch(thunkUpdateAProduct(productId, formData))
-   console.log('updateProductRes', updateProductRes)
+   //console.log('updateProductRes', updateProductRes)
 
     // Reset the form state.
     setTitle('');
@@ -101,7 +101,7 @@ function PostProduct() {
   }
 
 
-  console.log('!image', !image);
+  //console.log('!image', !image);
   return (
     <div id="post-product-container">
       <h2>Revise Listing</h2>

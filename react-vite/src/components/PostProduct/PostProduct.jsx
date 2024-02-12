@@ -47,12 +47,12 @@ function PostProduct() {
     formData.append("description", description)
 
 
-    for (const entry of formData.entries()) {
-      console.log("formData", entry);
-    }
+    // for (const entry of formData.entries()) {
+    //   console.log("formData", entry);
+    // }
 
     const postProductRes = await dispatch(thunkPostAProduct(formData))
-    console.log('postProductRes', postProductRes)
+    //console.log('postProductRes', postProductRes)
 
     // Reset the form state.
     setTitle('');
@@ -69,7 +69,7 @@ function PostProduct() {
   }
 
 
-  console.log('!image', !image);
+  //console.log('!image', !image);
   return (
     <div id="post-product-container">
       <h2>List an Item</h2>
