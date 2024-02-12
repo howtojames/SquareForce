@@ -10,7 +10,7 @@ import StarsRatingInput from '../PostReviewModal/StarsRatingInput';
 
 function ReviewsView ({productId, productData}) {
 
-    console.log("productId in ReviewsView", productId);
+    //console.log("productId in ReviewsView", productId);
 
     //logic for Modal
     const [showMenu, setShowMenu] = useState(false);
@@ -39,11 +39,11 @@ function ReviewsView ({productId, productData}) {
     } else {
         loggedIn = false;
     } //after this loggedIn is determined and put to use in the render
-    console.log('loggedIn', loggedIn);
+    //console.log('loggedIn', loggedIn);
     //if you comment this back in , we will get an error when we go to SpotDetails while logged out
     if(loggedIn){
-        console.log('sessionUser', sessionUser);
-        console.log('sessionUser.id', sessionUser.id);
+        //console.log('sessionUser', sessionUser);
+        //console.log('sessionUser.id', sessionUser.id);
     }
 
     //dispatch and selector logic
@@ -54,19 +54,22 @@ function ReviewsView ({productId, productData}) {
 
     //state.review
     const reviewState = useSelector(state => state.review);
-    console.log("reviewState", reviewState);
+    //console.log("reviewState", reviewState);
 
     if (!reviewState) return null;
     const reviewArr = Object.values(reviewState);
-    console.log("reviewArr", reviewArr)
+    //console.log("reviewArr", reviewArr)
 
     let userReviewed = false;
     //loop through each reviewArr element, using user.id
-    for (let review of reviewArr){
-        if(review.user.id === sessionUser.id){
-            userReviewed = true;
+    if(sessionUser){
+        for (let review of reviewArr){
+            if(review.user.id === sessionUser.id){
+                userReviewed = true;
+            }
         }
     }
+
     //submit a review
     const onSubmit = () => {
 
@@ -123,8 +126,8 @@ function ReviewsView ({productId, productData}) {
                                     />
                                 </div>
                                 <div id="by-username">{`by ${review.user.username}`}</div>
-
-                                {sessionUser.id === review.buyerId ? (
+                                {/* had to add a loggedInchekc */}
+                                {loggedIn && sessionUser.id === review.buyerId ? (
                                     <div id="delete-review-button">  {/* pass in props for spot.id */}
                                         <OpenModalMenuItem
                                         itemText="Delete"

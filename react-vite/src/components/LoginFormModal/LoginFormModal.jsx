@@ -54,8 +54,8 @@ function LoginFormModal() {
     await navigate('/')
   }
 
-  console.log("hasSubmitted", hasSubmitted)
-  console.log("validationErrors", validationErrors)
+  //console.log("hasSubmitted", hasSubmitted)
+  //console.log("validationErrors", validationErrors)
   return (
     <div id="sign-in-container">
 

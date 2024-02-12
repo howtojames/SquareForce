@@ -41,7 +41,7 @@ function SignupFormModal() {
         password,
       })
     );
-    console.log('serverResponse outside', serverResponse)
+    //console.log('serverResponse outside', serverResponse)
     if (serverResponse) {
       console.log('serverResponse', serverResponse)
       setErrors(serverResponse);

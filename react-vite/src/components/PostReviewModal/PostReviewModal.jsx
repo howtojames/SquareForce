@@ -30,14 +30,14 @@ function PostReviewModal({ productId }) {
           review: review,
           stars: rating    //keep it for setRating
       }
-      console.log("reviewData", reviewData);
+      //console.log("reviewData", reviewData);
       //const reviewObj =
       await dispatch(thunkPostAReview(productId, reviewData))
       .catch(async (res) => {  //page does not reload with this .catch
         const data = await res.json();
-        console.log('data', data);
+        //console.log('data', data);
         if (data && data.errors) {
-          console.log('data.errors', data.errors);
+          //console.log('data.errors', data.errors);
           setErrors(data.errors);
         }
       });
@@ -50,7 +50,7 @@ function PostReviewModal({ productId }) {
 
       closeModal();
 
-      console.log('errors state', errors);
+      //console.log('errors state', errors);
   };  //end of handleSubmit
 
   //setting rating

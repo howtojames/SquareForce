@@ -14,10 +14,10 @@ function WatchListView(){
     }, [dispatch]);
 
     const watchlistState = useSelector(state => state.watchlist)
-    console.log('watchlistState', watchlistState);
+    //console.log('watchlistState', watchlistState);
     const watchlistStateArr = Object.values(watchlistState);
 
-    console.log('watchlistStateArr', watchlistStateArr);
+    //console.log('watchlistStateArr', watchlistStateArr);
 
     return (
         <div id="watchlist-view-container">

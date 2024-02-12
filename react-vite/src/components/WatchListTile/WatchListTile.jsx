@@ -11,7 +11,7 @@ function WatchListTile({ watchlist }){
     const [showMenu, setShowMenu] = useState(false);
     const ulRef = useRef();
 
-    console.log('watchlist product.id', watchlist.id)
+    //console.log('watchlist product.id', watchlist.id)
     const watchlistId = watchlist.id
 
     const onDelete = async (e) => {

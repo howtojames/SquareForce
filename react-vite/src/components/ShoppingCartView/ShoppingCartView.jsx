@@ -16,9 +16,9 @@ function ShoppingCartView(){
     }, [dispatch]);
 
     const cartProductState = useSelector(state => state.cartProduct)
-    console.log('cartProductState', cartProductState);
+    //console.log('cartProductState', cartProductState);
     const cartProductStateArr = Object.values(cartProductState);
-    console.log("cartProductStateArr", cartProductStateArr)
+    //console.log("cartProductStateArr", cartProductStateArr)
 
     let items = 0;
     let total = 0;
