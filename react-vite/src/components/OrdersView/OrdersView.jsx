@@ -20,12 +20,12 @@ function OrdersView(){
     const orderState = useSelector(state => state.order)
     //console.log('orderState', orderState);
     const orderStateArr = Object.values(orderState);
-    console.log('orderStateArr', orderStateArr);
+    //console.log('orderStateArr', orderStateArr);
 
     const orderProductState = useSelector(state => state.orderProduct)
     //console.log('orderProductState', orderProductState);
     const orderProductStateArr = Object.values(orderProductState);
-    console.log('orderProductStateArr', orderProductStateArr);
+    //console.log('orderProductStateArr', orderProductStateArr);
 
     return (
         <div id="selling-view-container">
