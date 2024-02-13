@@ -20,7 +20,7 @@ def get_product_reviews(id):
         return jsonify([])
 
     product_reviews_data = [product_reviews.to_dict() for product_reviews in product_reviews]
-    print("product_reviews_data", product_reviews_data)
+    #print("product_reviews_data", product_reviews_data)
     return jsonify(product_reviews_data)
 
 
@@ -46,7 +46,7 @@ def post_product_review(id):
             productId = id,
             buyerId = current_user.id
         )
-        print("new_product_review", new_product_review)
+        #print("new_product_review", new_product_review)
         db.session.add(new_product_review)
         db.session.commit()
         return new_product_review.to_dict()

@@ -18,7 +18,7 @@ product_routes = Blueprint('products', __name__)
 def get_all_products():
 
     products_list = Product.query.order_by(Product.id.desc()).all()
-    print("products_list", products_list)
+    #print("products_list", products_list)
     #create new list
     products = []
     for product in products_list:
@@ -48,7 +48,7 @@ def get_current_user_products():
 
     user_data = user.to_dict()
     product_data = [product.to_dict() for product in products]
-    print( product_data, user_data)
+    #print( product_data, user_data)
     return jsonify(products = product_data)
 
 
@@ -59,7 +59,7 @@ def post_product():
     form = ProductForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
-    print("current_user.id ***", current_user.id)
+    #print("current_user.id ***", current_user.id)
 
     #aws s3
     image = form.data["image"]
@@ -84,7 +84,7 @@ def post_product():
 
             #category = form.data["category"]
         )
-        print("new_product", new_product)
+        #print("new_product", new_product)
         db.session.add(new_product)
         db.session.commit()
         return new_product.to_dict()
@@ -97,7 +97,7 @@ def post_product():
 @login_required
 def update_product(id):
     product = Product.query.get(id)
-    print("product", product.to_dict())
+    #print("product", product.to_dict())
 
     #error handling
     if not product: return "Product does not exist"

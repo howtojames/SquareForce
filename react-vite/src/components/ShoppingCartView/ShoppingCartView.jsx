@@ -2,7 +2,9 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom";
 import './ShoppingCartView.css';
-import { thunkGetCurrentUserCartProducts, thunkDeleteACartProduct } from "../../redux/cartproduct";
+import { thunkGetCurrentUserCartProducts, thunkDeleteACartProduct, thunkPostACartProduct } from "../../redux/cartproduct";
+import { thunkPostAnOrder, thunkGetCurrentUserOrders } from "../../redux/order";
+import { thunkGetCurrentUserOrderProducts, thunkPostAnOrderProduct } from "../../redux/orderproduct";
 import ShoppingCartTile from "../ShoppingCartTile/ShoppingCartTile";
 
 
@@ -27,12 +29,33 @@ function ShoppingCartView(){
         total += cartProduct.quantity * cartProduct.product.price;
     }
 
-    const onDeleteAll = async (e) => {
+    const handleCheckout = async (e) => {
         e.preventDefault();
 
-        for(let cartProduct of cartProductStateArr ){
+        const order = {
+            total: total
+        }
+
+        //POST an order with details
+        const placedOrder = await dispatch(thunkPostAnOrder(order));
+        console.log("placedOrder", placedOrder)  //checking the id
+
+        //POST an OrderProduct for each cartProduct
+        //delete all cart products
+        for(let cartProduct of cartProductStateArr){
+            console.log("for each cartProduct in shopping cart", cartProduct)
+            const orderProductData = {
+                orderId: placedOrder.order.id,
+                productId: cartProduct.product.id,
+                quantity: cartProduct.quantity
+            }
+            console.log("orderProductData", orderProductData);
+            await dispatch(thunkPostAnOrderProduct(orderProductData)); //postAOrderProduct
+
             await dispatch(thunkDeleteACartProduct(cartProduct.id));
         }
+
+        navigate('/orders');
     }
 
     const startShopping = () => {
@@ -60,7 +83,7 @@ function ShoppingCartView(){
 
             </div>
             <div id="shopping-cart-right">
-                <button id="checkout-button" onClick={onDeleteAll}>Checkout</button>
+                <button id="checkout-button" onClick={handleCheckout}>Checkout</button>
                 <p id="items">
                     <div>Items ({items})</div>
                     <div>${total}</div>
