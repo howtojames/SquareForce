@@ -49,7 +49,7 @@ function ShoppingCartView(){
                 productId: cartProduct.product.id,
                 quantity: cartProduct.quantity
             }
-            console.log("orderProductData", orderProductData);
+            //console.log("orderProductData", orderProductData);
             await dispatch(thunkPostAnOrderProduct(orderProductData)); //postAOrderProduct
 
             await dispatch(thunkDeleteACartProduct(cartProduct.id));

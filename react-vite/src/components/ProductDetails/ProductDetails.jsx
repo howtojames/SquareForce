@@ -62,9 +62,9 @@ function ProductDetails () {
 
     //logic to determine productInWatchlist
     const watchlistState = useSelector(state => state.watchlist);
-    console.log("watchlistState", watchlistState)
+    //console.log("watchlistState", watchlistState)
     const watchlistArr = Object.values(watchlistState)
-    console.log("watchlistArr", watchlistArr)
+    //console.log("watchlistArr", watchlistArr)
 
 
     let productInWatchlist = false;
