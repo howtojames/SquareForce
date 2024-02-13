@@ -10,13 +10,17 @@ import productsReducer from "./product";
 import cartProductsReducer from "./cartproduct";
 import reviewsReducer from './reviews';
 import watchlistReducer from "./watchlist";
+import ordersReducer from "./order";
+import orderProductsReducer from "./orderproduct";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   product: productsReducer,
   cartProduct: cartProductsReducer,
   review: reviewsReducer,
-  watchlist: watchlistReducer
+  watchlist: watchlistReducer,
+  order: ordersReducer,
+  orderProduct: orderProductsReducer
 });
 
 let enhancer;

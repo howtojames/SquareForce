@@ -18,7 +18,7 @@ def get_current_user_cart_products():
     cart_products =  CartProduct.query.filter_by(buyerId=userId).all()
 
     cart_product_data = [cart_product.to_dict() for cart_product in cart_products]
-    print("cart_product_data", cart_product_data)
+    #print("cart_product_data", cart_product_data)
     return jsonify(cart_product_data)
 
 
@@ -42,7 +42,7 @@ def post_cart_product(id):
             productId = id,
             buyerId = current_user.id
         )
-        print("new_cart_product", new_cart_product)
+        #print("new_cart_product", new_cart_product)
         db.session.add(new_cart_product)
         db.session.commit()
         return new_cart_product.to_dict()
@@ -54,7 +54,7 @@ def post_cart_product(id):
 @login_required
 def update_cart_product(cart_product_id):
     cart_product = CartProduct.query.get(cart_product_id)
-    print("cart_product", cart_product.to_dict())
+    #print("cart_product", cart_product.to_dict())
 
     #error handling
     if not cart_product: return "CartProduct does not exist"

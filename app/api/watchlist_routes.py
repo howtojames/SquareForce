@@ -19,7 +19,7 @@ def get_watchlist_products():
         return jsonify([])
 
     watchlist_products_data = [watchlist_products.to_dict() for watchlist_products in watchlist_products]
-    print("watchlist_products_data", watchlist_products_data)
+    #print("watchlist_products_data", watchlist_products_data)
     return jsonify(watchlist_products_data)
 
 
@@ -37,7 +37,7 @@ def post_watchlist_product(id):
             userId = current_user.id,
             productId = id
         )
-        print("new_watchlist_product", new_watchlist_product)
+        #print("new_watchlist_product", new_watchlist_product)
         db.session.add(new_watchlist_product)
         db.session.commit()
         return new_watchlist_product.to_dict()

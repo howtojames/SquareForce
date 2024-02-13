@@ -37,7 +37,7 @@ export const thunkGetProductReviews  = (productId) => async (dispatch) => {
 
     if(res.ok) {
       const productReviews = await res.json();
-      console.log('productReviews in thunkGetProductReviews', productReviews);
+      //console.log('productReviews in thunkGetProductReviews', productReviews);
       dispatch(getProductReviews(productReviews));
       return productReviews;
     } else  {
@@ -53,7 +53,7 @@ export const thunkGetCurrentUserReviews = () => async (dispatch) => {
   if(res.ok) {
     //{ Reviews: [ {}, {}, ...] }, food
     const reviews = await res.json();
-    console.log('currentUserReviews in thunk', reviews);
+    //console.log('currentUserReviews in thunk', reviews);
     dispatch(getCurrentUserReviews(reviews));
     return reviews;
   } else  {
@@ -71,12 +71,12 @@ export const thunkPostAReview = (productId, review) => async (dispatch) => {
 
   if(res.ok) {
     const review = await res.json();
-    console.log('review in thunkPostAReview', review);
+    //console.log('review in thunkPostAReview', review);
     dispatch(postAReview(review));
     return review;
   } else  {
     const error = await res.json();
-    console.log('thunkPostAProduct error message', error);
+    console.log('thunkPostAReview error message', error);
     return error;
   }
 }
@@ -107,7 +107,7 @@ const reviewsReducer = (state = initialState, action) => {
     case GET_PRODUCT_REVIEWS: {
       const newState = {}; //always start with empty state
       action.productReviews.forEach((review) => newState[review.id] = review);
-      console.log("newState in reducer", newState);
+      //console.log("newState in reducer", newState);
       return newState;
     }
     case POST_A_REVIEW: {

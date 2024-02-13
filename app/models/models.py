@@ -26,6 +26,11 @@ class User(db.Model, UserMixin):
     #relationship with Watchlist
     watchlist = db.relationship("WatchList", back_populates="user")
 
+    #relationship with Orders
+    orders = db.relationship("Order", back_populates="user")
+
+
+
 
 
     @property
@@ -74,6 +79,8 @@ class Product(db.Model):
     #relationship with CartProducts
     cart_products = db.relationship("CartProduct", back_populates="products")
 
+    order_products = db.relationship("OrderProduct", back_populates="products")
+
     #relationship with Review
     reviews = db.relationship("Review", back_populates="products")
 
@@ -115,6 +122,7 @@ class CartProduct(db.Model):
 
     #relationship with Product
     products = db.relationship("Product", back_populates="cart_products")
+
 
     def to_dict(self):
         return {
@@ -193,6 +201,75 @@ class WatchList(db.Model):
             'product': self.products.to_dict(),
             'productId': self.productId,
             'userId': self.userId,
+            'createdAt': self.createdAt,
+            'updatedAt': self.updatedAt
+        }
+
+
+class Order(db.Model):
+    __tablename__ = "orders"
+
+     #production
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
+
+    id = db.Column(db.Integer, primary_key=True)
+    total = db.Column(db.Integer, nullable=False)
+    #indicates one User to many Order
+    buyerId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
+    createdAt = db.Column(db.TIMESTAMP, default=datetime.now())
+    updatedAt = db.Column(db.TIMESTAMP, default=datetime.now())
+
+    #relationship with User
+    user = db.relationship("User", back_populates="orders")
+
+    #relationship with Order
+    order_products = db.relationship("OrderProduct", back_populates="order")
+
+
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'total': self.total,
+            'buyerId': self.buyerId,
+            'createdAt': self.createdAt,
+            'updatedAt': self.updatedAt
+        }
+
+
+class OrderProduct(db.Model):
+    __tablename__ = "order_products"
+
+
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
+
+    id = db.Column(db.Integer, primary_key=True)
+    quantity = db.Column(db.Integer, nullable=False)
+    #indicate one Order to many OrderProduct
+    orderId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("orders.id")))
+    #indicate one Product to many OrderProduct
+    productId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("products.id")))
+    #indicate one User to many OrderProduct
+    buyerId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
+    createdAt = db.Column(db.TIMESTAMP, default=datetime.now())
+    updatedAt = db.Column(db.TIMESTAMP, default=datetime.now())
+
+    #relationship with Order
+    order = db.relationship("Order", back_populates="order_products")
+
+    #relationship with Product
+    products = db.relationship("Product", back_populates="order_products")
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'product': self.products.to_dict(),
+            'quantity': self.quantity,
+            'orderId': self.orderId,
+            'productId': self.productId,
+            'buyerId': self.buyerId,
             'createdAt': self.createdAt,
             'updatedAt': self.updatedAt
         }
