@@ -42,7 +42,7 @@ export const thunkPostAnOrder = (order) => async (dispatch) => {
     if(res.ok) {
       const order = await res.json();
       /* we return order and cartProduct */
-      console.log('two-part order in thunkPostAorder', order);
+      //console.log('two-part order in thunkPostAorder', order);
       /* two slices of order being passed back by the route */
       dispatch(postAnOrder(order));
       return order;

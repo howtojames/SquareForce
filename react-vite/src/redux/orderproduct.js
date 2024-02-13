@@ -43,7 +43,7 @@ export const thunkPostAnOrderProduct = (orderProduct) => async (dispatch) => {
     if(res.ok) {
       const orderProduct = await res.json();
       /* we return order and cartProduct */
-      console.log('thunkPostAOrderProduct', orderProduct);
+      //console.log('thunkPostAOrderProduct', orderProduct);
       dispatch(postAnOrderProduct(orderProduct));
       return orderProduct;
     } else  {

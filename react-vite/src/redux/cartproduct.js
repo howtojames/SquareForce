@@ -40,7 +40,7 @@ export const thunkGetCurrentUserCartProducts = () => async (dispatch) => {
 
     if(res.ok) {
       const cartProductData = await res.json();
-      console.log('productData in thunkGetCurrentUserCartProducts', cartProductData);
+      //console.log('productData in thunkGetCurrentUserCartProducts', cartProductData);
       dispatch(getCurrentUserCartProducts(cartProductData));
       return cartProductData;
     } else  {
@@ -60,7 +60,7 @@ export const thunkPostACartProduct = (productId, cartProduct) => async (dispatch
 
   if(res.ok) {
     const cartProductData = await res.json();
-    console.log('cartProductData in thunkPostACartProduct', cartProductData);
+    //console.log('cartProductData in thunkPostACartProduct', cartProductData);
     dispatch(postACartProduct(cartProductData));
     return cartProductData;
   } else  {
@@ -81,7 +81,7 @@ export const thunkUpdateACartProduct = (cartProductId, cartProduct) => async (di
 
   if(res.ok) {
     const cartProductData = await res.json();
-    console.log('cartProductData in thunkUpdateACartProduct', cartProductData);
+    //console.log('cartProductData in thunkUpdateACartProduct', cartProductData);
     dispatch(updateACartProduct(cartProductData));
     return cartProductData;
   } else  {

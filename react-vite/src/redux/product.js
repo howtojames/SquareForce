@@ -43,7 +43,7 @@ export const thunkGetAllProducts = () => async (dispatch) => {
     if(res.ok) {
       //{ Products: [ {}, {}, ... ]}
       const allProducts = await res.json();
-      console.log('all Products after fetch', allProducts)
+      //console.log('all Products after fetch', allProducts)
       dispatch(loadAllProducts(allProducts));
       return allProducts;
     } else  {
@@ -55,7 +55,7 @@ export const thunkGetCurrentUserProducts = () => async (dispatch) => {
 
   if(res.ok) {
     const productData = await res.json();
-    console.log('productData in thunkGetCurrentUserProducts', productData);
+    //console.log('productData in thunkGetCurrentUserProducts', productData);
     dispatch(getCurrentUserProducts(productData));
     return productData;
   } else  {
@@ -69,7 +69,7 @@ export const thunkGetProductDetails = (productId) => async (dispatch) => {
 
   if(res.ok) {
     const productDetails = await res.json();
-    console.log('product details in thunk', productDetails);
+    //console.log('product details in thunk', productDetails);
     dispatch(getProductDetails(productDetails));
     return productDetails;
   } else  {
@@ -88,7 +88,7 @@ export const thunkPostAProduct = (product) => async (dispatch) => {
 
   if(res.ok) {
     const productData = await res.json();
-    console.log('productData in thunkPostAproduct', productData);
+    //console.log('productData in thunkPostAproduct', productData);
     dispatch(postAProduct(productData));
     return productData;
   } else  {
@@ -108,7 +108,7 @@ export const thunkUpdateAProduct = (productId, product) => async (dispatch) => {
 
   if(res.ok) {
     const productData = await res.json();
-    console.log('updateAProduct thunk productData res', productData);
+    //console.log('updateAProduct thunk productData res', productData);
     dispatch(updateAProduct(productData));
     return productData;
   } else {
@@ -141,7 +141,7 @@ const productsReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_ALL_PRODUCTS: {
       const newState = { ...initialState };
-      console.log('action.allProducts in reducer', action.allProducts)
+      //console.log('action.allProducts in reducer', action.allProducts)
       action.allProducts.forEach((product) => newState[product.id] = product);
       //console.log('newState', newState);
       return newState;
