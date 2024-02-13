@@ -31,7 +31,7 @@ export const thunkGetCurrentUserWatchlist = () => async (dispatch) => {
 
     if(res.ok) {
         const watchlist = await res.json();
-        console.log('watchlist in thunk', watchlist);
+        //console.log('watchlist in thunk', watchlist);
         dispatch(getCurrentUserWatchlist(watchlist));
         return watchlist;
     } else  {
@@ -48,7 +48,7 @@ export const thunkPostAWatchlistProduct = (productId) => async (dispatch) => {
 
     if(res.ok) {
         const watchlistProduct = await res.json();
-        console.log('watchlistProduct in thunkPostAWatchlistProduct', watchlistProduct);
+        //console.log('watchlistProduct in thunkPostAWatchlistProduct', watchlistProduct);
         dispatch(postAWatchlistProduct(watchlistProduct));
         return watchlistProduct;
     } else  {
@@ -83,7 +83,7 @@ const watchlistReducer = (state = initialState, action) => {
     case GET_CURRENT_USER_WATCHLIST: {
       const newState = {}; //always start with empty state
       action.watchlist.forEach((product) => newState[product.id] = product);
-      console.log("newState in reducer", newState);
+      //console.log("newState in reducer", newState);
       return newState;
     }
     case POST_A_WATCHLIST_PRODUCT: {
