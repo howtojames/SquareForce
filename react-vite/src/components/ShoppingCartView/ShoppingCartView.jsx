@@ -38,12 +38,12 @@ function ShoppingCartView(){
 
         //POST an order with details
         const placedOrder = await dispatch(thunkPostAnOrder(order));
-        console.log("placedOrder", placedOrder)  //checking the id
+        //console.log("placedOrder", placedOrder)  //checking the id
 
         //POST an OrderProduct for each cartProduct
         //delete all cart products
         for(let cartProduct of cartProductStateArr){
-            console.log("for each cartProduct in shopping cart", cartProduct)
+            //console.log("for each cartProduct in shopping cart", cartProduct)
             const orderProductData = {
                 orderId: placedOrder.order.id,
                 productId: cartProduct.product.id,

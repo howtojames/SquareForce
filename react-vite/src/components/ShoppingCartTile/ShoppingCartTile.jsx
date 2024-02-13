@@ -13,7 +13,7 @@ function ShoppingCartTile({ cartProduct }){
     // const [showMenu, setShowMenu] = useState(false);
     // const ulRef = useRef();
 
-    console.log('cartProduct.product.id', cartProduct.product.id)
+    //console.log('cartProduct.product.id', cartProduct.product.id)
     const productId = cartProduct.product.id
 
 
