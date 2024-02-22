@@ -79,9 +79,8 @@ function ShoppingCartView(){
                         <ShoppingCartTile key={cartProduct.id} cartProduct={cartProduct} />
                     ))
                 )}
-
-
             </div>
+
             <div id="shopping-cart-right">
                 <button id="checkout-button" onClick={handleCheckout}>Checkout</button>
                 <p id="items">
