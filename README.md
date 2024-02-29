@@ -37,7 +37,7 @@ Welcome to SquareForce, your premier destination for buying and selling goods on
 ## Getting started
 1. To clone the project:
 ```
-git clone git@github.com:Nick-Root/Codera.git
+git clone git@github.com:howtojames/SquareForce.git
 ```
 2. Create an .env file in the Codera folder. Copy `.env.example` file into the `.env file.`
 
