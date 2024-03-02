@@ -6,7 +6,7 @@ https://james-squareforce.onrender.com
 ### Index
 [Feature List](https://github.com/howtojames/SquareForce/wiki/Feature-List) |
 [Database Scheme](https://github.com/howtojames/SquareForce/wiki/Database-Schema-and-Backend-Routes) |
-[User Stories] (https://github.com/howtojames/SquareForce/wiki/User-Stories)
+[User Stories](https://github.com/howtojames/SquareForce/wiki/User-Stories)
 
 
 ### Technologies Used
