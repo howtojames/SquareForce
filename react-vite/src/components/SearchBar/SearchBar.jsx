@@ -5,7 +5,9 @@ function SearchBar() {
     const [query, setQuery] = useState('');
 
     return (
-        <></>
+        <div id="search-bar-container">
+
+        </div>
     )
 
 };
