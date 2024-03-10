@@ -9,6 +9,7 @@ function MySquareForce() {
             <div>
                 <div>Selling</div>
                 <div>Orders</div>
+                <div>Watchlist</div>
             </div>
 
         </div>
