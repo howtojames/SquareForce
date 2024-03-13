@@ -6,7 +6,7 @@ function SearchBar() {
 
     return (
         <div id="search-bar-container">
-            <div></div>
+            <div id="query-conainer"></div>
             <div id="search-button">Search</div>
         </div>
     )
