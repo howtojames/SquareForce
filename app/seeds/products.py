@@ -111,6 +111,8 @@ def seed_products():
         description = 'The Arctis Nova Pro Wireless for Xbox raises the bar for audio headsets with the Nova Pro Acoustic System, immersive 360° Spatial Audio, Sonar Software, Active Noise Cancellation, and a dual-battery system.'
     )
 
+    #need more seed data
+    #create another user/users that will store all the products
 
 
     db.session.add(product1)
