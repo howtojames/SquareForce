@@ -53,8 +53,7 @@ class User(db.Model, UserMixin):
             'email': self.email
         }
 
-
-
+#price to decimal
 class Product(db.Model):
     __tablename__ = "products"
 
@@ -65,6 +64,7 @@ class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String, nullable=False)
     condition = db.Column(db.String, nullable=False)
+    #change
     price = db.Column(db.Integer, nullable=False)
     image = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=False)
