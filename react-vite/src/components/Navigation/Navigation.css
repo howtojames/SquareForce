@@ -164,5 +164,7 @@ body {
 
 /* search bar */
 #search-button {
-
+    width: 300px;
+    height: 100px;
+    background-color: white;
 }
