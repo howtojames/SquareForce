@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
 import { useSelector } from "react-redux";
 import "./Navigation.css";
+import SearchBar from "../SearchBar/SearchBar.jsx";
 
 function Navigation() {
   //grabs the sessionUser after first render
@@ -54,7 +55,16 @@ function Navigation() {
               <span id='logo-green'>e</span>
             </NavLink>
           </div>
+
+          <div id="search-bar-container">
+            <div id="query-conainer">
+                <label></label>
+                <input type="text"></input>
+            </div>
+            <div id="search-button">Search</div>
+        </div>
       </div>
+
       <div id="bottom-border"></div>
 
     </div>
