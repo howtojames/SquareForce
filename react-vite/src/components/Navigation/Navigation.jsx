@@ -58,11 +58,16 @@ function Navigation() {
 
           <div id="search-bar-container">
             <div id="query-conainer">
-                <label></label>
+                <label>testgin</label>
+
                 <input type="text"></input>
             </div>
             <div id="search-button">Search</div>
-        </div>
+
+          </div>
+
+          <SearchBar/>
+
       </div>
 
       <div id="bottom-border"></div>
