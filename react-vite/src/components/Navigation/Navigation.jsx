@@ -58,7 +58,7 @@ function Navigation() {
 
           <div id="search-bar-container">
             <div id="query-conainer">
-                <label>testgin</label>
+
 
                 <input type="text"></input>
             </div>
