@@ -56,13 +56,6 @@ function Navigation() {
             </NavLink>
           </div>
 
-          <div id="search-bar-container">
-            <div id="query-conainer">
-                <input type="text"></input>
-            </div>
-            <div id="search-button">Search</div>
-
-          </div>
 
           <SearchBar/>
 
