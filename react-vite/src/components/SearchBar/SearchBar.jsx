@@ -18,6 +18,9 @@ function SearchBar() {
     const allProducts = useSelector(state => state.products);
     console.log("allProducts in Searchbar", allProducts);
 
+    //might need to change to be be anywhere in the string
+    const filteredList = allProducts.filter(product => product.name === query);
+
 
 
     return (
