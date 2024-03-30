@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react-redux";
+import { useState, useEffect } from "react";
 import { thunkGetAllProducts } from '../../redux/product';
-import { useDisaptch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 function SearchBar() {
-    const dispatch = useDisaptch();
+    const dispatch = useDispatch();
 
     const [query, setQuery] = useState('');
 
@@ -15,11 +15,12 @@ function SearchBar() {
         dispatch(thunkGetAllProducts());
     }, [dispatch]);
 
-    const allProducts = useSelector(state => state.products);
-    console.log("allProducts in Searchbar", allProducts);
+    //const allProducts = useSelector(state => state.products);
+    //const allProductsArr = Object.values(allProducts);
+    //console.log("allProductsArr in Searchbar", allProductsArr);
 
     //might need to change to be be anywhere in the string
-    const filteredList = allProducts.filter(product => product.name === query);
+    //const filteredList = allProductsArr.filter(product => product.name === query);
 
 
 
