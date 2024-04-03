@@ -56,8 +56,9 @@ function Navigation() {
             </NavLink>
           </div>
 
-
-          <SearchBar/>
+          <div id="nav-search-container">
+            <SearchBar/>
+          </div>
 
       </div>
 
