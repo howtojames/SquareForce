@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { thunkGetAllProducts } from '../../redux/product';
 import { useDispatch, useSelector } from 'react-redux';
+import "./SearchBar.css";
 
 function SearchBar() {
     const dispatch = useDispatch();
@@ -28,7 +29,7 @@ function SearchBar() {
         <div id="search-bar-container">
             <div id="query-conainer">
                 <label></label>
-                <input type="text" placeholder="Search"></input>
+                <input id="search-bar-input" type="text" placeholder="Search"></input>
             </div>
 
         </div>
