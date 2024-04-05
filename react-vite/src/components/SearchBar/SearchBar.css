@@ -1,4 +1,23 @@
+#query-container{
+    display: flex;
+
+}
+
+
 #search-bar-input {
     width: 500px;
+    min-width: 200px;
     height: 30px;
+
+    border: 2px grey solid;
+}
+
+
+
+#search-button {
+    background-color: #3864ec;
+    color: white;
+    border: none;
+    width: 100px;
+    margin-left: 5px;
 }

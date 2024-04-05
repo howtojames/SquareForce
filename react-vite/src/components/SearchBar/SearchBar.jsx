@@ -27,9 +27,10 @@ function SearchBar() {
 
     return (
         <div id="search-bar-container">
-            <div id="query-conainer">
+            <div id="query-container">
                 <label></label>
-                <input id="search-bar-input" type="text" placeholder="Search"></input>
+                <input id="search-bar-input" type="text" placeholder="   Search for anything"></input>
+                <button id="search-button">Search</button>
             </div>
 
         </div>
