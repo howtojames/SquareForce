@@ -21,3 +21,7 @@
     width: 100px;
     margin-left: 5px;
 }
+
+#search-button:hover{
+    cursor: pointer;
+}
