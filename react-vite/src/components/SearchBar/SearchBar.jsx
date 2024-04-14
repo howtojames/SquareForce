@@ -23,9 +23,9 @@ function SearchBar() {
     //might need to change to be be anywhere in the string
     //const filteredList = allProductsArr.filter(product => product.name === query);
 
-    // const onClick = () => {
-    //     widow.alert("feature coming soon");
-    // }
+    const onClick = () => {
+        widow.alert("feature coming soon");
+    }
 
     return (
         <div id="search-bar-container">
