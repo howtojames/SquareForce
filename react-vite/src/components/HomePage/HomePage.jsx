@@ -36,6 +36,10 @@ function HomePage() {
             <div id="products-title">Products</div>
             <main id="main-container">
 
+                {/* add recently viewed */}
+                {/* need queue */}
+                <div>Recently Viewed</div>
+
                 <div id="page-container">
                     <div id="all-products-container">
 
