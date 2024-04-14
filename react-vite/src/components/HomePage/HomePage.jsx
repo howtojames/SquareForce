@@ -18,6 +18,8 @@ function HomePage() {
     const allProductsArr = Object.values(allProductsObj)
     //console.log("allProductsArr", allProductsArr)
 
+    //recently viewed
+    //queue, with each node being an object of the product viewed
 
     return (
         <>
@@ -38,7 +40,10 @@ function HomePage() {
 
                 {/* add recently viewed */}
                 {/* need queue */}
-                <div>Recently Viewed</div>
+                <div id="recently-viewed-label">Recently Viewed</div>
+                {/*
+
+                */}
 
                 <div id="page-container">
                     <div id="all-products-container">
