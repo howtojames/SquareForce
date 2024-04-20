@@ -33,6 +33,7 @@ function SearchBar() {
                 <label></label>
                 <input id="search-bar-input" type="text" placeholder="   Search for anything"></input>
                 {/* add icon in search */}
+                {/* icon */}
                 <button onClick={onClick} id="search-button">Search</button>
             </div>
 
