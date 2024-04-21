@@ -32,10 +32,10 @@ function SearchBar() {
             <div id="query-container">
                 <label></label>
                 <input id="search-bar-input"
-                type="text"
-                placeholder="   Search for anything"
-                value={query}
-                onChange={e=>setQuery(value)}>
+                    type="text"
+                    placeholder="Search for anything"
+                    value={query}
+                    onChange={e => setQuery(value)}>
                 </input>
                 {/* add icon in search */}
                 {/* icon */}
