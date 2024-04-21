@@ -35,7 +35,7 @@ function SearchBar() {
                     type="text"
                     placeholder="Search for anything"
                     value={query}
-                    onChange={e => setQuery(value)}>
+                    onChange={e => setQuery(e.target.value)}>
                 </input>
                 {/* add icon in search */}
                 {/* icon */}
