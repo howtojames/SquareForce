@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import { thunkGetAllProducts } from '../../redux/product';
 import { useDispatch, useSelector } from 'react-redux';
 import "./SearchBar.css";
+import { useNavigate } from "react-router-dom";
 
 function SearchBar() {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const [query, setQuery] = useState('');
 
@@ -24,7 +26,7 @@ function SearchBar() {
     //const filteredList = allProductsArr.filter(product => product.name === query);
 
     const onClick = () => {
-        widow.alert("feature coming soon");
+        navigate("/");
     }
 
     return (
