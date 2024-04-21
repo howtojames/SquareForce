@@ -25,6 +25,7 @@ function SearchBar() {
     //might need to change to be be anywhere in the string
     //const filteredList = allProductsArr.filter(product => product.name === query);
 
+    //get a list of all products
     const onClick = () => {
         navigate("/");
     }
