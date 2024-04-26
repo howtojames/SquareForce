@@ -6,9 +6,9 @@
 
 #search-bar-input {
     /* this controls the width of the input */
-    width: 900px;
-    min-width: 200px;
-    height: 30px;
+    width: 80%;
+
+    height: 35px;
 
     border: 2px grey solid;
 }
@@ -19,7 +19,11 @@
     background-color: #3864ec;
     color: white;
     border: none;
-    width: 100px;
+    /* just to test */
+
+    width: 100%;
+
+    width: 150px;
     margin-left: 5px;
 }
 
