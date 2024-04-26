@@ -40,3 +40,12 @@
 
     width: 100%;
 }
+
+/* sets the size and style for the slideshow */
+#ad-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    background-size: cover;
+}
