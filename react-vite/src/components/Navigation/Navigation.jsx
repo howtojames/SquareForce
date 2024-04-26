@@ -60,6 +60,7 @@ function Navigation() {
             <SearchBar/>
           </div>
 
+      {/* end of mid-nav */}
       </div>
 
       <div id="bottom-border"></div>

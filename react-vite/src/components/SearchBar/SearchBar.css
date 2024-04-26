@@ -5,7 +5,8 @@
 
 
 #search-bar-input {
-    width: 500px;
+    /* this controls the width of the input */
+    width: 900px;
     min-width: 200px;
     height: 30px;
 

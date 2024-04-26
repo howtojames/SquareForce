@@ -165,4 +165,6 @@ body {
 /* outside of the conatiner */
 #nav-search-container {
     margin-left: 100px;
+    min-width: 30%;
+    max-width: 100%;
 }
