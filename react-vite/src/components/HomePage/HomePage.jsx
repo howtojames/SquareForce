@@ -40,7 +40,7 @@ function HomePage() {
 
                 {/* add recently viewed */}
                 {/* need queue */}
-                <div id="recently-viewed-label">Recently Viewed</div>
+                {/* <div id="recently-viewed-label">Recently Viewed</div> */}
                 {/*
 
                 */}
