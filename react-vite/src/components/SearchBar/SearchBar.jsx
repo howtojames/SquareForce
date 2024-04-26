@@ -27,7 +27,7 @@ function SearchBar() {
 
     //get a list of all products
     const onClick = () => {
-        navigate("/");
+        window.alert("feature coming soon!");
     }
 
     return (
