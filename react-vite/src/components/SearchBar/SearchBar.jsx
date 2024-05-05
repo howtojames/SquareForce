@@ -40,7 +40,6 @@ function SearchBar() {
                     value={query}
                     onChange={e => setQuery(e.target.value)}>
                 </input>
-                {/* add icon in search */}
                 {/* icon */}
                 <button id="search-button">Search</button>
             </div>
