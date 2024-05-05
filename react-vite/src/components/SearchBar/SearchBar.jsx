@@ -18,9 +18,9 @@ function SearchBar() {
         dispatch(thunkGetAllProducts());
     }, [dispatch]);
 
-    // const allProducts = useSelector(state => state.products);
-    // const allProductsArr = Object.values(allProducts);
-    // console.log("allProductsArr in Searchbar", allProductsArr);
+    const allProducts = useSelector(state => state.products);
+    const allProductsArr = Object.values(allProducts);
+    console.log("allProductsArr in Searchbar", allProductsArr);
 
     //might need to change to be be anywhere in the string
     //const filteredList = allProductsArr.filter(product => product.name === query);
