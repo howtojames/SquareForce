@@ -79,9 +79,7 @@ function HomePage() {
                     </Slide>
 
                 </div>
-               {/*  <div className="slide fade">
-                    <img src="image2.jpg" alt="Ad Image 2" />
-                </div> */}
+
             </div>
 
             <div id="products-title">Products</div>
