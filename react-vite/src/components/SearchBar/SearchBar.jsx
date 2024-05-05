@@ -22,7 +22,7 @@ function SearchBar() {
     const allProductsArr = Object.values(allProducts);
     console.log("allProductsArr in Searchbar", allProductsArr);
 
-    //might need to change to be be anywhere in the string
+    //filtered list
     //const filteredList = allProductsArr.filter(product => product.name === query);
 
     //get a list of all products
@@ -42,7 +42,7 @@ function SearchBar() {
                 </input>
                 {/* add icon in search */}
                 {/* icon */}
-                <button onClick={onClick} id="search-button">Search</button>
+                <button id="search-button">Search</button>
             </div>
 
         </div>
