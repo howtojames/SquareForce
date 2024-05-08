@@ -88,9 +88,7 @@ function HomePage() {
                 {/* add recently viewed */}
                 {/* need queue */}
                 {/* <div id="recently-viewed-label">Recently Viewed</div> */}
-                {/*
 
-                */}
 
                 <div id="page-container">
                     <div id="all-products-container">

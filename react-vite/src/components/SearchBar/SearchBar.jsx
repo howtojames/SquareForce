@@ -11,8 +11,8 @@ function SearchBar() {
     const [query, setQuery] = useState('');
 
     //get a list of all products
-    //then make a sogirotihm that
-    //show s a list of any character strings that are matching
+    //then make an algirotihm that
+    //shows a list of any character strings that are matching
 
     useEffect( () => {
         dispatch(thunkGetAllProducts());
@@ -29,6 +29,8 @@ function SearchBar() {
     const onClick = () => {
         window.alert("feature coming soon!");
     }
+
+    
 
     return (
         <div id="search-bar-container">
