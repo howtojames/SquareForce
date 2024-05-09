@@ -18,9 +18,9 @@ function SearchBar() {
         dispatch(thunkGetAllProducts());
     }, [dispatch]);
 
-    const allProducts = useSelector(state => state.products);
+    /* const allProducts = useSelector(state => state.products);
     const allProductsArr = Object.values(allProducts);
-    console.log("allProductsArr in Searchbar", allProductsArr);
+    console.log("allProductsArr in Searchbar", allProductsArr); */
 
     //filtered list
     //const filteredList = allProductsArr.filter(product => product.name === query);
@@ -30,7 +30,7 @@ function SearchBar() {
         window.alert("feature coming soon!");
     }
 
-    
+
 
     return (
         <div id="search-bar-container">
