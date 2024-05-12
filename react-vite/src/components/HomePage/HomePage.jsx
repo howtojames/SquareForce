@@ -67,6 +67,7 @@ function HomePage() {
                                 </div>
                            </div>
                         ))}
+                        {/* try adding dots to the page */}
                     </Slide>
 
                 </div>
