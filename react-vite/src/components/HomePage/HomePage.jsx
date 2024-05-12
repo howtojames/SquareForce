@@ -48,15 +48,6 @@ function HomePage() {
     ];
 
 
-    // const divStyle = {
-    //     display: 'flex',
-    //     alignItems: 'center',
-    //     justifyContent: 'center',
-    //     height: '280px',
-    //     backgroundSize: 'cover'
-    // };
-
-
 
     return (
         <>
