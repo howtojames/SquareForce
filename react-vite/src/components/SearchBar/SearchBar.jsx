@@ -26,9 +26,9 @@ function SearchBar() {
     //const filteredList = allProductsArr.filter(product => product.name === query);
 
     //get a list of all products
-    const onClick = () => {
+    /* const onClick = () => {
         window.alert("feature coming soon!");
-    }
+    } */
 
 
 
