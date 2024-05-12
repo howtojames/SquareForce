@@ -27,6 +27,9 @@ function OrdersView(){
     const orderProductStateArr = Object.values(orderProductState);
     //console.log('orderProductStateArr', orderProductStateArr);
 
+
+    /* add more order details to the page */
+
     return (
         <div id="selling-view-container">
             <div id='orders'>Orders</div>
