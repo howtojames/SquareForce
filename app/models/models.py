@@ -16,6 +16,13 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    #added address, city, state, country
+    address = db.Column(db.String(255), nullable=False)
+    city = db.Column(db.String(255), nullable=False)
+    state = db.Column(db.String(255), nullable=False)
+    country = db.Column(db.String(255), nullable=False)
+
+
 
     #relationship
     products = db.relationship("Product", back_populates="user")  #error here when db upgrade
