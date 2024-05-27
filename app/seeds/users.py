@@ -14,9 +14,9 @@ def seed_users():
         username='bobbie', email='bobbie@aa.io', password='password')
 
     seller1 = User(
-        username='seller1', email='seller1@gmail.com', password='password', address='123 main street', city="New York City", state='NY')
+        username='seller1', email='seller1@gmail.com', password='password')
     james = User(
-        username='jruan', email='jruan@gmail.com', password='password', address='123 first street', city="San Francisco", state='CA')
+        username='jruan', email='jruan@gmail.com', password='password')
 
     db.session.add(demo)
     db.session.add(marnie)
