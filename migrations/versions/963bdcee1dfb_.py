@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: ce56dc506c10
+Revision ID: 963bdcee1dfb
 Revises:
-Create Date: 2024-05-27 00:16:11.391903
+Create Date: 2024-05-27 00:27:33.084398
 
 """
 from alembic import op
@@ -11,6 +11,7 @@ import sqlalchemy as sa
 import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
+
 
 # revision identifiers, used by Alembic.
 revision = '25fcf4a6bba1'
@@ -26,16 +27,12 @@ def upgrade():
     sa.Column('username', sa.String(length=40), nullable=False),
     sa.Column('email', sa.String(length=255), nullable=False),
     sa.Column('hashed_password', sa.String(length=255), nullable=False),
-    sa.Column('address', sa.String(length=255), nullable=True),
-    sa.Column('city', sa.String(length=255), nullable=True),
-    sa.Column('state', sa.String(length=255), nullable=True),
-    sa.Column('country', sa.String(length=255), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
     if environment == "production":
-       op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
 
     op.create_table('orders',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -47,7 +44,7 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     if environment == "production":
-       op.execute(f"ALTER TABLE orders SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE orders SET SCHEMA {SCHEMA};")
 
     op.create_table('products',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -122,7 +119,6 @@ def upgrade():
     )
     if environment == "production":
         op.execute(f"ALTER TABLE watchlist SET SCHEMA {SCHEMA};")
-
     # ### end Alembic commands ###
 
 
