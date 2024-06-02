@@ -6,16 +6,24 @@ from sqlalchemy.sql import text
 def seed_users():
     print("INSIDE SEED USERS")
 
-    users = [
-        User(username='Demo', email='demo@aa.io', hashed_password='hashed_password', address=None, city=None, state=None, country=None),
-        User(username='marnie', email='marnie@aa.io', hashed_password='hashed_password', address=None, city=None, state=None, country=None),
-        User(username='bobbie', email='bobbie@aa.io', hashed_password='hashed_password', address=None, city=None, state=None, country=None),
-        User(username='seller1', email='seller1@gmail.com', hashed_password='hashed_password', address=None, city=None, state=None, country=None),
-        User(username='jruan', email='jruan@gmail.com', hashed_password='hashed_password', address=None, city=None, state=None, country=None)
-    ]
+    demo = User(
+        username='Demo', email='demo@aa.io', password='password')
+    marnie = User(
+        username='marnie', email='marnie@aa.io', password='password')
+    bobbie = User(
+        username='bobbie', email='bobbie@aa.io', password='password')
 
-    for user in users:
-        db.session.add(user)
+    seller1 = User(
+        username='seller1', email='seller1@gmail.com', password='password')
+    james = User(
+        username='jruan', email='jruan@gmail.com', password='password')
+
+    db.session.add(demo)
+    db.session.add(marnie)
+    db.session.add(bobbie)
+
+    db.session.add(seller1)
+    db.session.add(james)
 
     db.session.commit()
 
