@@ -17,10 +17,10 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
     #added address, city, state, country, they are optional
-    # address = db.Column(db.String(255), nullable=True)
-    # city = db.Column(db.String(255), nullable=True)
-    # state = db.Column(db.String(255), nullable=True)
-    # country = db.Column(db.String(255), nullable=True)
+    address = db.Column(db.String(255), nullable=True)
+    city = db.Column(db.String(255), nullable=True)
+    state = db.Column(db.String(255), nullable=True)
+    country = db.Column(db.String(255), nullable=True)
 
 
 
