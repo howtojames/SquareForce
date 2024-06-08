@@ -24,9 +24,18 @@ class User(db.Model, UserMixin):
 
 
     #pipenv run flask db init
+
+
     #pipenv run flask db migrate
     #pipenv run flask db upgrade
     #pipenv run flask seed all
+
+    # import os
+    # environment = os.getenv("FLASK_ENV")
+    # SCHEMA = os.environ.get("SCHEMA")
+
+    # revision identifiers, used by Alembic.
+    # revision = '25fcf4a6bba1'
 
 
 
