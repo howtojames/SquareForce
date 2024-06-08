@@ -67,6 +67,23 @@ class User(db.Model, UserMixin):
             'email': self.email
         }
 
+
+
+class User_Address(db.Model, UserMixin):
+    __tablename__ = 'user_addresses'
+
+    #production
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
+
+    id = db.Column(db.Integer, primary_key=True)
+    address = db.Column(db.String(255), nullable=True)
+    city = db.Column(db.String(255), nullable=True)
+    state = db.Column(db.String(255), nullable=True)
+    country = db.Column(db.String(255), nullable=True)
+
+
+
 #price to decimal
 class Product(db.Model):
     __tablename__ = "products"
