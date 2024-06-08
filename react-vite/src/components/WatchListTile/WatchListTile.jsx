@@ -1,15 +1,14 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './WatchListTile.css';
-import { useState, useEffect, useRef } from 'react';
+import { useState,  useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import OpenModalMenuItem from '../Navigation/OpenModalMenuItem.jsx';
 import { thunkDeleteAWatchlistProduct } from '../../redux/watchlist.js';
 
 //watchlist a watchlist product here
 function WatchListTile({ watchlist }){
     const dispatch = useDispatch();
-    const [showMenu, setShowMenu] = useState(false);
-    const ulRef = useRef();
+    //const [showMenu, setShowMenu] = useState(false);
+    //const ulRef = useRef();
 
     //console.log('watchlist product.id', watchlist.id)
     const watchlistId = watchlist.id
