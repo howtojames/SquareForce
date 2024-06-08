@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { thunkGetAllProducts } from '../../redux/product';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+
 import "./SearchBar.css";
-import { useNavigate } from "react-router-dom";
+
 
 function SearchBar() {
     const dispatch = useDispatch();

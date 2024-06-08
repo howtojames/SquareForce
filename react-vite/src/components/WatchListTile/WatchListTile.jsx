@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import './WatchListTile.css';
-import { useState,  useRef } from 'react';
+//import { useState,  useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { thunkDeleteAWatchlistProduct } from '../../redux/watchlist.js';
 

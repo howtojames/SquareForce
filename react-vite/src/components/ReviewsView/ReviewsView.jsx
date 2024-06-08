@@ -4,7 +4,7 @@ import { thunkGetProductReviews } from '../../redux/reviews';
 import './ReviewsView.css';
 import OpenModalMenuItem from '../Navigation/OpenModalMenuItem';
 import PostReviewModal from '../PostReviewModal/PostReviewModal';
-import { thunkGetProductDetails } from '../../redux/product';
+//import { thunkGetProductDetails } from '../../redux/product';
 import DeleteReviewModal from '../DeleteReviewModal/DeleteReviewModal';
 import StarsRatingInput from '../PostReviewModal/StarsRatingInput';
 
@@ -14,9 +14,10 @@ function ReviewsView ({productId, productData}) {
 
     //logic for Modal
     const [showMenu, setShowMenu] = useState(false);
-    const user = useSelector((state) => state.session.user)
+    //const user = useSelector((state) => state.session.user)
     const ulRef = useRef();
     const dispatch = useDispatch()
+
     useEffect(() => {
         const closeMenu = (e) => {
         if (!ulRef.current.contains(e.target)) {
@@ -26,7 +27,7 @@ function ReviewsView ({productId, productData}) {
         document.addEventListener('click', closeMenu);
 
         return () => document.removeEventListener("click", closeMenu);
-    }, [showMenu]);
+    }, [showMenu, dispatch]);
     const closeMenu = () => setShowMenu(false);
 
 
@@ -50,7 +51,7 @@ function ReviewsView ({productId, productData}) {
     useEffect(() => {
         dispatch(thunkGetProductReviews(productId));
 
-    }, [productId]);
+    }, [productId, dispatch]);
 
     //state.review
     const reviewState = useSelector(state => state.review);
@@ -69,11 +70,11 @@ function ReviewsView ({productId, productData}) {
             }
         }
     }
-
+    console.log("reviewArr", reviewArr);
     //submit a review
-    const onSubmit = () => {
+    // const onSubmit = () => {
 
-    }
+    // }
 
     return (
         <div id="reviews-section-container">
@@ -116,7 +117,7 @@ function ReviewsView ({productId, productData}) {
                     </div>
                 ) : (
                     reviewArr.map((review) => (
-                        <div id="single-review-container">
+                        <div key={review.id} id="single-review-container">
                             <div id="single-review-left">
                                 <div className='star-ratings-containe'>
                                     <StarsRatingInput
