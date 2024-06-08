@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react-redux";
+//import { useState, useEffect } from "react-redux";
 
 
 function MySquareForce() {
@@ -15,7 +15,7 @@ function MySquareForce() {
         </div>
     )
 
-};
+}
 
 
 export default MySquareForce;

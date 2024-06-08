@@ -118,7 +118,8 @@ export const thunkUpdateAProduct = (productId, product) => async (dispatch) => {
   }
 }
 
-export const thunkDeleteAProduct = (productId) => async (dispatch) => {
+//not using dispatch here
+export const thunkDeleteAProduct = (productId) => async () => {
   //Method: PUT
   const res = await fetch(`/api/products/${productId}`, {
     method: 'DELETE'

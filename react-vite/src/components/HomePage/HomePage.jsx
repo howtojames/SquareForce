@@ -8,7 +8,8 @@ import './HomePage.css';
 //linking the css from the package for the slideshow
 import 'react-slideshow-image/dist/styles.css';
 //we use the slide effect
-import { Fade, Zoom, Slide } from 'react-slideshow-image';
+//Fade, Zoom
+import { Slide } from 'react-slideshow-image';
 
 
 function HomePage() {

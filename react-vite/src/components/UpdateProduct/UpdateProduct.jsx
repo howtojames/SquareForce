@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 
 import './UpdateProduct.css';
-import { thunkGetProductDetails, thunkUpdateAProduct } from '../../redux/product';
+import { thunkGetProductDetails } from '../../redux/product'; //updateAProduct
 
 function PostProduct() {
   const dispatch = useDispatch();
@@ -83,7 +83,7 @@ function PostProduct() {
     }
 
     //thunk takes in two arguments
-   const updateProductRes = await dispatch(thunkUpdateAProduct(productId, formData))
+   //const updateProductRes = await dispatch(thunkUpdateAProduct(productId, formData))
    //console.log('updateProductRes', updateProductRes)
 
     // Reset the form state.
@@ -166,7 +166,7 @@ function PostProduct() {
         </div>
         <div>
             <div className="post-product-section-label">Add a Photo</div>
-            <div className="post-product-section-description" id="image-description">Improve your buyer's confidence by uploading an image</div>
+            <div className="post-product-section-description" id="image-description">Improve your buyer&apos;s confidence by uploading an image</div>
             <input id='image-file-input'
               type='file'
               accept='image/*'

@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+//import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import './PostProduct.css';
-import { thunkPostAProduct } from '../../redux/product';
+//import { thunkPostAProduct } from '../../redux/product';
 
 function PostProduct() {
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [title, setTitle] = useState('');
@@ -51,7 +51,7 @@ function PostProduct() {
     //   console.log("formData", entry);
     // }
 
-    const postProductRes = await dispatch(thunkPostAProduct(formData))
+    //const postProductRes = await dispatch(thunkPostAProduct(formData))
     //console.log('postProductRes', postProductRes)
 
     // Reset the form state.
@@ -134,7 +134,7 @@ function PostProduct() {
         </div>
         <div>
             <div className="post-product-section-label">Add a Photo</div>
-            <div className="post-product-section-description" id="image-description">Improve your buyer's confidence by uploading an image</div>
+            <div className="post-product-section-description" id="image-description">Improve your buyer&apos;s confidence by uploading an image</div>
             <input id='image-file-input'
               type='file'
               accept='image/*'

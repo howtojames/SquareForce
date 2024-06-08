@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
 import { NavLink } from "react-router-dom"
@@ -25,7 +25,7 @@ function WatchListView(){
             <div>
                 {watchlistStateArr.length === 0 ? (
                     <div id="empty-seller-page">
-                        <div>You don't have any watchlist items. </div>
+                        <div>You don&apos;t have any watchlist items. </div>
                         <NavLink to="/" id="start-a-listing">Head back to main page</NavLink>
                     </div>
                 ) : (

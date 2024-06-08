@@ -2,9 +2,9 @@ import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom";
 import './ShoppingCartView.css';
-import { thunkGetCurrentUserCartProducts, thunkDeleteACartProduct, thunkPostACartProduct } from "../../redux/cartproduct";
-import { thunkPostAnOrder, thunkGetCurrentUserOrders } from "../../redux/order";
-import { thunkGetCurrentUserOrderProducts, thunkPostAnOrderProduct } from "../../redux/orderproduct";
+import { thunkGetCurrentUserCartProducts, thunkDeleteACartProduct } from "../../redux/cartproduct";
+import { thunkPostAnOrder } from "../../redux/order";
+import { thunkPostAnOrderProduct } from "../../redux/orderproduct";
 import ShoppingCartTile from "../ShoppingCartTile/ShoppingCartTile";
 
 
@@ -70,7 +70,7 @@ function ShoppingCartView(){
 
                 {cartProductStateArr.length === 0 ? (
                     <div id="empty-shopping-cart">
-                        <div>You don't have any items in your cart. Let's get shopping!</div>
+                        <div>You don&apos;t have any items in your cart. Let&apos;s get shopping!</div>
                         <button onClick={startShopping}>Start Shopping</button>
                     </div>
                 ) : (
