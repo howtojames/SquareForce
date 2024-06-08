@@ -37,6 +37,9 @@ class User(db.Model, UserMixin):
     # revision identifiers, used by Alembic.
     # revision = '25fcf4a6bba1'
 
+    # if environment == "production":
+    #    op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+
 
 
 
