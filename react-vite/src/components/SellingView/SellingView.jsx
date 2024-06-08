@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
 import { NavLink } from "react-router-dom"
@@ -25,7 +25,7 @@ function SellingView(){
             <div>
                 {productStateArr.length === 0 ? (
                     <div id="empty-seller-page">
-                        <div>You don't have any active items.</div>
+                        <div>You don&apos;t have any active items.</div>
                         <NavLink to="/products/new" id="start-a-listing">Start a listing</NavLink>
                     </div>
                 ) : (

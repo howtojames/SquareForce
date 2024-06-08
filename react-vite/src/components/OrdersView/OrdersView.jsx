@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Link } from 'react-router-dom';
 import { NavLink } from "react-router-dom"
@@ -36,12 +36,12 @@ function OrdersView(){
             <div>
                 {orderStateArr.length === 0 ? (
                     <div id="empty-seller-page">
-                        <div>You don't have any Orders.</div>
+                        <div>You don&apos;t have any Orders.</div>
                         <NavLink to="/" id="start-a-listing">Head back to main page</NavLink>
                     </div>
                 ) : (
                     orderStateArr.map((order) => (
-                        <div id="order-container">
+                        <div key={order.id} id="order-container">
                             <div id="order-upper-container">
                                 <div id="status">Order Placed</div>
                                 <div id="order-total">&bull; Order Total: US ${order.total}</div>
@@ -49,7 +49,7 @@ function OrdersView(){
                             </div>
 
                             {orderProductStateArr.filter(orderProduct => orderProduct.orderId === order.id).map(orderProduct => (
-                                    <div id="sell-tile-container">
+                                    <div id="sell-tile-container" key={orderProduct.id}>
                                     <div id="sell-tile-left">
                                         <Link to={`/products/${orderProduct.product.id}`} id='product-image-link'>
                                             <img id="selling-image" src={orderProduct.product.image} />
