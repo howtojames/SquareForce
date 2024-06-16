@@ -5,17 +5,21 @@ from sqlalchemy.sql import text
 def seed_user_address():
     print("INSIDE SEED USER ADDRESS")
 
-    demo_address = james_address = User_Address (
-        city="Los Angeles", state="CA",
+    demo_address = User_Address (
+        city="San Francisco", state="CA",
     )
 
-    james_address = User_Address (
-        city="Los Angeles", state="CA",
+    marnie_address = User_Address (
+        city="San Francisco", state="CA",
+    )
+
+    bobbie_address = User_Address (
+        city="San Francisco", state="CA",
     )
 
     demo_address.save()
-
-
+    marnie_address.save()
+    bobbie_address.save()
 
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't
