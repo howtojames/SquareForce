@@ -6,15 +6,15 @@ def seed_user_address():
     print("INSIDE SEED USER ADDRESS")
 
     demo_address = User_Address (
-        city="San Francisco", state="CA",
+        address="123 Main Street", city="San Francisco", state="CA", country="USA"
     )
 
     marnie_address = User_Address (
-        city="San Francisco", state="CA",
+        address="123 Main Street", city="San Francisco", state="CA", country="USA"
     )
 
     bobbie_address = User_Address (
-        city="San Francisco", state="CA",
+        address="123 Main Street", city="San Francisco", state="CA", country="USA"
     )
 
     demo_address.save()
