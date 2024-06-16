@@ -10,11 +10,11 @@ def seed_user_address():
     )
 
     marnie_address = User_Address (
-        address="123 Main Street", city="San Francisco", state="CA", country="USA"
+        address="123 1st Street", city="San Francisco", state="CA", country="USA"
     )
 
     bobbie_address = User_Address (
-        address="123 Main Street", city="San Francisco", state="CA", country="USA"
+        address="123 Test Ave", city="San Francisco", state="CA", country="USA"
     )
 
     demo_address.save()
