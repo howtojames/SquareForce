@@ -5,9 +5,15 @@ from sqlalchemy.sql import text
 def seed_user_address():
     print("INSIDE SEED USER ADDRESS")
 
+    demo_address = james_address = User_Address (
+        city="Los Angeles", state="CA",
+    )
+
     james_address = User_Address (
         city="Los Angeles", state="CA",
     )
+
+    demo_address.save()
 
 
 
