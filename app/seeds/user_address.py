@@ -1,9 +1,14 @@
-from app.models import db, User, environment, SCHEMA
+from app.models import db, User_Address, environment, SCHEMA
 from sqlalchemy.sql import text
 
 # Adds a demo user, you can add other users here if you want
 def seed_user_address():
     print("INSIDE SEED USER ADDRESS")
+
+    review1 = User_Address (
+        buyerId = 1, productId = 1, stars = 5,
+        review = 'I have been using the Microsoft Surface Pro 8 for a few weeks now, and I am thoroughly impressed.'
+    )
 
 
 
