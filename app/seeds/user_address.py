@@ -5,9 +5,8 @@ from sqlalchemy.sql import text
 def seed_user_address():
     print("INSIDE SEED USER ADDRESS")
 
-    review1 = User_Address (
-        buyerId = 1, productId = 1, stars = 5,
-        review = 'I have been using the Microsoft Surface Pro 8 for a few weeks now, and I am thoroughly impressed.'
+    james_address = User_Address (
+        city="Los Angeles", state="CA",
     )
 
 
