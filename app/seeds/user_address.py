@@ -14,7 +14,7 @@ def seed_user_address():
     )
 
     bobbie_address = User_Address (
-        address="123 Test Ave", city="San Francisco", state="CA", country="USA"
+        address="231 2dd Street", city="San Francisco", state="CA", country="USA"
     )
 
     demo_address.save()
