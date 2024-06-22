@@ -14,17 +14,24 @@ def seed_user_address():
     )
 
     bobbie_address = User_Address (
-        address="231 2dd Street", city="San Francisco", state="CA", country="USA"
+        address="231 Bay Street", city="San Francisco", state="CA", country="USA"
+    )
+
+    seller1_address = User_Address (
+        address="123 Broadway", city="San Francisco", state="CA", country="USA"
     )
 
     james_address = User_Address (
-        address="231 2dd Street", city="San Francisco", state="CA", country="USA"
+        address="123 Pine Stret", city="San Francisco", state="CA", country="USA"
     )
+
+
 
     demo_address.save()
     marnie_address.save()
     bobbie_address.save()
 
+    seller1_address.save()
     james_address.save()
 
 
