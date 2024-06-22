@@ -9,7 +9,7 @@ import "./index.css";
 
 const store = configureStore();
 
-if (import.meta.env.MODE !== "production") {
+if (import.meta.env.MODE !== False) {
   window.store = store;
   window.sessionActions = sessionActions;
 }

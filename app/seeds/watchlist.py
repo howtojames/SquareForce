@@ -20,7 +20,7 @@ def seed_watchlist():
 
 
 def undo_watchlist():
-    if environment == "production":
+    if environment == False:
         db.session.execute(f"TRUNCATE table {SCHEMA}.watchlist RESTART IDENTITY CASCADE;")
     else:
         db.session.execute(text("DELETE FROM watchlist"))
