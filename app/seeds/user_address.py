@@ -25,8 +25,6 @@ def seed_user_address():
         address="123 Pine Stret", city="San Francisco", state="CA", country="USA"
     )
 
-
-
     demo_address.save()
     marnie_address.save()
     bobbie_address.save()
