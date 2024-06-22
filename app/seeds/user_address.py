@@ -17,20 +17,24 @@ def seed_user_address():
         address="231 Bay Street", city="San Francisco", state="CA", country="USA"
     )
 
+
     seller1_address = User_Address (
         address="123 Broadway", city="San Francisco", state="CA", country="USA"
     )
-
     james_address = User_Address (
         address="123 Pine Stret", city="San Francisco", state="CA", country="USA"
     )
 
-    demo_address.save()
-    marnie_address.save()
-    bobbie_address.save()
 
-    seller1_address.save()
-    james_address.save()
+    db.session.add(demo_address)
+    db.session.add(marnie_address)
+    db.session.add(bobbie_address)
+
+    db.session.add(seller1_address)
+    db.session.add(james_address)
+
+    db.session.commit()
+
 
 
 # Uses a raw SQL query to TRUNCATE or DELETE the users table. SQLAlchemy doesn't
