@@ -30,6 +30,7 @@ def seed():
         undo_users()
     # Add other seed functions here
     print("SEED debug true")
+    print("environment check:", environment, type(environment))
     seed_users()
     seed_products()
     seed_cart_products()
