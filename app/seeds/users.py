@@ -36,7 +36,7 @@ def seed_users():
 # it will reset the primary keys for you as well.
 def undo_users():
     print("INSIDE UNDO USERS")
-    if environment == False:
+    if environment == "production":
         print("environment == False")
         db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
     else:

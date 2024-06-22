@@ -16,7 +16,7 @@ seed_commands = AppGroup('seed')
 # Creates the `flask seed all` command
 @seed_commands.command('all')
 def seed():
-    if environment == 0:
+    if environment == "production":
         print("SEED debug false")
         # Before seeding in production, you want to run the seed undo
         # command, which will  truncate all tables prefixed with
