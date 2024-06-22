@@ -29,6 +29,7 @@ def seed():
         undo_products()
         undo_users()
     # Add other seed functions here
+    print("SEED debug true")
     seed_users()
     seed_products()
     seed_cart_products()
