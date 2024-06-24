@@ -80,7 +80,7 @@ class User_Address(db.Model, UserMixin):
     __tablename__ = 'user_addresses'
 
     #production
-    if environment == False:
+    if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
@@ -96,7 +96,7 @@ class Product(db.Model):
     __tablename__ = "products"
 
     #production
-    if environment == False:
+    if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
@@ -146,7 +146,7 @@ class CartProduct(db.Model):
     __tablename__ = "cart_products"
 
     #production
-    if environment == False:
+    if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
@@ -176,7 +176,7 @@ class CartProduct(db.Model):
 class Review(db.Model):
     __tablename__ = "reviews"
 
-    if environment == False:
+    if environment == "production":
          __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
@@ -214,7 +214,7 @@ class WatchList(db.Model):
     __tablename__ = "watchlist"
 
     #production
-    if environment == False:
+    if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
@@ -248,7 +248,7 @@ class Order(db.Model):
     __tablename__ = "orders"
 
      #production
-    if environment == False:
+    if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
@@ -280,7 +280,7 @@ class OrderProduct(db.Model):
     __tablename__ = "order_products"
 
 
-    if environment == False:
+    if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)

@@ -9,7 +9,7 @@ from alembic import op
 import sqlalchemy as sa
 
 import os
-environment = os.getenv("FLASK_DEBUG")
+environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
@@ -29,7 +29,7 @@ def upgrade():
     sa.Column('country', sa.String(length=255), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    if environment == False:
+    if environment == "production":
        op.execute(f"ALTER TABLE user_addresses SET SCHEMA {SCHEMA};")
 
     op.create_table('users',
@@ -41,7 +41,7 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
-    if environment == False:
+    if environment == "production":
        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
 
     op.create_table('orders',
@@ -53,7 +53,7 @@ def upgrade():
     sa.ForeignKeyConstraint(['buyerId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    if environment == False:
+    if environment == "production":
        op.execute(f"ALTER TABLE orders SET SCHEMA {SCHEMA};")
 
     op.create_table('products',
@@ -69,7 +69,7 @@ def upgrade():
     sa.ForeignKeyConstraint(['sellerId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    if environment == False:
+    if environment == "production":
        op.execute(f"ALTER TABLE products SET SCHEMA {SCHEMA};")
 
     op.create_table('cart_products',
@@ -83,7 +83,7 @@ def upgrade():
     sa.ForeignKeyConstraint(['productId'], ['products.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    if environment == False:
+    if environment == "production":
        op.execute(f"ALTER TABLE cart_products SET SCHEMA {SCHEMA};")
 
     op.create_table('order_products',
@@ -99,7 +99,7 @@ def upgrade():
     sa.ForeignKeyConstraint(['productId'], ['products.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    if environment == False:
+    if environment == "production":
        op.execute(f"ALTER TABLE order_products SET SCHEMA {SCHEMA};")
 
     op.create_table('reviews',
@@ -114,7 +114,7 @@ def upgrade():
     sa.ForeignKeyConstraint(['productId'], ['products.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    if environment == False:
+    if environment == "production":
        op.execute(f"ALTER TABLE reviews SET SCHEMA {SCHEMA};")
 
     op.create_table('watchlist',
@@ -127,7 +127,7 @@ def upgrade():
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    if environment == False:
+    if environment == "production":
        op.execute(f"ALTER TABLE watchlist SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
