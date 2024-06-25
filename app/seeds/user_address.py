@@ -25,6 +25,10 @@ def seed_user_address():
         address="123 Pine Stret", city="San Francisco", state="CA", country="USA"
     )
 
+    test_address = User_Address (
+        address="123 Pine Stret", city="San Francisco", state="CA", country="USA"
+    )
+
 
     db.session.add(demo_address)
     db.session.add(marnie_address)
