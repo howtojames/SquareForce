@@ -7,7 +7,6 @@ from flask import current_app
 
 from alembic import context
 
-#added
 import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
@@ -100,15 +99,14 @@ def run_migrations_online():
             **current_app.extensions['migrate'].configure_args
         )
 
-        #added
-        # Create a schema (only in production)
-        if environment == False:
+         # Create a schema (only in production)
+        if environment == "production":
             connection.execute(f"CREATE SCHEMA IF NOT EXISTS {SCHEMA}")
 
 
        # Set search path to your schema (only in production)
         with context.begin_transaction():
-            if environment == False:
+            if environment == "production":
                 context.execute(f"SET search_path TO {SCHEMA}")
             context.run_migrations()
 
