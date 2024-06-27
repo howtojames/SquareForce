@@ -14,7 +14,7 @@ def seed_watchlist():
     )
     db.session.add(watchlist1)
     db.session.add(watchlist2)
-
+    #
     db.session.commit()
 
 
