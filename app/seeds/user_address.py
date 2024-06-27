@@ -37,6 +37,7 @@ def seed_user_address():
     db.session.add(seller1_address)
     db.session.add(james_address)
 
+    #
     db.session.commit()
 
 
