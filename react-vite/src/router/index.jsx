@@ -56,6 +56,11 @@ export const router = createBrowserRouter([
         path: "signup",
         element: <SignupFormPage />,
       },
+      //add change router here
+      {
+        path: "change-address",
+        //elemment:
+      },
     ],
   },
 ]);
