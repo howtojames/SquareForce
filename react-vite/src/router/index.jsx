@@ -10,7 +10,8 @@ import SellingView from '../components/SellingView/SellingView'
 import ShoppingCartView from '../components/ShoppingCartView/ShoppingCartView';
 import WatchListView from '../components/WatchListView/WatchListView';
 import OrdersView from '../components/OrdersView/OrdersView';
-import CheckoutPage from '../components/CheckoutPage';
+import CheckoutPage from '../components/CheckoutPage/CheckoutPage';
+
 
 
 export const router = createBrowserRouter([
@@ -60,7 +61,7 @@ export const router = createBrowserRouter([
       //add change router here
       {
         path: "change-address",
-        element: <CheckoutPage/>
+        element: <CheckoutPage />
       },
     ],
   },

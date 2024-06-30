@@ -1,7 +1,7 @@
 // import { NavLink, Link } from 'react-router-dom';
 // import { useDispatch } from 'react-redux';
 // import { useState, useEffect } from 'react-redux';
-import  '/Checkout.css';
+import  './CheckoutPage.css';
 
 function Checkout() {
 
