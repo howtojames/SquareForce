@@ -12,6 +12,10 @@ function Checkout() {
             <div>Shipping Address</div>
             {/* want to update address here */}
             {/* display the user's address here */}
+
+
+            {/* checkout with something here */}
+            {/* use external tools for checkout */}
         </div>
     )
 
