@@ -102,7 +102,10 @@ body {
   /* so that text will not go to the next line */
   white-space: nowrap;
   font-size: 15px;
-  padding: 5px;
+  padding: 5px 8px;
+  /* position for the whole modal */
+  left: -9.5px;
+  bottom: -73px;
 }
 
 #logout-button {
