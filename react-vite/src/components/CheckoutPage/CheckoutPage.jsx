@@ -28,6 +28,11 @@ function Checkout() {
             </div>
             <button>Edit</button>
 
+            {/* previosu addresses */}
+            <div></div>
+            <div></div>
+            <div></div>
+
 
             {/* checkout with something here */}
             {/* use external tools for checkout */}
