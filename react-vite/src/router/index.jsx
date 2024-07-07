@@ -60,7 +60,7 @@ export const router = createBrowserRouter([
       },
       //add change router here
       {
-        path: "change-address",
+        path: "/checkout",
         element: <CheckoutPage />
       },
     ],

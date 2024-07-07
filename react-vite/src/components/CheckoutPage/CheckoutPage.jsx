@@ -1,9 +1,15 @@
 // import { NavLink, Link } from 'react-router-dom';
-// import { useDispatch } from 'react-redux';
-// import { useState, useEffect } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react-redux';
 import  './CheckoutPage.css';
 
+
 function Checkout() {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        //think of thunk here
+    }, [dispatch])
 
 
     return (
