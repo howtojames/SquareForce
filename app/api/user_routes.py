@@ -22,4 +22,5 @@ def user(id):
     Query for a user by id and returns that user in a dictionary
     """
     user = User.query.get(id)
+    print("user HERRE", user)
     return user.to_dict()

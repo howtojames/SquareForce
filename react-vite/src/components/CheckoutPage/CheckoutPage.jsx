@@ -11,6 +11,10 @@ function Checkout() {
         //think of thunk here
     }, [dispatch])
 
+    //think of where you the address will come from
+    //check the frontend
+
+
 
     return (
         <div id="checkout-container">
