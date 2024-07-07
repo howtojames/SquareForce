@@ -9,9 +9,14 @@ function Checkout() {
     return (
         <div id="checkout-container">
 
-            <div>Shipping Address</div>
+            <div>Current Shipping Address</div>
             {/* want to update address here */}
             {/* display the user's address here */}
+
+            <div>
+                <input></input>
+            </div>
+            <button>Edit</button>
 
 
             {/* checkout with something here */}
