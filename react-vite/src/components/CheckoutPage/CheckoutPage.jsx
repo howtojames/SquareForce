@@ -7,7 +7,7 @@ import  './CheckoutPage.css';
 function Checkout() {
     const dispatch = useDispatch();
 
-    const [addres, setAddress] = useState("");
+    const [address, setAddress] = useState("");
 
     useEffect(() => {
         //think of thunk here
@@ -26,7 +26,11 @@ function Checkout() {
             {/* display the user's address here */}
 
             <div>
-                <input></input>
+                <input
+                type="address"
+                value={address}
+                onChange={(e) => setPassword(e.target.value)}
+            />
             </div>
             <button>Edit</button>
 
