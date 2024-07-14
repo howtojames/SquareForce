@@ -51,6 +51,9 @@ class User(db.Model, UserMixin):
     orders = db.relationship("Order", back_populates="user")
 
 
+    address = db.relationship("Address", back_populates="user")
+
+
 
 
 
@@ -88,6 +91,8 @@ class User_Address(db.Model, UserMixin):
     city = db.Column(db.String(255), nullable=True)
     state = db.Column(db.String(255), nullable=True)
     country = db.Column(db.String(255), nullable=True)
+
+    user = db.relationship("User", back_populates="address")
 
 
 

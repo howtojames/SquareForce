@@ -30,7 +30,7 @@ def user(id):
 
 @user_routes.route('/<int:id>/address')
 @login_required
-def users():
+def users(id):
     """
     Query for all users and returns them in a list of user dictionaries
     """
