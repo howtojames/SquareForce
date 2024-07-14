@@ -54,9 +54,6 @@ class User(db.Model, UserMixin):
     address = db.relationship("Address", back_populates="user")
 
 
-
-
-
     @property
     def password(self):
         return self.hashed_password
@@ -93,6 +90,17 @@ class User_Address(db.Model, UserMixin):
     country = db.Column(db.String(255), nullable=True)
 
     user = db.relationship("User", back_populates="address")
+
+    def to_dict(self):
+        #review is a InstrumentedList
+        #reviews_dict = [review.to_dict() for review in self.reviews]
+        return {
+            'id': self.id,
+            'address': self.address,
+            'city': self.city,
+            'state': self.state,
+            'country': self.country,
+        }
 
 
 
