@@ -7,6 +7,8 @@ import  './CheckoutPage.css';
 function Checkout() {
     const dispatch = useDispatch();
 
+    const [addres, setAddress] = useState("");
+
     useEffect(() => {
         //think of thunk here
     }, [dispatch])
