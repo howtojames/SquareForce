@@ -29,8 +29,7 @@ function Checkout() {
                 <input
                 type="address"
                 value={address}
-                onChange={(e) => setPassword(e.target.value)}
-            />
+                onChange={(e) => setPassword(e.target.value)}/>
             </div>
             <button>Edit</button>
 
