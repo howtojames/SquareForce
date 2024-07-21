@@ -31,7 +31,7 @@ function Checkout() {
                 value={address}
                 onChange={(e) => setPassword(e.target.value)}/>
             </div>
-            <button>Edit</button>
+            <button id="edit-button">Edit</button>
 
             {/* previosu addresses */}
             <div></div>
