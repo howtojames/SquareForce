@@ -48,6 +48,7 @@ function Checkout() {
 
             {/* checkout with something here */}
             {/* use external tools for checkout */}
+            <div>Checkout</div>
         </div>
     )
 
