@@ -33,11 +33,15 @@ function Checkout() {
             </div>
             <button id="edit-button">Edit</button>
 
-            {/* previosu addresses */}
+            {/* previous addresses */}
             <div></div>
             <div></div>
             <div></div>
 
+            <div></div>
+            <div></div>
+
+            <div></div>
             <div></div>
             <div></div>
 
