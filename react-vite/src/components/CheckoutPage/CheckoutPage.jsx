@@ -8,7 +8,7 @@ function Checkout() {
     const dispatch = useDispatch();
 
     const [address, setAddress] = useState("");
-    const [password, setPassword] = useState("");
+    // const [password, setPassword] = useState("");
 
     useEffect(() => {
         //think of thunk here
@@ -30,7 +30,7 @@ function Checkout() {
                 <input
                 type="address"
                 value={address}
-                onChange={(e) => setPassword(e.target.value)}/>
+                onChange={(e) => setAddress(e.target.value)}/>
             </div>
             <button id="edit-button">Edit</button>
 
