@@ -26,19 +26,3 @@ def user(id):
     user = User.query.get(id)
     print("user HERRE", user)
     return user.to_dict()
-
-
-@user_routes.route('/<int:id>/address')
-@login_required
-def user_address(id):
-    """
-    Query for all users and returns them in a list of user dictionaries
-    """
-    user = User.query.get(id)
-    print("user HERRE", user)
-
-    def __self__():
-        user = user
-        address = user
-
-    return user.address.to_dict()
