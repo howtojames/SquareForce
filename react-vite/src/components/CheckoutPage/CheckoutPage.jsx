@@ -8,10 +8,11 @@ function Checkout() {
     const dispatch = useDispatch();
 
     const [address, setAddress] = useState("");
+    const [password, setPassword] = useState("");
 
-    // useEffect(() => {
-    //     //think of thunk here
-    // }, [dispatch])
+    useEffect(() => {
+        //think of thunk here
+    }, [dispatch])
 
     //think of where you the address will come from
     //check the frontend
