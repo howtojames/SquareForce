@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import current_user
 from ..models import db
-from ..models.models import Product, CartProduct, User, Review
+from ..models.models import User, User_Address
 from ..forms.review_form import ReviewForm
 from flask_login import login_required, current_user
 from datetime import datetime
