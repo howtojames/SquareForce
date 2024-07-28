@@ -9,9 +9,9 @@ function Checkout() {
 
     const [address, setAddress] = useState("");
 
-    useEffect(() => {
-        //think of thunk here
-    }, [dispatch])
+    // useEffect(() => {
+    //     //think of thunk here
+    // }, [dispatch])
 
     //think of where you the address will come from
     //check the frontend
