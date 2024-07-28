@@ -6,8 +6,9 @@ from ..forms.review_form import ReviewForm
 from flask_login import login_required, current_user
 from datetime import datetime
 
+user_address_routes = Blueprint('user_addres_routes', __name__)
 
-@user_routes.route('/<int:id>/address')
+@user_address_routes.route('/<int:id>')
 @login_required
 def user_address(id):
     """
