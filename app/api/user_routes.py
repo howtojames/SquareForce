@@ -36,4 +36,9 @@ def user_address(id):
     """
     user = User.query.get(id)
     print("user HERRE", user)
+
+    def __self__():
+        user = user
+        address = user
+
     return user.address.to_dict()
