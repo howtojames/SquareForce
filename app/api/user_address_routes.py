@@ -15,10 +15,11 @@ def user_address(id):
     Query for all users and returns them in a list of user dictionaries
     """
     user = User.query.get(id)
+    address = User.query.filter(id = id).address
     print("user HERRE", user)
 
     def __self__():
         user = user
-        address = user
+        address = address
 
     return user.address.to_dict()
