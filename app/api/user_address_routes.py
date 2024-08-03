@@ -17,7 +17,7 @@ def user_address(id):
     user = User.query.get(id)
     address = User.query.filter(id = id).address
     print("user HERRE", user)
-
+    #test
     def __self__():
         user = user
         address = address
