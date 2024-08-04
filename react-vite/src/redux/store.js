@@ -12,7 +12,7 @@ import reviewsReducer from './reviews';
 import watchlistReducer from "./watchlist";
 import ordersReducer from "./order";
 import orderProductsReducer from "./orderproduct";
-
+//no user here
 const rootReducer = combineReducers({
   session: sessionReducer,
   product: productsReducer,
