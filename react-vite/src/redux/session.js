@@ -1,5 +1,6 @@
 const SET_USER = 'session/setUser';
 const REMOVE_USER = 'session/removeUser';
+//Address case here
 
 const setUser = (user) => ({
   type: SET_USER,
