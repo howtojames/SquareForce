@@ -15,6 +15,8 @@ export const thunkAuthenticate = () => async (dispatch) => {
 	const response = await fetch("/api/auth/");
 	if (response.ok) {
 		const data = await response.json();
+
+    console.log("inside thunkAuthenticate data", data)
 		if (data.errors) {
 			return;
 		}
