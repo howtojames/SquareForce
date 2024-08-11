@@ -49,9 +49,7 @@ function Checkout() {
             {/* use external tools for checkout */}
             <div>
                 <div><button>Checkout</button></div>
-
-
-
+                <div>Payment</div>
 
             </div>
 
