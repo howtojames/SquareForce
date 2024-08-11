@@ -34,14 +34,10 @@ function Checkout() {
             <div>
                 <div>Select Address:</div>
 
+                {}
                 <div>
                     <button>Edit</button>
                 </div>
-                <div></div>
-                <div></div>
-
-                <div></div>
-                <div></div>
 
                 <div></div>
                 <div></div>
@@ -53,12 +49,8 @@ function Checkout() {
             {/* use external tools for checkout */}
             <div>
                 <div>Checkout</div>
-                <div>
+                <div></div>
 
-                </div>
-                <div>
-
-                </div>
             </div>
 
 
