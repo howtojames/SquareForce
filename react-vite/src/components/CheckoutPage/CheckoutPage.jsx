@@ -35,17 +35,19 @@ function Checkout() {
             <button id="edit-button">Edit</button>
 
             {/* previous addresses */}
-            <div>Select Address to Change To:</div>
-            <div></div>
-            <div></div>
-            <div></div>
+            <div>
+                <div>Select Address:</div>
+                <div></div>
+                <div></div>
+                <div></div>
 
-            <div></div>
-            <div></div>
+                <div></div>
+                <div></div>
 
-            <div></div>
-            <div></div>
-            <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
 
 
             {/* checkout with something here */}
