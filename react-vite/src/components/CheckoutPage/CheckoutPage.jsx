@@ -48,8 +48,10 @@ function Checkout() {
             {/* checkout with something here */}
             {/* use external tools for checkout */}
             <div>
-                <div>Checkout</div>
-                <div></div>
+                <div><button>Checkout</button></div>
+
+
+
 
             </div>
 
