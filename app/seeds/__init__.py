@@ -4,7 +4,7 @@ from .products import seed_products, undo_products
 from .cart_products import seed_cart_products, undo_cart_products
 from .reviews import seed_reviews, undo_reviews
 from .watchlist import seed_watchlist, undo_watchlist
-from .user_address import seed_user_address, undo_user_address
+# from .user_address import seed_user_address, undo_user_address
 
 from app.models.db import db, environment, SCHEMA
 

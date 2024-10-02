@@ -15,7 +15,7 @@ from .api.review_routes import review_routes
 from .api.watchlist_routes import watchlist_routes
 from .api.order_routes import order_routes
 from .api.order_product_routes import order_product_routes
-from .api.user_address_routes import user_address_routes
+# from .api.user_address_routes import user_address_routes
 
 
 
@@ -45,7 +45,7 @@ app.register_blueprint(review_routes, url_prefix='/api/reviews')
 app.register_blueprint(watchlist_routes, url_prefix='/api/watchlist')
 app.register_blueprint(order_routes, url_prefix='/api/orders')
 app.register_blueprint(order_product_routes, url_prefix='/api/order_products')
-app.register_blueprint(user_address_routes, url_prefix='/api/user_address')
+# app.register_blueprint(user_address_routes, url_prefix='/api/user_address')
 
 
 db.init_app(app)
