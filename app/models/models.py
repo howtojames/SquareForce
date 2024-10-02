@@ -36,8 +36,6 @@ class User(db.Model, UserMixin):
     #    op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
 
 
-
-
     #relationship
     products = db.relationship("Product", back_populates="user")  #error here when db upgrade
 
@@ -51,7 +49,7 @@ class User(db.Model, UserMixin):
     orders = db.relationship("Order", back_populates="user")
 
 
-    address = db.relationship("Address", back_populates="user")
+    # address = db.relationship("Address", back_populates="user")
 
 
     @property
@@ -76,31 +74,31 @@ class User(db.Model, UserMixin):
 
 
 
-class User_Address(db.Model, UserMixin):
-    __tablename__ = 'user_addresses'
+# class User_Address(db.Model, UserMixin):
+#     __tablename__ = 'user_addresses'
 
-    #production
-    if environment == "production":
-        __table_args__ = {'schema': SCHEMA}
+#     #production
+#     if environment == "production":
+#         __table_args__ = {'schema': SCHEMA}
 
-    id = db.Column(db.Integer, primary_key=True)
-    address = db.Column(db.String(255), nullable=True)
-    city = db.Column(db.String(255), nullable=True)
-    state = db.Column(db.String(255), nullable=True)
-    country = db.Column(db.String(255), nullable=True)
+#     id = db.Column(db.Integer, primary_key=True)
+#     address = db.Column(db.String(255), nullable=True)
+#     city = db.Column(db.String(255), nullable=True)
+#     state = db.Column(db.String(255), nullable=True)
+#     country = db.Column(db.String(255), nullable=True)
 
-    user = db.relationship("User", back_populates="address")
+#     user = db.relationship("User", back_populates="address")
 
-    def to_dict(self):
-        #review is a InstrumentedList
-        #reviews_dict = [review.to_dict() for review in self.reviews]
-        return {
-            'id': self.id,
-            'address': self.address,
-            'city': self.city,
-            'state': self.state,
-            'country': self.country,
-        }
+#     def to_dict(self):
+#         #review is a InstrumentedList
+#         #reviews_dict = [review.to_dict() for review in self.reviews]
+#         return {
+#             'id': self.id,
+#             'address': self.address,
+#             'city': self.city,
+#             'state': self.state,
+#             'country': self.country,
+#         }
 
 
 
